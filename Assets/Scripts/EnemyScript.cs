@@ -5,15 +5,16 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
     public float health;
     public float damage;
-    
     public float changeDirectionTimer;
-    //Just using this for testing purposes
     public float despawnTimer;
+    public float attackTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        damage = 10;
         player = GameObject.Find("Player");
         despawnTimer = 10;
+        attackTimer = 0;
     }
 
     // Update is called once per frame
