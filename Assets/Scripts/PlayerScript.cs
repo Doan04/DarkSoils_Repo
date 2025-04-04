@@ -187,19 +187,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //Animation event parameter cannot be a bool, must be something else
-    public void SetWeaponHitbox(int choice)
-    {
-        if(choice == 0)
-        {
-            gameObject.GetComponentInChildren<BoxCollider2D>().enabled = false;
-        }
-        else if(choice == 1)
-        {
-            gameObject.GetComponentInChildren<BoxCollider2D>().enabled = true;
-        }
-    }
-
     IEnumerator ShowPanel(GameObject panel)
     {
         yield return new WaitForSeconds(1f);

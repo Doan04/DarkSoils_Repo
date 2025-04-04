@@ -1663,7 +1663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989465269c1ed3145add6973d8716216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grunt: {fileID: 7403017240175832849, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
   waveIsActive: 0
   spawnInterval: 0.5
   ratSpawnInterval: 10
@@ -2352,37 +2351,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &711690636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 711690637}
-  m_Layer: 0
-  m_Name: CoordinateFinder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &711690637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711690636}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.08, y: 4.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &778652150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2652,7 @@ Transform:
   m_GameObject: {fileID: 886068668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.312, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3428,7 +3396,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00078991055, y: 0.2}
+  m_Offset: {x: -0.00078991055, y: 0.4194408}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6949,7 +6917,6 @@ MonoBehaviour:
   swingCooldown: 0.7
   angle: 0
   currentHealth: 0
-  invincibleTimer: 0
   currentStamina: 0
   maxStamina: 100
   maxHealth: 100
@@ -8132,4 +8099,3 @@ SceneRoots:
   - {fileID: 1949870610}
   - {fileID: 1559104378}
   - {fileID: 475090644}
-  - {fileID: 711690637}
