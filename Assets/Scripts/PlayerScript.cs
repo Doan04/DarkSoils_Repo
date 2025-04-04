@@ -29,6 +29,7 @@ public class PlayerScript : MonoBehaviour
     public float swingCooldown = 0.7f;
     public float angle;
     public float currentHealth = 100f;
+    public float invincibleTimer = 0;
     public float currentStamina = 100f;
     public float maxStamina = 100f;
     public float maxHealth = 100f;
@@ -50,6 +51,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
         if (sprinting) 
         {
@@ -173,6 +175,16 @@ public class PlayerScript : MonoBehaviour
     public void Die()
     {
 
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        //Hit by an enemy, set invincibility state
+        if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
+        {
+            invincibleTimer = 3;
+            currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
+        }
     }
 
     IEnumerator ShowPanel(GameObject panel)
