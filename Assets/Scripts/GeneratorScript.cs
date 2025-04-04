@@ -14,6 +14,8 @@ public class GeneratorScript : MonoBehaviour
     public ParticleSystem smokeVFX;
     public float damageInterval = 1f;
     public CropScript cropfield;
+
+    // references to UI objects and managers that we'll need
     void Start()
     {
         cropfield = GameObject.Find("CropField").GetComponent<CropScript>();
