@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
@@ -19,12 +20,12 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     public AudioSource playerAudio;
     public AudioClip swingSound;
-
+    public int money;
     bool scytheActive; // true => scythe // false => hammer
     public bool isRepairing; // disable all combat and movement input while F is held.
     public bool firing; // whether or not the player is firing fertilizer
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
-    public float staminaRegenDelay = 1.5f; // Time after attacking or sprinting until stamina regenerates
+    public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
     float playerSpeed = 5f; // Player movement speed
     public float swingCooldown = 0.7f;
     public float speedBuffTime = 1.5f;
@@ -47,6 +48,7 @@ public class PlayerScript : MonoBehaviour
         reticle = GameObject.Find("Reticle");
         scytheActive = true;
         meleeHitbox = GameObject.Find("MeleeHitbox");
+        currentStamina = 100f;
     }
 
     // Update is called once per frame
@@ -54,6 +56,10 @@ public class PlayerScript : MonoBehaviour
     {
         swingCooldown -= Time.deltaTime;
         speedBuffTime -= Time.deltaTime;
+        if(currentStamina < maxStamina)
+        {
+            currentStamina += 7 * Time.deltaTime;
+        }
         if (speedBuffTime > 0)
         {
             playerSpeed = 10f;
@@ -78,23 +84,31 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isRepairing == false) 
         {
             // set animator parameters
-            animator.SetTrigger("Attack");
+            // if enough stamina, drain stamina and attack
             if(swingCooldown <= 0)
             {
                 if (scytheActive) 
                 {
                     // if Player is using Scythe
-                    // code for melee attack
-                    playerAudio.PlayOneShot(swingSound);
-                    //meleeHitbox.GetComponent<PlayerMeleeScript>().Kill();
-                    swingCooldown = 0.7f;
+                    if(currentStamina >= 10f)
+                    {
+                        animator.SetTrigger("Attack");
+                        currentStamina -= 10f;
+                        playerAudio.PlayOneShot(swingSound);
+                        //meleeHitbox.GetComponent<PlayerMeleeScript>().Kill();
+                        swingCooldown = 0.7f;
+                    }
                 }
                 else
                 {
                     // if Player is using Hammer
-                    // code for melee attack
-                    playerAudio.PlayOneShot(swingSound);
-                    swingCooldown = 0.7f;
+                    if(currentStamina >= 30f)
+                    {
+                        animator.SetTrigger("Attack");
+                        currentStamina -= 30f;
+                        playerAudio.PlayOneShot(swingSound);
+                        swingCooldown = 0.7f;
+                    }
                 }
             }
         }
@@ -126,7 +140,11 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
             // if enough stamina, drain stamina and enable speed, else ignore 
-            speedBuffTime = .5f;
+            if(currentStamina > 15f)
+            {
+                currentStamina -= 15f;
+                speedBuffTime = .5f;
+            }
         }
     }
 
