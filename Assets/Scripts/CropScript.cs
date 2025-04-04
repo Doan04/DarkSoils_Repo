@@ -10,6 +10,7 @@ public class CropScript : MonoBehaviour
     public float currentGrowth = 0f;
     public float maxGrowth = 100f;
     public float growthInterval = 1f;
+    public float HealInterval = 5f;
     public float secondsToNextWave = 120f;
     public float currentSecondsTilWave;
     public ParticleSystem healingVFX;
@@ -27,6 +28,7 @@ public class CropScript : MonoBehaviour
     void Update()
     {
         growthInterval -= Time.deltaTime;
+        HealInterval -= Time.deltaTime;
         if(canGrow && growthInterval <= 0 && waveActive)
         {
             currentGrowth += 1;
@@ -35,6 +37,11 @@ public class CropScript : MonoBehaviour
                 waveManager.EndWave();
                 Debug.Log("Growth reached 100%. End any wave");
             }
+        }
+        if(canHeal && HealInterval <= 0)
+        {
+            currentHealth += 5f;
+
         }
     }
 

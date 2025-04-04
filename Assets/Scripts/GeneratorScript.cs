@@ -8,26 +8,35 @@ public class GeneratorScript : MonoBehaviour
     public float currentHealth = 300f;
     public List<Light2D> lights = new List<Light2D>();
     public AudioSource generatorAudio;
+    public AudioSource glassAudio;
     public AudioClip powerDownNoise;
-    public AudioClip powerUpNoise;
+    public AudioClip generatorNoise;
     public bool isBroken;
     public ParticleSystem smokeVFX;
     public float damageInterval = 1f;
     public CropScript cropfield;
+
+    // references to UI objects and managers that we'll need
     void Start()
     {
         cropfield = GameObject.Find("CropField").GetComponent<CropScript>();
         foreach (Transform child in gameObject.transform)
         {
-            lights.Add(child.gameObject.GetComponent<Light2D>());
+            if (child.gameObject.GetComponent<Light2D>()) { 
+                lights.Add(child.gameObject.GetComponent<Light2D>());
+            }
         }
+        generatorAudio = GetComponent<AudioSource>();
+        generatorAudio.loop = true;
+        generatorAudio.clip = generatorNoise;
+        generatorAudio.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
         damageInterval -= Time.deltaTime;
-        if (damageInterval < 0)
+        if (damageInterval < 0 && currentHealth > 0)
         {
             // TODO: Randomize the damage taken per second for both machines
             TakeDamage(5);
@@ -42,7 +51,8 @@ public class GeneratorScript : MonoBehaviour
         {
             cropfield.SetGrowth(false);
             SetLights(false);
-            //generatorAudio.PlayOneShot(powerDownNoise);
+            generatorAudio.Pause();
+            glassAudio.Play();
         }
     }
     public void Fix()
@@ -50,7 +60,7 @@ public class GeneratorScript : MonoBehaviour
         currentHealth = maxHealth;
         cropfield.SetGrowth(true);
         SetLights(true);
-        //generatorAudio.PlayOneShot(powerUpNoise);
+        generatorAudio.Play();
     }
 
     public void SetLights(bool val)
