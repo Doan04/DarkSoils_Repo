@@ -195,6 +195,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     IEnumerator ShowPanel(GameObject panel)
     {
         yield return new WaitForSeconds(1f);
@@ -205,4 +206,24 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MainMenu");
     }
+
+    //Function passed to Animator cannot have bool parameter
+    //Using int instead
+    public void SetWeaponHitbox(int activatedNumber)
+    {
+        bool activated = false;
+        if(activatedNumber == 0)
+        {
+            activated = false;
+        }
+        else if (activatedNumber == 1)
+        {
+            activated = true;
+        }
+        //Asuming that the first child is the hitbox
+        GameObject hitboxObject = gameObject.transform.GetChild(0).gameObject;
+
+        hitboxObject.GetComponent<BoxCollider2D>().enabled = activated;
+    }
 }
+
