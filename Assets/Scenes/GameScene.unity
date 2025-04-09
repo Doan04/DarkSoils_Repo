@@ -3316,7 +3316,9 @@ MonoBehaviour:
   secondsToNextWave: 120
   currentSecondsTilWave: 0
   healingVFX: {fileID: 0}
-  cropStageSprite: []
+  cropStageSprite:
+  - {fileID: 21300000, guid: 3014f9d1f7dcbd743aaf64df667c65b0, type: 3}
+  - {fileID: 21300000, guid: 89ea9d3677008ad498f8045cdd53589b, type: 3}
   cropSprite: {fileID: 0}
   waveManager: {fileID: 0}
 --- !u!61 &886068672

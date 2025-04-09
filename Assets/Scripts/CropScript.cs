@@ -21,27 +21,63 @@ public class CropScript : MonoBehaviour
     void Start()
     {
         cropSprite = GetComponent<SpriteRenderer>();
+        cropSprite.sprite = cropStageSprite[stage];
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManagerScript>();
+        canHeal = true;
+        canGrow = true;
+        waveActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // increment the growth and heal timers
         growthInterval -= Time.deltaTime;
         HealInterval -= Time.deltaTime;
+        
+        // grows the crops during an enemy wave and ends the wave once they reach their next stage
         if(canGrow && growthInterval <= 0 && waveActive)
         {
             currentGrowth += 1;
+            growthInterval = 1;
             if (currentGrowth >= maxGrowth)
             {
                 waveManager.EndWave();
+                waveActive = false;
+                currentSecondsTilWave = secondsToNextWave;
+                currentGrowth = 0;
                 Debug.Log("Growth reached 100%. End any wave");
+                stage += 1;
+                // sets the crop sprites to the next stage in the array
+                // if there is not another, then the crops are fully grown
+                if(stage < cropStageSprite.Length)
+                {
+                    cropSprite.sprite = cropStageSprite[stage];
+                }
+                else
+                {
+                    Debug.Log("Crop fully grown, you win!");
+                }
             }
         }
         if(canHeal && HealInterval <= 0)
         {
             currentHealth += 5f;
-
+            HealInterval = 5;
+        }
+        
+        // increments the wave timer if there is no wave active
+        if(!waveActive)
+        {
+            currentSecondsTilWave -= Time.deltaTime;
+        }
+        
+        // starts a new wave when the wave timer runs out
+        if(currentSecondsTilWave <= 0 && !waveActive)
+        {
+            waveActive = true;
+            waveManager.StartWave();
+            currentSecondsTilWave = 0;
         }
     }
 
