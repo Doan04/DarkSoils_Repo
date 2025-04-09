@@ -148,11 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d954d8f0f60d04b47ba4d41db95fe817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 1
   player: {fileID: 0}
   health: 0
   damage: 0
   changeDirectionTimer: 0
   despawnTimer: 0
+  anim: {fileID: 0}
 --- !u!95 &8210570145988235786
 Animator:
   serializedVersion: 7

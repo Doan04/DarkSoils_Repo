@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    //enemyTypes:
+    //1 = zombie, 2 = shanker, 3 = eye
+    //4 = miniboss
+    public int enemyType;
     public GameObject player;
     public float health;
     public float damage;
@@ -10,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     public float changeDirectionTimer;
     //Just using this for testing purposes
     public float despawnTimer;
+    public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +22,7 @@ public class EnemyScript : MonoBehaviour
         health = 10;
         player = GameObject.Find("Player");
         despawnTimer = 10;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -77,6 +83,14 @@ public class EnemyScript : MonoBehaviour
             health -= 5;
             stunnedTimer = 0.3f;
 
+        }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player" && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
+        {
+            anim.Play("GruntAttack");
         }
     }
 
