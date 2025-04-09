@@ -68,7 +68,7 @@ public class PlayerScript : MonoBehaviour
         staminaBar.updateStaminaValue(currentStamina/maxStamina);
         if(currentStamina < maxStamina)
         {
-            currentStamina += 7 * Time.deltaTime;
+            currentStamina += 10 * Time.deltaTime;
         }
         if (speedBuffTime > 0)
         {
@@ -89,7 +89,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space)) { 
             scytheActive = !scytheActive;
-            animator.SetBool("scytheActive", scytheActive);    
+            animator.SetBool("scytheActive", scytheActive);
         }
         if (Input.GetMouseButtonDown(0) && isRepairing == false) 
         {

@@ -6,7 +6,7 @@ public class WaveManagerScript : MonoBehaviour
     public GameObject shanker;
     public GameObject mouth;
     public bool waveIsActive = false;
-    public float spawnInterval = 0.5f;
+    public float spawnInterval = 1f;
     public float ratSpawnInterval = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +21,7 @@ public class WaveManagerScript : MonoBehaviour
         ratSpawnInterval -= Time.deltaTime;
         if (spawnInterval <= 0 && waveIsActive) 
         {
-            Debug.Log("Spawn Enemy at " + Time.frameCount);
+            //Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
             SpawnEnemy(shanker);
             SpawnEnemy(mouth);

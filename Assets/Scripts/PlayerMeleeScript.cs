@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections;
 public class PlayerMeleeScript : MonoBehaviour
 {
-    public GameObject enemy;
+    //public GameObject enemy;
     //The list of colliders currently inside the trigger
     public List<Collider2D> TriggerList = new List<Collider2D>();
-    bool canHit = false;
-    bool isScythe = false;
+    public bool canHit = false;
+    public bool isScythe = false;
     // Update is called once per frame
     private void Update()
     {
@@ -21,7 +21,7 @@ public class PlayerMeleeScript : MonoBehaviour
                     // if using scythe, damage for 5 or something
                     if (isScythe)
                     {
-
+                        collider.gameObject.GetComponent<EnemyScript>().TakeDamage(5);
                     }
                     // if using hammer, one shot
                     if (isScythe == false) 

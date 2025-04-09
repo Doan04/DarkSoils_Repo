@@ -46,6 +46,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         stunnedTimer -= Time.deltaTime;
+        despawnTimer -= Time.deltaTime;
         if(stunnedTimer > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
@@ -55,15 +56,10 @@ public class EnemyScript : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             Movement();
         }
-        despawnTimer -= Time.deltaTime;
         //If this is the mouth automatically attack since it is ranged enemy
         if(enemyType == 3 && !anim.GetCurrentAnimatorStateInfo(0).IsName("MouthAttack") )
         {
             anim.Play("MouthAttack");          
-        }
-        if(despawnTimer <= 0 || health <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -95,21 +91,10 @@ public class EnemyScript : MonoBehaviour
         transform.position += movementSpeed * transform.up * Time.deltaTime;
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
     {
-        //Hit by a weapon, reduce its health
-        if(collider.gameObject.tag == "MeleeHitbox" && stunnedTimer <= 0)
-        {
-            Debug.Log("hit");
-            health -= 5;
-            stunnedTimer = 0.3f;
-
-        }
-    }
-
-    public void TakeDamage()
-    {
-        health -= 5;
+        health -= dmg;
+        stunnedTimer = 0.3f;
         if(health <= 0)
         {
             Destroy(gameObject);
