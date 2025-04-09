@@ -46,7 +46,6 @@ public class WaveManagerScript : MonoBehaviour
     {
         Vector3 spawnCoordinate = ChooseBorder();
         Instantiate(enemyType, spawnCoordinate, Quaternion.Euler(0, 0, 0));
-        Instantiate(enemyType, spawnCoordinate, Quaternion.Euler(0, 0, 0));
 
         // spawnRandomEnemy
     }
