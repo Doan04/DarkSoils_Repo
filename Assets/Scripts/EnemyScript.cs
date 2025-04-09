@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     //enemyTypes:
-    //1 = zombie, 2 = shanker, 3 = eye
+    //1 = zombie, 2 = shanker, 3 = mouth
     //4 = miniboss
     public int enemyType;
     public GameObject player;
@@ -20,13 +20,18 @@ public class EnemyScript : MonoBehaviour
     {
         if(enemyType == 1)
         {
-            damage = 2;
+            damage = 4;
+            health = 10;
+        }
+        else if(enemyType == 2)
+        {
+            damage = 10;
             health = 10;
         }
         else
         {
-            damage = 10;
-            health = 10;
+            damage = 20;
+            health = 5;
         }
         player = GameObject.Find("Player");
         despawnTimer = 10;
@@ -47,6 +52,11 @@ public class EnemyScript : MonoBehaviour
             Movement();
         }
         despawnTimer -= Time.deltaTime;
+        //If this is the mouth automatically attack since it is ranged enemy
+        if(enemyType == 3 && !anim.GetCurrentAnimatorStateInfo(0).IsName("MouthAttack") )
+        {
+            anim.Play("MouthAttack");          
+        }
         if(despawnTimer <= 0 || health <= 0)
         {
             Destroy(gameObject);

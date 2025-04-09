@@ -4,6 +4,7 @@ public class WaveManagerScript : MonoBehaviour
 {
     public GameObject grunt;
     public GameObject shanker;
+    public GameObject mouth;
     public bool waveIsActive = false;
     public float spawnInterval = 0.5f;
     public float ratSpawnInterval = 10f;
@@ -23,6 +24,7 @@ public class WaveManagerScript : MonoBehaviour
             Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
             SpawnEnemy(shanker);
+            SpawnEnemy(mouth);
             spawnInterval = 2f;
         }
         if (ratSpawnInterval <= 0 && waveIsActive) 

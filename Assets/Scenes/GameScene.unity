@@ -1815,6 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grunt: {fileID: 7403017240175832849, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
   shanker: {fileID: 2371631218092237841, guid: f11987c55336e944ba999b666414422f, type: 3}
+  mouth: {fileID: 1602668564104369808, guid: c33433e205d5ebd4a8b1bf153e50e178, type: 3}
   waveIsActive: 0
   spawnInterval: 0.5
   ratSpawnInterval: 10
