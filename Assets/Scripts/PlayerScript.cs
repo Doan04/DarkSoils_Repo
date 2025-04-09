@@ -7,18 +7,18 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
-    public Vector3 mouse_pos;
+    private Vector3 mouse_pos;
     Vector3 pos;
     float horizontalInput;
     float verticalInput;
-    public Animator animator;
-    public Animator legAnimator;
-    public GameObject reticle;
+    private Animator animator;
+    private Animator legAnimator;
+    private GameObject reticle;
     public GameObject meleeHitbox;
-    public GameObject Legs;
+    private GameObject Legs;
     LayerMask mask;
     Rigidbody2D rb;
-    public AudioSource playerAudio;
+    private AudioSource playerAudio;
     public AudioClip swingSound;
     public int money;
     bool scytheActive; // true => scythe // false => hammer
@@ -38,6 +38,8 @@ public class PlayerScript : MonoBehaviour
     public float maxFert = 100f;
     public float repairTime = 3f; // Time spent repairing until player send a fix message to machine 
     //public MakeCorpse playerCorpseScript;
+    public StaminaBarScript staminaBar;
+    public HealthBarScript healthBar;
     void Start()
     {
         mask = LayerMask.GetMask("Enemy");
@@ -58,6 +60,7 @@ public class PlayerScript : MonoBehaviour
         invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
         speedBuffTime -= Time.deltaTime;
+        staminaBar.updateStaminaValue(currentStamina/maxStamina);
         if(currentStamina < maxStamina)
         {
             currentStamina += 7 * Time.deltaTime;
@@ -188,6 +191,7 @@ public class PlayerScript : MonoBehaviour
         {
             invincibleTimer = 3;
             currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
+            healthBar.updateHealthValue(currentHealth / maxHealth);
         }
     }
 
