@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        health = 10;
         player = GameObject.Find("Player");
         despawnTimer = 10;
     }
@@ -21,7 +22,7 @@ public class EnemyScript : MonoBehaviour
     {
         Movement();
         despawnTimer -= Time.deltaTime;
-        if(despawnTimer <= 0)
+        if(despawnTimer <= 0 || health <= 0)
         {
             Destroy(gameObject);
         }
@@ -55,4 +56,15 @@ public class EnemyScript : MonoBehaviour
         //     transform.position += 0.3f * transform.right * Time.deltaTime;
         // }
     }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        //Hit by a weapon, reduce its health
+        if(collider.gameObject.tag == "MeleeHitbox")
+        {
+            Debug.Log("hit");
+            health -= 10;
+        }
+    }
+
 }
