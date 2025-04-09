@@ -5,13 +5,15 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
     public float health;
     public float damage;
-    
+    private float stunnedTimer;
+    private bool attacking;
     public float changeDirectionTimer;
     //Just using this for testing purposes
     public float despawnTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        damage = 5;
         health = 10;
         player = GameObject.Find("Player");
         despawnTimer = 10;
@@ -20,7 +22,16 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        stunnedTimer -= Time.deltaTime;
+        if(stunnedTimer > 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+            Movement();
+        }
         despawnTimer -= Time.deltaTime;
         if(despawnTimer <= 0 || health <= 0)
         {
@@ -36,14 +47,14 @@ public class EnemyScript : MonoBehaviour
         //Chasing player
         if((player.transform.position - gameObject.transform.position).magnitude < 4)
         {
-            transform.right = player.transform.position - gameObject.transform.position;
+            transform.up = player.transform.position - gameObject.transform.position;
         }
         //Chasing crops
         else
         {
-            transform.right = new Vector3(0, 0, 0) - gameObject.transform.position;
+            transform.up = new Vector3(0, 0, 0) - gameObject.transform.position;
         }
-        transform.position += transform.right * Time.deltaTime;
+        transform.position += transform.up * Time.deltaTime;
         //Idle pose if needbe
         // else
         // {
@@ -60,10 +71,12 @@ public class EnemyScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
         //Hit by a weapon, reduce its health
-        if(collider.gameObject.tag == "MeleeHitbox")
+        if(collider.gameObject.tag == "MeleeHitbox" && stunnedTimer <= 0)
         {
             Debug.Log("hit");
-            health -= 10;
+            health -= 5;
+            stunnedTimer = 0.3f;
+
         }
     }
 

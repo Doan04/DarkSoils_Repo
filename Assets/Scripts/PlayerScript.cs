@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     public HealthBarScript healthBar;
     void Start()
     {
+        currentHealth = maxHealth;
         mask = LayerMask.GetMask("Enemy");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

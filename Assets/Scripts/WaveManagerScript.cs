@@ -21,7 +21,7 @@ public class WaveManagerScript : MonoBehaviour
         {
             Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
-            spawnInterval = 0.5f;
+            spawnInterval = 2f;
         }
         if (ratSpawnInterval <= 0 && waveIsActive) 
         {

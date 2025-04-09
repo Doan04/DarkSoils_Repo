@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989465269c1ed3145add6973d8716216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grunt: {fileID: 0}
+  grunt: {fileID: 7403017240175832849, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
   waveIsActive: 0
   spawnInterval: 0.5
   ratSpawnInterval: 10
@@ -2639,7 +2639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.3713, y: -0.1048}
+  m_AnchoredPosition: {x: -0.37129974, y: -0.104800224}
   m_SizeDelta: {x: -5.1535, y: -1.9782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682629992
@@ -3801,7 +3801,7 @@ GameObject:
   - component: {fileID: 963217756}
   m_Layer: 2
   m_Name: MeleeHitbox
-  m_TagString: Untagged
+  m_TagString: MeleeHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3828,7 +3828,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963217754}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -7661,7 +7661,7 @@ MonoBehaviour:
   maxFert: 100
   repairTime: 3
   staminaBar: {fileID: 1978796157}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 526942083}
 --- !u!95 &1960148641
 Animator:
   serializedVersion: 7
