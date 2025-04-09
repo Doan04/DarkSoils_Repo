@@ -18,8 +18,16 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        damage = 5;
-        health = 10;
+        if(enemyType == 1)
+        {
+            damage = 2;
+            health = 10;
+        }
+        else
+        {
+            damage = 10;
+            health = 10;
+        }
         player = GameObject.Find("Player");
         despawnTimer = 10;
         anim = GetComponent<Animator>();
@@ -88,9 +96,13 @@ public class EnemyScript : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
+        if(collision.gameObject.tag == "Player" && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
         {
             anim.Play("GruntAttack");
+        }
+        else if(collision.gameObject.tag == "Player" && enemyType == 2 && !anim.GetCurrentAnimatorStateInfo(0).IsName("ShankerAttack"))
+        {
+            anim.Play("ShankerAttack");
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 public class WaveManagerScript : MonoBehaviour
 {
     public GameObject grunt;
+    public GameObject shanker;
     public bool waveIsActive = false;
     public float spawnInterval = 0.5f;
     public float ratSpawnInterval = 10f;
@@ -21,6 +22,7 @@ public class WaveManagerScript : MonoBehaviour
         {
             Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
+            SpawnEnemy(shanker);
             spawnInterval = 2f;
         }
         if (ratSpawnInterval <= 0 && waveIsActive) 
@@ -42,6 +44,8 @@ public class WaveManagerScript : MonoBehaviour
     {
         Vector3 spawnCoordinate = ChooseBorder();
         Instantiate(enemyType, spawnCoordinate, Quaternion.Euler(0, 0, 0));
+        Instantiate(enemyType, spawnCoordinate, Quaternion.Euler(0, 0, 0));
+
         // spawnRandomEnemy
     }
 
