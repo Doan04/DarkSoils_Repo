@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
     public float health;
     public float damage;
+    public float movementSpeed;
     private float stunnedTimer;
     private bool attacking;
     public float changeDirectionTimer;
@@ -22,16 +23,19 @@ public class EnemyScript : MonoBehaviour
         {
             damage = 4;
             health = 10;
+            movementSpeed = 1;
         }
         else if(enemyType == 2)
         {
             damage = 10;
             health = 10;
+            movementSpeed = 2;
         }
         else
         {
             damage = 20;
             health = 5;
+            movementSpeed = 0.5f;
         }
         player = GameObject.Find("Player");
         despawnTimer = 10;
@@ -73,23 +77,22 @@ public class EnemyScript : MonoBehaviour
         {
             transform.up = player.transform.position - gameObject.transform.position;
         }
-        //Chasing crops
-        else
+        //Chasing crops if melee
+        else if(enemyType != 3)
         {
             transform.up = new Vector3(0, 0, 0) - gameObject.transform.position;
         }
-        transform.position += transform.up * Time.deltaTime;
-        //Idle pose if needbe
-        // else
-        // {
-        //    changeDirectionTimer -= Time.deltaTime;
-        //     if(changeDirectionTimer < 0)
-        //     {
-        //         changeDirectionTimer = 5;
-        //         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
-        //     }
-        //     transform.position += 0.3f * transform.right * Time.deltaTime;
-        // }
+        //Random slow walk for ranged enemies
+        else
+        {
+           changeDirectionTimer -= Time.deltaTime;
+            if(changeDirectionTimer < 0)
+            {
+                changeDirectionTimer = 3;
+                transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+            }
+        }
+        transform.position += movementSpeed * transform.up * Time.deltaTime;
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
