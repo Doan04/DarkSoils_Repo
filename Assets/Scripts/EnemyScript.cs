@@ -104,6 +104,15 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        health -= 5;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player" && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))

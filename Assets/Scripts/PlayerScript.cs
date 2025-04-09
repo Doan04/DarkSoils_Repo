@@ -101,7 +101,7 @@ public class PlayerScript : MonoBehaviour
                         animator.SetTrigger("Attack");
                         currentStamina -= 10f;
                         playerAudio.PlayOneShot(swingSound);
-                        //meleeHitbox.GetComponent<PlayerMeleeScript>().Kill();
+                        meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
                         swingCooldown = 0.7f;
                     }
                 }
@@ -113,6 +113,7 @@ public class PlayerScript : MonoBehaviour
                         animator.SetTrigger("Attack");
                         currentStamina -= 30f;
                         playerAudio.PlayOneShot(swingSound);
+                        meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
                         swingCooldown = 0.7f;
                     }
                 }

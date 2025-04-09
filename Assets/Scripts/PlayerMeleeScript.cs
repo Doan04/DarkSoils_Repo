@@ -6,33 +6,45 @@ public class PlayerMeleeScript : MonoBehaviour
     public GameObject enemy;
     //The list of colliders currently inside the trigger
     public List<Collider2D> TriggerList = new List<Collider2D>();
-    bool canKill = false;
+    bool canHit = false;
+    bool isScythe = false;
     // Update is called once per frame
     private void Update()
     {
-        if (canKill)
+        if (canHit)
         {
             for (int i = 0; i < TriggerList.Count; i++)
             {
                 Collider2D collider = TriggerList[i];
                 if (collider.CompareTag("Enemy"))
                 {
+                    // if using scythe, damage for 5 or something
+                    if (isScythe)
+                    {
+
+                    }
+                    // if using hammer, one shot
+                    if (isScythe == false) 
+                    {
+                        Destroy(collider.gameObject);
+                    }
                     Debug.Log(collider.name);
                 }
                 TriggerList.Remove(collider);
             }
         }
     }
-    public void Kill()
+    public void Attack(bool scytheActive)
     {
-        canKill = true;
+        canHit = true;
+        isScythe = scytheActive;
         StartCoroutine(DisableKillBox());
     }
 
     IEnumerator DisableKillBox()
     {
         yield return new WaitForSeconds(.2f);
-        canKill = false;
+        canHit = false;
     }
 //called when something enters the trigger
     void OnTriggerEnter2D(Collider2D collider)
