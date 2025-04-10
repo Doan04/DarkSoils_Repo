@@ -8,7 +8,13 @@ public class PlayerMeleeScript : MonoBehaviour
     public List<Collider2D> TriggerList = new List<Collider2D>();
     public bool canHit = false;
     public bool isScythe = false;
+    public PlayerScript player;
     // Update is called once per frame
+
+    private void Start()
+    {
+        player = GameObject.Find("Player").GetComponent<PlayerScript>();
+    }
     private void Update()
     {
         if (canHit)
@@ -55,6 +61,10 @@ public class PlayerMeleeScript : MonoBehaviour
             //add the object to the list
             TriggerList.Add(collider);
         }
+        else if (collider.CompareTag("Machine"))
+        {
+            player.canRepair = true;
+        }
     }
 
     //called when something exits the trigger
@@ -65,6 +75,10 @@ public class PlayerMeleeScript : MonoBehaviour
         {
             //remove it from the list
             TriggerList.Remove(collider);
+        }
+        else if(collider.CompareTag("Machine"))
+        {
+            player.canRepair = false;
         }
     }
 

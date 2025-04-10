@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip swingSound;
     public int money;
     bool scytheActive; // true => scythe // false => hammer
+    public bool canRepair; // whether player cna start repairing or not
     public bool isRepairing; // disable all combat and movement input while F is held.
     public bool firing; // whether or not the player is firing fertilizer
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
@@ -136,17 +137,15 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Do a check that player is in interaction range
-
-            // Repair or Interact
-            isRepairing = true;
-            animator.SetBool("repairing", true);
+            if (canRepair)
+            {
+                // Repair or Interact
+                isRepairing = true;
+                animator.SetBool("repairing", true);
+                // Start a coroutine to repair that fixes the machine afterwards
+                // just check which machine is closest then call its fix functions
+            }
             
-        }
-        if (Input.GetKeyUp(KeyCode.F)) 
-        {
-            // Stop repair or interact
-            isRepairing = false;
-            animator.SetBool("repairing", false);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {

@@ -8,20 +8,22 @@ public class CropScript : MonoBehaviour
     public float maxHealth = 500f;
     public float currentHealth = 500f;
     public float currentGrowth = 0f;
-    public float maxGrowth = 100f;
+    public float maxGrowth = 30f;
     public float growthInterval = 1f;
     public float HealInterval = 5f;
-    public float secondsToNextWave = 120f;
+    public float secondsToNextWave = 30f;
     public float currentSecondsTilWave;
     public ParticleSystem healingVFX;
     public Sprite[] cropStageSprite;
     public SpriteRenderer cropSprite;
     public WaveManagerScript waveManager;
+    public CropBarScript cropBarScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cropSprite = GetComponent<SpriteRenderer>();
         cropSprite.sprite = cropStageSprite[stage];
+        maxGrowth = 30f;
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManagerScript>();
         canHeal = true;
         canGrow = true;
@@ -40,6 +42,7 @@ public class CropScript : MonoBehaviour
         {
             currentGrowth += 1;
             growthInterval = 1;
+            cropBarScript.updateCropValue(currentGrowth / maxGrowth);
             if (currentGrowth >= maxGrowth)
             {
                 waveManager.EndWave();
