@@ -41,10 +41,6 @@ public class PlayerScript : MonoBehaviour
     //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
-    public float pickup1;
-    public float pickup2;
-    public float pickup3;
-    public float pickup4;
     void Start()
     {
         currentHealth = maxHealth;

@@ -150,8 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   player: {fileID: 0}
+  coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
   health: 0
   damage: 0
+  movementSpeed: 0
   changeDirectionTimer: 0
   despawnTimer: 0
   anim: {fileID: 0}

@@ -7,6 +7,7 @@ public class EnemyScript : MonoBehaviour
     //4 = miniboss
     public int enemyType;
     public GameObject player;
+    public GameObject coin;
     public float health;
     public float damage;
     public float movementSpeed;
@@ -97,6 +98,7 @@ public class EnemyScript : MonoBehaviour
         stunnedTimer = 0.3f;
         if(health <= 0)
         {
+            Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
             Destroy(gameObject);
         }
     }
