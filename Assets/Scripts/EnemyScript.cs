@@ -21,20 +21,20 @@ public class EnemyScript : MonoBehaviour
     {
         if(enemyType == 1)
         {
+            health = 5;
             damage = 4;
-            health = 10;
             movementSpeed = 1;
         }
         else if(enemyType == 2)
         {
-            damage = 10;
             health = 10;
+            damage = 10;
             movementSpeed = 2;
         }
         else
         {
-            damage = 20;
             health = 5;
+            damage = 20;
             movementSpeed = 0.5f;
         }
         player = GameObject.Find("Player");
