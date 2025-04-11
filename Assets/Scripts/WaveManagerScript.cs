@@ -6,6 +6,7 @@ public class WaveManagerScript : MonoBehaviour
     public GameObject shanker;
     public GameObject mouth;
     public GameObject coin;
+    public GameObject fertilizer;
     public bool waveIsActive = false;
     public float spawnInterval = 1f;
     public float ratSpawnInterval = 10f;
@@ -22,7 +23,8 @@ public class WaveManagerScript : MonoBehaviour
         ratSpawnInterval -= Time.deltaTime;
         if (spawnInterval <= 0 && waveIsActive) 
         {
-            Instantiate(coin, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
+            // Instantiate(coin, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
+            Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
             //Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
             SpawnEnemy(shanker);

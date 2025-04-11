@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
     //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
+    public TextMeshProUGUI inventoryText;
     void Start()
     {
         currentHealth = maxHealth;
@@ -63,6 +64,7 @@ public class PlayerScript : MonoBehaviour
         swingCooldown -= Time.deltaTime;
         speedBuffTime -= Time.deltaTime;
         staminaBar.updateStaminaValue(currentStamina/maxStamina);
+        inventoryText.SetText("Money: " + money + "\nFertilizer: " + currentFert);
         if(currentStamina < maxStamina)
         {
             currentStamina += 10 * Time.deltaTime;
