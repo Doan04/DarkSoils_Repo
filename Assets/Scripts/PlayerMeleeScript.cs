@@ -30,6 +30,10 @@ public class PlayerMeleeScript : MonoBehaviour
                     }
                     Debug.Log(collider.name);
                 }
+                else if (collider.CompareTag("Heart"))
+                {
+                    collider.gameObject.GetComponent<HeartBehavior>().TakeDamage();
+                }
                 TriggerList.Remove(collider);
             }
         }

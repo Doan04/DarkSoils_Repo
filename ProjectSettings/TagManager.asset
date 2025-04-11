@@ -11,6 +11,8 @@ TagManager:
   - MeleeHitbox
   - Generator
   - WaterPump
+  - Machine
+  - Heart
   layers:
   - Default
   - TransparentFX
