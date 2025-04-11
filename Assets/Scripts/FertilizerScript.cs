@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickupsScript : MonoBehaviour
+public class FertilizerScript : MonoBehaviour
 {
     public float fertValue = 10f; // amount of fertilizer it gives the player
 
