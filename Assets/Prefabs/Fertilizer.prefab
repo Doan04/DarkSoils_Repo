@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 6952090746844788528}
   - component: {fileID: 7067298941817131822}
   - component: {fileID: 6813858095767672560}
+<<<<<<< HEAD
+  - component: {fileID: -3576679484567894499}
+=======
   - component: {fileID: 1464653948299838789}
+>>>>>>> 222010bfcf9dc8989df84ab726e074e757d67808
   m_Layer: 0
   m_Name: Fertilizer
   m_TagString: Untagged
@@ -135,7 +139,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+--- !u!114 &-3576679484567894499
+=======
 --- !u!114 &1464653948299838789
+>>>>>>> 222010bfcf9dc8989df84ab726e074e757d67808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,4 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab924c0f3a18b584aa43bf4076e01d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
   fertValue: 10
+>>>>>>> 222010bfcf9dc8989df84ab726e074e757d67808
