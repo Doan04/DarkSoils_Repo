@@ -8,6 +8,11 @@ TagManager:
   - Fertilizer
   - Coin
   - Crop
+  - MeleeHitbox
+  - Generator
+  - WaterPump
+  - Machine
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - Enemy
   - Pickups
   - Crop
-  - 
+  - Machine
   - 
   - 
   - 

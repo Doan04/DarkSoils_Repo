@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
     public float damage;
     public float movementSpeed;
     private float stunnedTimer;
+    private float stopTimer;
     private bool attacking;
     public float changeDirectionTimer;
     //Just using this for testing purposes
@@ -22,20 +23,20 @@ public class EnemyScript : MonoBehaviour
     {
         if(enemyType == 1)
         {
+            health = 5;
             damage = 4;
-            health = 10;
             movementSpeed = 1;
         }
         else if(enemyType == 2)
         {
-            damage = 10;
             health = 10;
+            damage = 10;
             movementSpeed = 2;
         }
         else
         {
-            damage = 20;
             health = 5;
+            damage = 20;
             movementSpeed = 0.5f;
         }
         player = GameObject.Find("Player");
@@ -47,12 +48,13 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         stunnedTimer -= Time.deltaTime;
+        stopTimer -= Time.deltaTime;
         despawnTimer -= Time.deltaTime;
         if(stunnedTimer > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
-        else
+        else if(stopTimer < 0)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             Movement();
@@ -113,6 +115,8 @@ public class EnemyScript : MonoBehaviour
         {
             anim.Play("ShankerAttack");
         }
+
+        stopTimer = 0.3f;
     }
 
 }

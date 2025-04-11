@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FertilizerScript : MonoBehaviour
+public class PickupsScript : MonoBehaviour
 {
     private GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -9,10 +9,23 @@ public class FertilizerScript : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        GameObject collidedObject = collision.gameObject;
+        if (collidedObject.CompareTag("Player"))
+        {
+            // the player will not pick it up if they have the max amount already
+            if(collidedObject.GetComponent<PlayerScript>().currentFert < collidedObject.GetComponent<PlayerScript>().maxFert)
+            {
+                collidedObject.GetComponent<PlayerScript>().currentFert += fertValue;
+                // ensures the player doesn't go above the max amount
+                if(collidedObject.GetComponent<PlayerScript>().currentFert > collidedObject.GetComponent<PlayerScript>().maxFert)
+                {
+                    collidedObject.GetComponent<PlayerScript>().currentFert = collidedObject.GetComponent<PlayerScript>().maxFert;
+                }
+                Destroy(gameObject);
+            }
+        }
     }
 
     //Essentially if it touches the player then disappear and increment fertilizer count

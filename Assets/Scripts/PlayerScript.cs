@@ -22,7 +22,6 @@ public class PlayerScript : MonoBehaviour
     public AudioClip swingSound;
     public int money;
     bool scytheActive; // true => scythe // false => hammer
-    public bool canRepair; // whether player cna start repairing or not
     public bool isRepairing; // disable all combat and movement input while F is held.
     public bool firing; // whether or not the player is firing fertilizer
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
@@ -134,16 +133,29 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // Do a check that player is in interaction range
-            if (canRepair)
+            // Raycast to check if player can initiate repair
+            LayerMask mask = LayerMask.GetMask("Machine");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 3f, mask);
+            if (hit)
             {
-                // Repair or Interact
-                isRepairing = true;
-                animator.SetBool("repairing", true);
-                // Start a coroutine to repair that fixes the machine afterwards
-                // just check which machine is closest then call its fix functions
+                WaterPumpScript pumpScript;
+                GeneratorScript genScript;
+                // get reference to machine's script and repair them
+                if (hit.transform.CompareTag("Generator"))
+                {
+                    genScript = hit.transform.gameObject.GetComponent<GeneratorScript>();
+                    isRepairing = true;
+                    animator.SetBool("repairing", true);
+                    StartCoroutine(FixRoutine(genScript, null));
+                }
+                else
+                {
+                    pumpScript = hit.transform.gameObject.GetComponent<WaterPumpScript>();
+                    isRepairing = true;
+                    animator.SetBool("repairing", true);
+                    StartCoroutine(FixRoutine(null, pumpScript));
+                }
             }
-            
         }
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
@@ -198,6 +210,26 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void DamagePlayer(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.updateHealthValue(currentHealth / maxHealth);
+    }
+
+    IEnumerator FixRoutine(GeneratorScript gs, WaterPumpScript wp)
+    {
+        yield return new WaitForSeconds(3f);
+        if (gs != null) 
+        {
+            gs.Fix();
+        }
+        else
+        {
+            wp.Fix();
+        }
+        isRepairing = false;
+        animator.SetBool("repairing", false);
+    }
 
     IEnumerator ShowPanel(GameObject panel)
     {

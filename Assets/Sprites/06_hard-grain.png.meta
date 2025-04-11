@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 594036b9e0a117c4a94473b5f2102723
+guid: facd7d454ab685245b66a50c0d047ed9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4866186488363392809
-    second: barBorder 1_0
+      213: 3260778106433075739
+    second: 06_hard-grain_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barBorder 1_0
+      name: 06_hard-grain_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 512
-        height: 64
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d06b46cb25d77cb0800000000000000
-      internalID: -4866186488363392809
+      spriteID: b1a7055596c904d20800000000000000
+      internalID: 3260778106433075739
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      barBorder 1_0: -4866186488363392809
+      06_hard-grain_0: 3260778106433075739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
