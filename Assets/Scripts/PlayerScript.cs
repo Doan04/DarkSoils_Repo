@@ -25,10 +25,10 @@ public class PlayerScript : MonoBehaviour
     public bool isRepairing; // disable all combat and movement input while F is held.
     public bool firing; // whether or not the player is firing fertilizer
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
+    public bool playerHasControl = true;
     public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
-    float playerSpeed = 5f; // Player movement speed
+    public float playerSpeed = 5f; // Player movement speed
     public float swingCooldown = 0.7f;
-    public float speedBuffTime = 1.5f;
     public float currentHealth = 100f;
     public float invincibleTimer = 0;
     public float currentStamina = 100f;
@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
     public TextMeshProUGUI inventoryText;
+    public Vector2 currentMovementDirection;
     void Start()
     {
         currentHealth = maxHealth;
@@ -59,22 +60,14 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovementInput();
         invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
-        speedBuffTime -= Time.deltaTime;
         staminaBar.updateStaminaValue(currentStamina/maxStamina);
         inventoryText.SetText("Money: " + money + "\nFertilizer: " + currentFert);
         if(currentStamina < maxStamina)
         {
             currentStamina += 10 * Time.deltaTime;
-        }
-        if (speedBuffTime > 0)
-        {
-            playerSpeed = 10f;
-        }
-        else
-        {
-            playerSpeed = 5f;
         }
         // calculating player and mouse positions
         pos = transform.position;
@@ -93,33 +86,7 @@ public class PlayerScript : MonoBehaviour
         {
             // set animator parameters
             // if enough stamina, drain stamina and attack
-            if(swingCooldown <= 0)
-            {
-                if (scytheActive) 
-                {
-                    // if Player is using Scythe
-                    if(currentStamina >= 10f)
-                    {
-                        animator.SetTrigger("Attack");
-                        currentStamina -= 10f;
-                        playerAudio.PlayOneShot(swingSound);
-                        meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                        swingCooldown = 0.7f;
-                    }
-                }
-                else
-                {
-                    // if Player is using Hammer
-                    if(currentStamina >= 30f)
-                    {
-                        animator.SetTrigger("Attack");
-                        currentStamina -= 30f;
-                        playerAudio.PlayOneShot(swingSound);
-                        meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                        swingCooldown = 0.7f;
-                    }
-                }
-            }
+            CombatInput();
         }
         else if(Input.GetMouseButton(1) && isRepairing == false)
         {
@@ -134,29 +101,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Raycast to check if player can initiate repair
-            LayerMask mask = LayerMask.GetMask("Machine");
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 3f, mask);
-            if (hit)
-            {
-                Debug.Log(hit.transform.name);
-                WaterPumpScript pumpScript;
-                GeneratorScript genScript;
-                // get reference to machine's script and repair them
-                if (hit.transform.CompareTag("Generator"))
-                {
-                    genScript = hit.transform.gameObject.GetComponent<GeneratorScript>();
-                    isRepairing = true;
-                    animator.SetBool("repairing", true);
-                    StartCoroutine(FixRoutine(genScript, null));
-                }
-                else
-                {
-                    pumpScript = hit.transform.gameObject.GetComponent<WaterPumpScript>();
-                    isRepairing = true;
-                    animator.SetBool("repairing", true);
-                    StartCoroutine(FixRoutine(null, pumpScript));
-                }
-            }
+            Repair();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
@@ -164,36 +109,103 @@ public class PlayerScript : MonoBehaviour
             if(currentStamina > 15f)
             {
                 currentStamina -= 15f;
-                speedBuffTime = .5f;
+                print(rb.linearVelocity);
+                rb.AddForce(currentMovementDirection * 15f, ForceMode2D.Impulse);
+                playerHasControl = false;
+                StartCoroutine(returnControlToPlayer());
+                //speedBuffTime = .5f;
+            }
+        }
+    }
+
+    public void MovementInput()
+    {
+        if (playerHasControl)
+        {
+            // movement code
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+            if (isRepairing == true)
+            {
+                horizontalInput = 0;
+                verticalInput = 0;
+            }
+            if (horizontalInput != 0f || verticalInput != 0f)
+            {
+                legAnimator.SetBool("isMoving", true);
+            }
+            else
+            {
+                legAnimator.SetBool("isMoving", false);
+            }
+            Vector2 direction = new Vector2(horizontalInput, verticalInput);
+            direction.Normalize();
+            currentMovementDirection = direction;
+            rb.MovePosition(rb.position + direction * playerSpeed * Time.deltaTime);
+        }
+    }
+    public void CombatInput()
+    {
+        if (swingCooldown <= 0)
+        {
+            if (scytheActive)
+            {
+                // if Player is using Scythe
+                if (currentStamina >= 10f)
+                {
+                    animator.SetTrigger("Attack");
+                    currentStamina -= 10f;
+                    playerAudio.PlayOneShot(swingSound);
+                    meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
+                    swingCooldown = 0.7f;
+                }
+            }
+            else
+            {
+                // if Player is using Hammer
+                if (currentStamina >= 30f)
+                {
+                    animator.SetTrigger("Attack");
+                    currentStamina -= 30f;
+                    playerAudio.PlayOneShot(swingSound);
+                    meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
+                    swingCooldown = 0.7f;
+                }
+            }
+        }
+    }
+    public void Repair()
+    {
+        LayerMask mask = LayerMask.GetMask("Machine");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 3f, mask);
+        if (hit)
+        {
+            Debug.Log(hit.transform.name);
+            WaterPumpScript pumpScript;
+            GeneratorScript genScript;
+            // get reference to machine's script and repair them
+            if (hit.transform.CompareTag("Generator"))
+            {
+                genScript = hit.transform.gameObject.GetComponent<GeneratorScript>();
+                isRepairing = true;
+                animator.SetBool("repairing", true);
+                StartCoroutine(FixRoutine(genScript, null));
+            }
+            else
+            {
+                pumpScript = hit.transform.gameObject.GetComponent<WaterPumpScript>();
+                isRepairing = true;
+                animator.SetBool("repairing", true);
+                StartCoroutine(FixRoutine(null, pumpScript));
             }
         }
     }
 
     private void FixedUpdate()
     {
-
-        // movement code
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        if (isRepairing == true) 
-        {
-            horizontalInput = 0;
-            verticalInput = 0;
-        }
-        if(horizontalInput != 0f || verticalInput != 0f)
-        {
-            legAnimator.SetBool("isMoving", true);
-        }
-        else
-        {
-            legAnimator.SetBool("isMoving", false);
-        }
-        Vector2 direction = new Vector2(horizontalInput, verticalInput);
-        direction.Normalize();
-        rb.MovePosition(rb.position + direction * playerSpeed * Time.deltaTime);
-
-
+        
     }
+
 
     public void Die()
     {
@@ -231,7 +243,12 @@ public class PlayerScript : MonoBehaviour
         isRepairing = false;
         animator.SetBool("repairing", false);
     }
-
+    IEnumerator returnControlToPlayer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        playerHasControl = true;
+        rb.linearVelocity = Vector2.zero;
+    }
     IEnumerator ShowPanel(GameObject panel)
     {
         yield return new WaitForSeconds(1f);

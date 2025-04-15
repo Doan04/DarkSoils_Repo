@@ -21,7 +21,11 @@ public class PlayerMeleeScript : MonoBehaviour
                     // if using scythe, damage for 5 or something
                     if (isScythe)
                     {
-                        collider.gameObject.GetComponent<EnemyScript>().TakeDamage(5);
+                        EnemyScript enemyScriptRef = collider.gameObject.GetComponent<EnemyScript>();
+                        if (enemyScriptRef) 
+                        {
+                            enemyScriptRef.TakeDamage(5);
+                        }
                     }
                     // if using hammer, one shot
                     if (isScythe == false) 
