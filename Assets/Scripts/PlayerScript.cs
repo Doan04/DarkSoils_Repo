@@ -138,6 +138,7 @@ public class PlayerScript : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 3f, mask);
             if (hit)
             {
+                Debug.Log(hit.transform.name);
                 WaterPumpScript pumpScript;
                 GeneratorScript genScript;
                 // get reference to machine's script and repair them

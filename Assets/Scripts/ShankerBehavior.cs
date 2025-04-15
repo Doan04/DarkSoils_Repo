@@ -6,8 +6,10 @@ public class ShankerBehavior : MonoBehaviour
     public PlayerScript playerScript;
     public Animator animator;
     public Transform target;
+    bool inContact = false;
     NavMeshAgent agent;
     public float updateFrequency = .1f;
+    public float attackFrequency = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,23 +26,40 @@ public class ShankerBehavior : MonoBehaviour
     void Update()
     {
         updateFrequency -= Time.deltaTime;
+        attackFrequency -= Time.deltaTime;
         if (updateFrequency < 0)
         {
             agent.SetDestination(target.position);
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             float distance = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).magnitude;
-            if (distance < .15f)
-            {
-                animator.SetTrigger("ShankerAttack");
-                //Destroy(Player.gameObject);
-                playerScript.DamagePlayer(10);
-            }
+        }
+        if (attackFrequency < 0 && inContact) 
+        {
+            animator.Play("ShankerAttack");
+            //Destroy(Player.gameObject);
+            playerScript.DamagePlayer(10);
+            attackFrequency = 0.5f;
         }
         var vel = agent.velocity;
         vel.z = 0;
         if (vel != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, vel);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) {
+            inContact = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            inContact = false;
         }
     }
 }
