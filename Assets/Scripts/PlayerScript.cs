@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip swingSound;
     public int money;
+    public int attack;
     bool scytheActive; // true => scythe // false => hammer
     public bool isRepairing; // disable all combat and movement input while F is held.
     public bool firing; // whether or not the player is firing fertilizer
@@ -44,6 +45,8 @@ public class PlayerScript : MonoBehaviour
     public Vector2 currentMovementDirection;
     void Start()
     {
+        money = 0;
+        attack = 3;
         currentHealth = maxHealth;
         mask = LayerMask.GetMask("Enemy");
         rb = GetComponent<Rigidbody2D>();
@@ -109,7 +112,7 @@ public class PlayerScript : MonoBehaviour
             if(currentStamina > 15f)
             {
                 currentStamina -= 15f;
-                print(rb.linearVelocity);
+                //print(rb.linearVelocity);
                 rb.AddForce(currentMovementDirection * 15f, ForceMode2D.Impulse);
                 playerHasControl = false;
                 StartCoroutine(returnControlToPlayer());
