@@ -60,7 +60,7 @@ public class PlayerMeleeScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         //if the object is not already in the list
-        if (!TriggerList.Contains(collider) && collider.CompareTag("Enemy"))
+        if (!TriggerList.Contains(collider) && (collider.CompareTag("Enemy") || collider.CompareTag("Heart")))
         {
             //add the object to the list
             TriggerList.Add(collider);
