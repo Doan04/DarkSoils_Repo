@@ -19,12 +19,14 @@ public class PlayerMeleeScript : MonoBehaviour
                 if (collider.CompareTag("Enemy"))
                 {
                     // if using scythe, damage for 5 or something
+                    //Adjusting this to damage based off player's attack
                     if (isScythe)
                     {
                         EnemyScript enemyScriptRef = collider.gameObject.GetComponent<EnemyScript>();
                         if (enemyScriptRef) 
                         {
-                            enemyScriptRef.TakeDamage(5);
+                            GameObject player = transform.parent.gameObject;
+                            enemyScriptRef.TakeDamage(player.GetComponent<PlayerScript>().attack);
                         }
                     }
                     // if using hammer, one shot
@@ -58,7 +60,7 @@ public class PlayerMeleeScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         //if the object is not already in the list
-        if (!TriggerList.Contains(collider) && collider.CompareTag("Enemy"))
+        if (!TriggerList.Contains(collider) && (collider.CompareTag("Enemy") || collider.CompareTag("Heart")))
         {
             //add the object to the list
             TriggerList.Add(collider);
