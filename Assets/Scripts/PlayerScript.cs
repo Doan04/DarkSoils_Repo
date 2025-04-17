@@ -64,6 +64,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         MovementInput();
+        healthBar.updateHealthValue(currentHealth / maxHealth);
         invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
         staminaBar.updateStaminaValue(currentStamina/maxStamina);

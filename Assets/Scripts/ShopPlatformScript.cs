@@ -62,6 +62,8 @@ public class ShopPlatformScript : MonoBehaviour
                 {
                     collidedObject.GetComponent<PlayerScript>().currentHealth += 15;
                     collidedObject.GetComponent<PlayerScript>().maxHealth += 15;
+                    Debug.Log("Curren health is " + collidedObject.GetComponent<PlayerScript>().currentHealth);
+                    Debug.Log("Max health is" + collidedObject.GetComponent<PlayerScript>().currentHealth);
                 }
                 else if(wares == 2)
                 {
