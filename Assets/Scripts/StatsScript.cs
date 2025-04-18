@@ -15,7 +15,7 @@ public class StatsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string stats = "Player Stats: \n";
+        string stats = "Player Stats: \n\n";
         stats += "Health: " + playerScript.currentHealth + "/" + playerScript.maxHealth + "\n";
         stats += "Attack: " + playerScript.attack + "\n";
         stats += "Fertilizer: " + playerScript.currentFert + "/" + playerScript.maxFert + "\n";

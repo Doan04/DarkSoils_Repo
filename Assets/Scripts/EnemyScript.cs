@@ -12,7 +12,7 @@ public class EnemyScript : MonoBehaviour
     public float damage;
     public float movementSpeed;
     private float stunnedTimer;
-    private float stopTimer;
+    public float attackTimer;
     private bool attacking;
     public float changeDirectionTimer;
     //Just using this for testing purposes
@@ -48,13 +48,13 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         stunnedTimer -= Time.deltaTime;
-        stopTimer -= Time.deltaTime;
+        attackTimer -= Time.deltaTime;
         despawnTimer -= Time.deltaTime;
         if(stunnedTimer > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
-        else if(stopTimer < 0)
+        else if(stunnedTimer < 0)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             Movement();
@@ -107,6 +107,7 @@ public class EnemyScript : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
+        //If player then attack
         if(collision.gameObject.tag == "Player" && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
         {
             anim.Play("GruntAttack");
@@ -115,8 +116,30 @@ public class EnemyScript : MonoBehaviour
         {
             anim.Play("ShankerAttack");
         }
-
-        stopTimer = 0.3f;
     }
-
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        GameObject collidedObject = collider.gameObject;
+        //If crop then attack
+        if(collidedObject.CompareTag("Crop"))
+        {
+            Debug.Log("TOUCHING CROP");
+            if(attackTimer <= 0)
+            {
+                collider.gameObject.GetComponent<CropScript>().currentHealth -= damage;
+                attackTimer = 2f;
+            }
+        }
+        if(attackTimer <= 0)
+        {
+            if(collidedObject.CompareTag("Crop") && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
+            {
+                anim.Play("GruntAttack");
+            }
+            else if(collidedObject.CompareTag("Crop") && enemyType == 2 && !anim.GetCurrentAnimatorStateInfo(0).IsName("ShankerAttack"))
+            {
+                anim.Play("ShankerAttack");
+            }
+        }
+    }
 }

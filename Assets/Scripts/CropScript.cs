@@ -8,10 +8,10 @@ public class CropScript : MonoBehaviour
     public float maxHealth = 500f;
     public float currentHealth = 500f;
     public float currentGrowth = 0f;
-    public float maxGrowth = 30f;
+    public float maxGrowth = 5f;
     public float growthInterval = 1f;
     public float HealInterval = 5f;
-    public float secondsToNextWave = 30f;
+    public float secondsToNextWave = 5f;
     public float currentSecondsTilWave;
     public ParticleSystem healingVFX;
     public Sprite[] cropStageSprite;
@@ -43,6 +43,7 @@ public class CropScript : MonoBehaviour
             currentGrowth += 1;
             growthInterval = 1;
             cropBarScript.updateCropValue(currentGrowth / maxGrowth);
+            cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
             if (currentGrowth >= maxGrowth)
             {
                 waveManager.EndWave();
@@ -53,6 +54,7 @@ public class CropScript : MonoBehaviour
                 stage += 1;
                 // sets the crop sprites to the next stage in the array
                 // if there is not another, then the crops are fully grown
+                Debug.Log(cropStageSprite.Length);
                 if(stage < cropStageSprite.Length)
                 {
                     cropSprite.sprite = cropStageSprite[stage];
@@ -73,11 +75,13 @@ public class CropScript : MonoBehaviour
         if(!waveActive)
         {
             currentSecondsTilWave -= Time.deltaTime;
+            Debug.Log(currentSecondsTilWave);
         }
         
         // starts a new wave when the wave timer runs out
         if(currentSecondsTilWave <= 0 && !waveActive)
         {
+            Debug.Log("STARTING NEW WAVE");
             waveActive = true;
             waveManager.StartWave();
             currentSecondsTilWave = 0;
