@@ -3,7 +3,7 @@ using UnityEngine;
 public class HeartProjectileScript : MonoBehaviour
 {
     public int dmg = 10;
-    private float projectileLife = 15f;
+    private float projectileLife = 10f;
 
     void Update()
     {

@@ -4,7 +4,9 @@ public class HeartBehavior : MonoBehaviour
 {
     public float health = 100f;
     public float shootTimer = 5f;
+    public float circleShootTimer = 5f;
     public float shootInterval = 5f;
+    public float circleShootInterval = 5f;
     public float projectileForce = 20f;
     public float rotation = 0f;
     public GameObject bossDrop;
@@ -29,18 +31,23 @@ public class HeartBehavior : MonoBehaviour
     void Update()
     {
         shootTimer -= Time.deltaTime;
-
-        if(shootTimer <= 0 && !dead)
+        circleShootTimer -= Time.deltaTime;
+        if((player.transform.position - gameObject.transform.position).magnitude <= 10)
         {
-            if((player.transform.position - gameObject.transform.position).magnitude <= 10)
+            if(shootTimer <= 0 && !dead)
             {
-                Shoot(firePoint1, rotation);// going to add more, possibly make them move so they are harder to dodge
+                Shoot(firePoint1, rotation);
                 Shoot(firePoint2, rotation);
                 Shoot(firePoint3, rotation);
                 Shoot(firePoint4, rotation);
-                Shoot(firePoint5, rotation);
+                shootTimer = shootInterval;
             }
-            shootTimer = shootInterval;
+
+            if(circleShootTimer <= 0 && !dead)
+            {
+                ShootCircle(firePoint5, rotation);
+                circleShootTimer = circleShootInterval;
+            }
         }
 
         if((player.transform.position - gameObject.transform.position).magnitude <= 10 && !audioPlaying)
@@ -76,5 +83,17 @@ public class HeartBehavior : MonoBehaviour
         GameObject liveProjectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Rigidbody2D projectileRB = liveProjectile.GetComponent<Rigidbody2D>();
         projectileRB.AddForce(firePoint.right * projectileForce, ForceMode2D.Impulse);
+    }
+
+    void ShootCircle(Transform firePoint, float rotation)
+    {
+        firePoint.Rotate(0, 0, rotation);
+        for(int i = 0; i < 15; i++)
+        {
+            firePoint.Rotate(0, 0, 24);
+            GameObject liveProjectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
+            Rigidbody2D projectileRB = liveProjectile.GetComponent<Rigidbody2D>();
+            projectileRB.AddForce(firePoint.right * projectileForce, ForceMode2D.Impulse);
+        }
     }
 }
