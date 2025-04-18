@@ -48,16 +48,16 @@ public class ShankerBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player")) {
+        if (collision.transform.CompareTag("Player")) {
             inContact = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
             inContact = false;
         }

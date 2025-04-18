@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 public class CropScript : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CropScript : MonoBehaviour
     public SpriteRenderer cropSprite;
     public WaveManagerScript waveManager;
     public CropBarScript cropBarScript;
+    public TMP_Text timerText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +52,7 @@ public class CropScript : MonoBehaviour
                 currentSecondsTilWave = secondsToNextWave;
                 currentGrowth = 0;
                 Debug.Log("Growth reached 100%. End any wave");
+                timerText.enabled = true;
                 stage += 1;
                 // sets the crop sprites to the next stage in the array
                 // if there is not another, then the crops are fully grown
@@ -69,10 +72,11 @@ public class CropScript : MonoBehaviour
             HealInterval = 5;
         }
         
-        // increments the wave timer if there is no wave active
+        // decrements the wave timer if there is no wave active
         if(!waveActive)
         {
             currentSecondsTilWave -= Time.deltaTime;
+            timerText.text = "Wave in: " + Mathf.Round(currentSecondsTilWave).ToString();
         }
         
         // starts a new wave when the wave timer runs out
@@ -80,6 +84,7 @@ public class CropScript : MonoBehaviour
         {
             waveActive = true;
             waveManager.StartWave();
+            timerText.enabled = false;
             currentSecondsTilWave = 0;
         }
     }
