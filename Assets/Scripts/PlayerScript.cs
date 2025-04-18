@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject reticle;
     public GameObject meleeHitbox;
     private GameObject Legs;
+    public ParticleSystem damageEffect;
     LayerMask mask;
     Rigidbody2D rb;
     private AudioSource playerAudio;
@@ -223,6 +224,9 @@ public class PlayerScript : MonoBehaviour
         {
             invincibleTimer = 3;
             currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
+
+            Quaternion rotation = collision.gameObject.transform.rotation;
+            Instantiate(damageEffect, collision.gameObject.transform.position, Quaternion.Euler(transform.rotation.x,90,0));
             healthBar.updateHealthValue(currentHealth / maxHealth);
         }
     }
