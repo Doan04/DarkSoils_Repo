@@ -14,15 +14,12 @@ public class HeartProjectileScript : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject collidedObject = collision.gameObject;
-        if(!collidedObject.CompareTag("Heart"))
+        if(collidedObject.CompareTag("Player"))
         {
-            if (collidedObject.CompareTag("Player"))
-            {
-                collidedObject.GetComponent<PlayerScript>().DamagePlayer(dmg);
-            }
+            collidedObject.GetComponent<PlayerScript>().DamagePlayer(dmg);
             Destroy(gameObject);
         }
         
