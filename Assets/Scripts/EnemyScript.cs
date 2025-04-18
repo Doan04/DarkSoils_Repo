@@ -123,15 +123,14 @@ public class EnemyScript : MonoBehaviour
         //If crop then attack
         if(collidedObject.CompareTag("Crop"))
         {
-            Debug.Log("TOUCHING CROP");
             if(attackTimer <= 0)
             {
                 collider.gameObject.GetComponent<CropScript>().currentHealth -= damage;
-                attackTimer = 2f;
             }
         }
         if(attackTimer <= 0)
         {
+            Debug.Log("TOUCHING CROP");
             if(collidedObject.CompareTag("Crop") && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
             {
                 anim.Play("GruntAttack");
@@ -140,6 +139,7 @@ public class EnemyScript : MonoBehaviour
             {
                 anim.Play("ShankerAttack");
             }
+            attackTimer = 2f;
         }
     }
 }
