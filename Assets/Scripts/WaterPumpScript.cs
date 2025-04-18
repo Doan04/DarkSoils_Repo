@@ -10,6 +10,7 @@ public class WaterPumpScript : MonoBehaviour
     public ParticleSystem smokeVFX;
     public float damageInterval = 1f;
     public CropScript cropfield;
+    public ObjectiveManager questManager;
     void Start()
     {
         cropfield = GameObject.Find("CropField").GetComponent<CropScript>();
@@ -31,6 +32,7 @@ public class WaterPumpScript : MonoBehaviour
         if (currentHealth <= 0)
         {
             cropfield.SetHealing(false);
+            questManager.EnableWaterQuest();
             //pumpAudio.PlayOneShot(powerDownNoise);
         }
     }
@@ -38,6 +40,7 @@ public class WaterPumpScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         cropfield.SetHealing(true);
+        questManager.DisableGenQuest();
         //pumpAudio.PlayOneShot(powerUpNoise);
     }
 

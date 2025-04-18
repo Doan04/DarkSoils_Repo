@@ -15,7 +15,7 @@ public class GeneratorScript : MonoBehaviour
     public ParticleSystem smokeVFX;
     public float damageInterval = 1f;
     public CropScript cropfield;
-
+    public ObjectiveManager questManager;
     // references to UI objects and managers that we'll need
     void Start()
     {
@@ -52,6 +52,7 @@ public class GeneratorScript : MonoBehaviour
             cropfield.SetGrowth(false);
             SetLights(false);
             generatorAudio.Pause();
+            questManager.EnableGenQuest();
             glassAudio.Play();
         }
     }
@@ -60,6 +61,7 @@ public class GeneratorScript : MonoBehaviour
         currentHealth = maxHealth;
         cropfield.SetGrowth(true);
         SetLights(true);
+        questManager.DisableGenQuest();
         generatorAudio.Play();
     }
 
