@@ -22,6 +22,9 @@ public class HeartBehavior : MonoBehaviour
     public Transform firePoint5;
     private bool audioPlaying = false;
     private bool dead = false;
+    public Animator animator;
+    private float hitTimer = 0f;
+    private bool hit = false;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class HeartBehavior : MonoBehaviour
     {
         shootTimer -= Time.deltaTime;
         circleShootTimer -= Time.deltaTime;
+        hitTimer -= Time.deltaTime;
         if((player.transform.position - gameObject.transform.position).magnitude <= 10)
         {
             if(shootTimer <= 0 && !dead)
@@ -60,13 +64,27 @@ public class HeartBehavior : MonoBehaviour
             audioPlaying = false;
             heartAudio.Stop();
         }
+
+        if(hitTimer < 0 && hit)
+        {
+            animator.SetBool("hit", false);
+            hit = false;
+        }
             
     }
 
-    public void TakeDamage() // Code that gets called when enemy takes Damage
+    public void TakeDamage() // Code that gets called when the heart takes Damage
     {
         health -= 5;
         heartAudio.PlayOneShot(hitSound);
+
+        if(!hit)
+        {
+            animator.SetBool("hit", true);
+            hit = true;
+            hitTimer = 0.3f;   
+        }
+        
         if (health <= 0)
         {
             dead = true;
