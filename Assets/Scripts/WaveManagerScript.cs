@@ -8,8 +8,9 @@ public class WaveManagerScript : MonoBehaviour
     public GameObject coin;
     public GameObject fertilizer;
     public bool waveIsActive = false;
-    public float spawnInterval = 1f;
-    public float ratSpawnInterval = 10f;
+    public float spawnInterval = 2f;
+    public float shankerSpawnInterval = 10f;
+    public float fertSpawnInterval = 15f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,20 +21,24 @@ public class WaveManagerScript : MonoBehaviour
     void Update()
     {
         spawnInterval -= Time.deltaTime;
-        ratSpawnInterval -= Time.deltaTime;
+        shankerSpawnInterval -= Time.deltaTime;
+        fertSpawnInterval -= Time.deltaTime;
+        if(fertSpawnInterval < 0  && waveIsActive)
+        {
+            Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
+            fertSpawnInterval = 15f;
+        }
         if (spawnInterval <= 0 && waveIsActive) 
         {
-            // Instantiate(coin, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
-            Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
-            //Debug.Log("Spawn Enemy at " + Time.frameCount);
             SpawnEnemy(grunt);
-            SpawnEnemy(shanker);
             SpawnEnemy(mouth);
             spawnInterval = 2f;
         }
-        if (ratSpawnInterval <= 0 && waveIsActive) 
+        if (shankerSpawnInterval <= 0 && waveIsActive) 
         {
-            // Spawn an enemy that goes for one of the machines.
+            // Spawn an enemy that goes for the players.
+            SpawnEnemy(shanker);
+            shankerSpawnInterval = 10f;
         }
     }
 
@@ -50,8 +55,6 @@ public class WaveManagerScript : MonoBehaviour
     {
         Vector3 spawnCoordinate = ChooseBorder();
         Instantiate(enemyType, spawnCoordinate, Quaternion.Euler(0, 0, 0));
-
-        // spawnRandomEnemy
     }
 
     public Vector3 ChooseBorder()

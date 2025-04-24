@@ -223,8 +223,11 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
         {
             invincibleTimer = 3;
-            currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
-
+            EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
+            if (emscript != null) 
+            {
+                DamagePlayer(Mathf.RoundToInt(emscript.damage));
+            }
             Quaternion rotation = collision.gameObject.transform.rotation;
             Instantiate(damageEffect, collision.gameObject.transform.position, Quaternion.Euler(transform.rotation.x,90,0));
             healthBar.updateHealthValue(currentHealth / maxHealth);
