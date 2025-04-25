@@ -328,7 +328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   shootTimer: 0
+  circleShootTimer: 5
   shootInterval: 0.5
+  circleShootInterval: 5
   projectileForce: 2
   rotation: 10
   bossDrop: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
@@ -341,6 +343,7 @@ MonoBehaviour:
   firePoint3: {fileID: 6465580595924942755}
   firePoint4: {fileID: 6891041435982526300}
   firePoint5: {fileID: 951834681486705915}
+  animator: {fileID: 5214580900777443509}
 --- !u!1 &4982913876161093831
 GameObject:
   m_ObjectHideFlags: 0

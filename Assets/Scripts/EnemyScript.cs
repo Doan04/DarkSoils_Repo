@@ -110,7 +110,12 @@ public class EnemyScript : MonoBehaviour
         //If player then attack
         if(collision.gameObject.tag == "Player" && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
         {
-            anim.Play("GruntAttack");
+            if (attackTimer < 0) 
+            {
+                anim.Play("GruntAttack");
+                player.GetComponent<PlayerScript>().DamagePlayer(5);
+                player.GetComponent<PlayerScript>().sprayBlood(transform.position);
+            }
         }
         else if(collision.gameObject.tag == "Player" && enemyType == 2 && !anim.GetCurrentAnimatorStateInfo(0).IsName("ShankerAttack"))
         {
