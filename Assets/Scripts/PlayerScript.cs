@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
     public bool playerHasControl = true;
     public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
-    public float playerSpeed = 5f; // Player movement speed
+    public float playerSpeed = 10f; // Player movement speed
     public float swingCooldown = 0.7f;
     public float swingCooldownTime = 0.7f;
     public float currentHealth = 100f;
@@ -224,7 +224,7 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 targetDir = transform.position - enemyPosition;
         Quaternion rotation = Quaternion.LookRotation(targetDir);
-        Instantiate(damageEffect, enemyPosition, rotation);
+        Instantiate(damageEffect, new Vector3(transform.position.x, transform.position.y, 5), rotation);
     }
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -232,8 +232,6 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
         {
             invincibleTimer = 3;
-            currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
-
             EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
             if (emscript != null) 
             {
