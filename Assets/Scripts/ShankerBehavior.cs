@@ -39,6 +39,7 @@ public class ShankerBehavior : MonoBehaviour
             animator.Play("ShankerAttack");
             //Destroy(Player.gameObject);
             playerScript.DamagePlayer(10);
+            playerScript.sprayBlood(transform.position);
             attacksAvailable--;
             if(attacksAvailable <= 0)
             {

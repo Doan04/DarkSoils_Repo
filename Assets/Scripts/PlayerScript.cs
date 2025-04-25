@@ -219,7 +219,12 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
-
+    public void sprayBlood(Vector3 enemyPosition)
+    {
+        Vector3 targetDir = transform.position - enemyPosition;
+        Quaternion rotation = Quaternion.LookRotation(targetDir);
+        Instantiate(damageEffect, enemyPosition, rotation);
+    }
     public void OnCollisionStay2D(Collision2D collision)
     {
         //Hit by an enemy, set invincibility state
@@ -227,10 +232,6 @@ public class PlayerScript : MonoBehaviour
         {
             invincibleTimer = 3;
             currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
-
-            Vector3 targetDir = transform.position - collision.transform.position;
-            Quaternion rotation = Quaternion.LookRotation(targetDir);
-            Instantiate(damageEffect, collision.gameObject.transform.position, rotation);
 
             EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
             if (emscript != null) 

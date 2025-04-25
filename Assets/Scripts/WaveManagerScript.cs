@@ -28,10 +28,10 @@ public class WaveManagerScript : MonoBehaviour
             Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
             fertSpawnInterval = 15f;
         }
-        if (spawnInterval <= 0 && waveIsActive) 
+        if (spawnInterval <= 0 && waveIsActive)
         {
-            SpawnEnemy(grunt);
-            spawnInterval = 2f;
+                SpawnEnemy(grunt);
+                spawnInterval = 2f;
         }
         if (shankerSpawnInterval <= 0 && waveIsActive) 
         {
