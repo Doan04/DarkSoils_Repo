@@ -39,11 +39,13 @@ public class PlayerScript : MonoBehaviour
     public float currentFert = 100f;
     public float maxFert = 100f;
     public float repairTime = 3f; // Time spent repairing until player send a fix message to machine 
+    public float fireRate = 0.2f;
     //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
     public TextMeshProUGUI inventoryText;
     public Vector2 currentMovementDirection;
+    public GameObject fertBullet;
     void Start()
     {
         money = 0;
@@ -69,6 +71,7 @@ public class PlayerScript : MonoBehaviour
         invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
         staminaBar.updateStaminaValue(currentStamina/maxStamina);
+        fireRate -= Time.deltaTime;
         inventoryText.SetText("Money: " + money + "\nFertilizer: " + currentFert);
         if(currentStamina < maxStamina)
         {
@@ -98,6 +101,10 @@ public class PlayerScript : MonoBehaviour
             // Fertilizer Spray
             animator.SetBool("firing", true);
             // instantiate the particle prefabs
+            if(fireRate <= 0 && currentFert > 5)
+            {
+                Instantiate(fertBullet, transform.position, transform.rotation);
+            }
         }
         else
         {
@@ -206,10 +213,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
 
 
     public void Die()

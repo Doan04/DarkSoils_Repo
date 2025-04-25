@@ -7485,10 +7485,12 @@ MonoBehaviour:
   currentFert: 100
   maxFert: 100
   repairTime: 3
+  fireRate: 0.2
   staminaBar: {fileID: 1978796157}
   healthBar: {fileID: 526942083}
   inventoryText: {fileID: 445680494}
   currentMovementDirection: {x: 0, y: 0}
+  fertBullet: {fileID: 0}
 --- !u!95 &1960148641
 Animator:
   serializedVersion: 7
