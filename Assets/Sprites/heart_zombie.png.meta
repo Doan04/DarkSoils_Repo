@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      heart_zombie_0: 2499503792805843842
+      heart_zombie_1: 3359255716276107865
+      heart_zombie_10: -5925295638954354543
+      heart_zombie_11: -6292834157105220171
+      heart_zombie_12: 4908463896170031480
+      heart_zombie_13: -4523473401306893895
+      heart_zombie_14: -2498327437393631236
+      heart_zombie_2: -3081776101170454886
+      heart_zombie_3: -596130964705579306
+      heart_zombie_4: 6122099075779343673
+      heart_zombie_5: -2020262923225458175
+      heart_zombie_6: -6885457779210530401
+      heart_zombie_7: 7872039574152370674
+      heart_zombie_8: 753228652246455010
+      heart_zombie_9: 5799543667317930471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
