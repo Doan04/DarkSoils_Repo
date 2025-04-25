@@ -40,7 +40,7 @@ public class WaterPumpScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         cropfield.SetHealing(true);
-        questManager.DisableGenQuest();
+        questManager.DisableWaterQuest();
         //pumpAudio.PlayOneShot(powerUpNoise);
     }
 

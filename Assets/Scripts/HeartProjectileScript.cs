@@ -20,6 +20,7 @@ public class HeartProjectileScript : MonoBehaviour
         if(collidedObject.CompareTag("Player"))
         {
             collidedObject.GetComponent<PlayerScript>().DamagePlayer(dmg);
+            collidedObject.GetComponent<PlayerScript>().sprayBlood(transform.position);
             Destroy(gameObject);
         }
         

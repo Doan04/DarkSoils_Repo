@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 8f744f394af5f1049bf2abd34738fe71
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2499503792805843842
+    second: heart_zombie_0
+  - first:
+      213: 3359255716276107865
+    second: heart_zombie_1
+  - first:
+      213: -3081776101170454886
+    second: heart_zombie_2
+  - first:
+      213: -596130964705579306
+    second: heart_zombie_3
+  - first:
+      213: 6122099075779343673
+    second: heart_zombie_4
+  - first:
+      213: -2020262923225458175
+    second: heart_zombie_5
+  - first:
+      213: -6885457779210530401
+    second: heart_zombie_6
+  - first:
+      213: 7872039574152370674
+    second: heart_zombie_7
+  - first:
+      213: 753228652246455010
+    second: heart_zombie_8
+  - first:
+      213: 5799543667317930471
+    second: heart_zombie_9
+  - first:
+      213: -5925295638954354543
+    second: heart_zombie_10
+  - first:
+      213: -6292834157105220171
+    second: heart_zombie_11
+  - first:
+      213: 4908463896170031480
+    second: heart_zombie_12
+  - first:
+      213: -4523473401306893895
+    second: heart_zombie_13
+  - first:
+      213: -2498327437393631236
+    second: heart_zombie_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: heart_zombie_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 140
+        width: 70
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2831fe4e47500b220800000000000000
+      internalID: 2499503792805843842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 139
+        width: 65
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95a765e96497e9e20800000000000000
+      internalID: 3359255716276107865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 141
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e5274c6f45b35d0800000000000000
+      internalID: -3081776101170454886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_3
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 139
+        width: 65
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6deec19cb0e1ab7f0800000000000000
+      internalID: -596130964705579306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_4
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 140
+        width: 70
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93533935ca016f450800000000000000
+      internalID: 6122099075779343673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_5
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 139
+        width: 65
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a114c339596f3e0800000000000000
+      internalID: -2020262923225458175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_6
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 141
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91d43a61a0f170a0800000000000000
+      internalID: -6885457779210530401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_7
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 139
+        width: 65
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f95b2be84a1f3d60800000000000000
+      internalID: 7872039574152370674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 12
+        width: 70
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2dbcbe771047a00800000000000000
+      internalID: 753228652246455010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_9
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 14
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9f9d5fc3e1c7050800000000000000
+      internalID: 5799543667317930471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_10
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 15
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19854fa820f15cda0800000000000000
+      internalID: -5925295638954354543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_11
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 12
+        width: 91
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b57c4bccac5ba8a0800000000000000
+      internalID: -6292834157105220171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_12
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 15
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8796b0c48ed5e1440800000000000000
+      internalID: 4908463896170031480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_13
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 14
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1bc2c68e46931c0800000000000000
+      internalID: -4523473401306893895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_zombie_14
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 12
+        width: 70
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf76a81be68245dd0800000000000000
+      internalID: -2498327437393631236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      heart_zombie_0: 2499503792805843842
+      heart_zombie_1: 3359255716276107865
+      heart_zombie_10: -5925295638954354543
+      heart_zombie_11: -6292834157105220171
+      heart_zombie_12: 4908463896170031480
+      heart_zombie_13: -4523473401306893895
+      heart_zombie_14: -2498327437393631236
+      heart_zombie_2: -3081776101170454886
+      heart_zombie_3: -596130964705579306
+      heart_zombie_4: 6122099075779343673
+      heart_zombie_5: -2020262923225458175
+      heart_zombie_6: -6885457779210530401
+      heart_zombie_7: 7872039574152370674
+      heart_zombie_8: 753228652246455010
+      heart_zombie_9: 5799543667317930471
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,7 +7,7 @@ public class MouthScript : MonoBehaviour
     public GameObject player;
     public float health;
     public float damage;
-    private float attackTimer = 2f;
+    private float attackTimer = 3.5f;
     private float stunnedTimer;
     public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

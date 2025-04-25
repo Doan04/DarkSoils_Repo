@@ -29,8 +29,9 @@ public class PlayerScript : MonoBehaviour
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
     public bool playerHasControl = true;
     public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
-    public float playerSpeed = 5f; // Player movement speed
+    public float playerSpeed = 10f; // Player movement speed
     public float swingCooldown = 0.7f;
+    public float swingCooldownTime = 0.7f;
     public float currentHealth = 100f;
     public float invincibleTimer = 0;
     public float currentStamina = 100f;
@@ -39,11 +40,13 @@ public class PlayerScript : MonoBehaviour
     public float currentFert = 100f;
     public float maxFert = 100f;
     public float repairTime = 3f; // Time spent repairing until player send a fix message to machine 
+    public float fireRate = 0.2f;
     //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
     public TextMeshProUGUI inventoryText;
     public Vector2 currentMovementDirection;
+    public GameObject fertBullet;
     void Start()
     {
         money = 0;
@@ -69,6 +72,7 @@ public class PlayerScript : MonoBehaviour
         invincibleTimer -= Time.deltaTime;
         swingCooldown -= Time.deltaTime;
         staminaBar.updateStaminaValue(currentStamina/maxStamina);
+        fireRate -= Time.deltaTime;
         inventoryText.SetText("Money: " + money + "\nFertilizer: " + currentFert);
         if(currentStamina < maxStamina)
         {
@@ -98,6 +102,10 @@ public class PlayerScript : MonoBehaviour
             // Fertilizer Spray
             animator.SetBool("firing", true);
             // instantiate the particle prefabs
+            if(fireRate <= 0 && currentFert > 5)
+            {
+                Instantiate(fertBullet, transform.position, transform.rotation);
+            }
         }
         else
         {
@@ -162,7 +170,7 @@ public class PlayerScript : MonoBehaviour
                     currentStamina -= 10f;
                     playerAudio.PlayOneShot(swingSound);
                     meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                    swingCooldown = 0.7f;
+                    swingCooldown = swingCooldownTime;
                 }
             }
             else
@@ -174,7 +182,7 @@ public class PlayerScript : MonoBehaviour
                     currentStamina -= 30f;
                     playerAudio.PlayOneShot(swingSound);
                     meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                    swingCooldown = 0.7f;
+                    swingCooldown = swingCooldownTime;
                 }
             }
         }
@@ -206,29 +214,24 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
 
 
     public void Die()
     {
 
     }
-
+    public void sprayBlood(Vector3 enemyPosition)
+    {
+        Vector3 targetDir = transform.position - enemyPosition;
+        Quaternion rotation = Quaternion.LookRotation(targetDir);
+        Instantiate(damageEffect, new Vector3(transform.position.x, transform.position.y, 5), rotation);
+    }
     public void OnCollisionStay2D(Collision2D collision)
     {
         //Hit by an enemy, set invincibility state
         if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
         {
             invincibleTimer = 3;
-            currentHealth -= collision.gameObject.GetComponent<EnemyScript>().damage;
-
-            Vector3 targetDir = transform.position - collision.transform.position;
-            Quaternion rotation = Quaternion.LookRotation(targetDir);
-            Instantiate(damageEffect, collision.gameObject.transform.position, rotation);
-
             EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
             if (emscript != null) 
             {

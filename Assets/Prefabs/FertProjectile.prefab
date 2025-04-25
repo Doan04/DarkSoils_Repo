@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9076724534088054886}
   - component: {fileID: -8669669669236898620}
   - component: {fileID: 9196392810363524627}
-  - component: {fileID: 1570999091075602004}
+  - component: {fileID: 4702087379069584219}
   m_Layer: 0
-  m_Name: HeartProjectile
-  m_TagString: Enemy
+  m_Name: FertProjectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -4065352813323337413, guid: dd8dc84405ae07142901be63b557bbef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33983755, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.05
---- !u!114 &1570999091075602004
+--- !u!114 &4702087379069584219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2149184560829227972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5adbe849b3fa59448959e0a3099ce0cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 57beedf0ab64ca349bce7ebf8caa3b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 10
+  dmg: 4
+  rb: {fileID: -8669669669236898620}
