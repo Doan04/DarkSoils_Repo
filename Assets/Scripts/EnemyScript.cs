@@ -130,7 +130,7 @@ public class EnemyScript : MonoBehaviour
         }
         if(attackTimer <= 0)
         {
-            Debug.Log("TOUCHING CROP");
+            // Debug.Log("TOUCHING CROP");
             if(collidedObject.CompareTag("Crop") && enemyType == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("GruntAttack"))
             {
                 anim.Play("GruntAttack");
