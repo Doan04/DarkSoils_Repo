@@ -228,6 +228,12 @@ public class PlayerScript : MonoBehaviour
             Vector3 targetDir = transform.position - collision.transform.position;
             Quaternion rotation = Quaternion.LookRotation(targetDir);
             Instantiate(damageEffect, collision.gameObject.transform.position, rotation);
+
+            EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
+            if (emscript != null) 
+            {
+                DamagePlayer(Mathf.RoundToInt(emscript.damage));
+            }
             healthBar.updateHealthValue(currentHealth / maxHealth);
         }
     }
