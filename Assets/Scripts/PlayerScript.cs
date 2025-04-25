@@ -31,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
     public float playerSpeed = 5f; // Player movement speed
     public float swingCooldown = 0.7f;
+    public float swingCooldownTime = 0.7f;
     public float currentHealth = 100f;
     public float invincibleTimer = 0;
     public float currentStamina = 100f;
@@ -169,7 +170,7 @@ public class PlayerScript : MonoBehaviour
                     currentStamina -= 10f;
                     playerAudio.PlayOneShot(swingSound);
                     meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                    swingCooldown = 0.7f;
+                    swingCooldown = swingCooldownTime;
                 }
             }
             else
@@ -181,7 +182,7 @@ public class PlayerScript : MonoBehaviour
                     currentStamina -= 30f;
                     playerAudio.PlayOneShot(swingSound);
                     meleeHitbox.GetComponent<PlayerMeleeScript>().Attack(scytheActive);
-                    swingCooldown = 0.7f;
+                    swingCooldown = swingCooldownTime;
                 }
             }
         }
