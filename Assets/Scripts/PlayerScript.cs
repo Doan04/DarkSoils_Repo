@@ -214,8 +214,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
-
     public void Die()
     {
 
