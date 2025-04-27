@@ -44,7 +44,6 @@ public class RoofScript : MonoBehaviour
             {
                 //This color is a temp copy of the original color
                 Color color = GetComponent<SpriteRenderer>().color;
-                Debug.Log(color.a);
                 color.a += 0.05f;
                 GetComponent<SpriteRenderer>().color = color;
                 yield return new WaitForSeconds(timer);
@@ -55,7 +54,6 @@ public class RoofScript : MonoBehaviour
             while(GetComponent<SpriteRenderer>().color.a > 0)
             {
                 Color color = GetComponent<SpriteRenderer>().color;
-                Debug.Log(color.a);
                 color.a -= 0.05f;
                 GetComponent<SpriteRenderer>().color = color;
                 yield return new WaitForSeconds(timer);

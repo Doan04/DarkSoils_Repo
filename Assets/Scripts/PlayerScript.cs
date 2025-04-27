@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     CropScript cropScript;
     void Start()
     {
-        money = 0;
+        money = 100000;
         attack = 3;
         playerSpeed = 7f;
         currentHealth = maxHealth;
