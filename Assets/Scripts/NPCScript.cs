@@ -40,11 +40,9 @@ public class NPCScript : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 GameObject popup = gameObject.transform.GetChild(0).gameObject; 
-                if(!isSpeaking)
-                {
-                    int dialogueChoice = Random.Range(0, dialoguePool.Length);
-                    StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
-                }
+                StopAllCoroutines();
+                int dialogueChoice = Random.Range(0, dialoguePool.Length);
+                StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
             }
         }
     }
@@ -56,8 +54,8 @@ public class NPCScript : MonoBehaviour
         {
             GameObject popup = gameObject.transform.GetChild(0).gameObject;    
             popup.SetActive(false);
+            StopAllCoroutines();
         }
-        StopAllCoroutines();
     }
 
     IEnumerator changeDialogue(GameObject popup, string text)
