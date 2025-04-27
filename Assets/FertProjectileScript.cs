@@ -20,15 +20,10 @@ public class FertProjectileScript : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Enemy"))
         {
-            EnemyScript ems = collidedObject.GetComponent<EnemyScript>();
-            MouthScript mouth = collidedObject.GetComponent<MouthScript>();
-            if (ems != null) 
+            EnemyHealth ems = collidedObject.GetComponent<EnemyHealth>();
+            if(ems != null)
             {
                 ems.TakeDamage(dmg);
-            }
-            else if(mouth != null)
-            {
-                mouth.TakeDamage(dmg);
             }
             Destroy(gameObject);
         }

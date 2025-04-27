@@ -5,12 +5,14 @@ public class WaveManagerScript : MonoBehaviour
     public GameObject grunt;
     public GameObject shanker;
     public GameObject mouth;
+    public GameObject rat;
     public GameObject coin;
     public GameObject fertilizer;
     public bool waveIsActive = false;
     public float spawnInterval = 2f;
     public float shankerSpawnInterval = 10f;
     public float fertSpawnInterval = 15f;
+    public float RatSpawnInterval = 20f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +41,11 @@ public class WaveManagerScript : MonoBehaviour
             SpawnEnemy(shanker);
             SpawnEnemy(mouth);
             shankerSpawnInterval = 10f;
+        }
+        if (RatSpawnInterval <= 0 && waveIsActive) 
+        {
+            SpawnEnemy(rat);
+            RatSpawnInterval = 20f;
         }
     }
 

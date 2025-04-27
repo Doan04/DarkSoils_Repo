@@ -11,9 +11,13 @@ public class WaterPumpScript : MonoBehaviour
     public float damageInterval = 1f;
     public CropScript cropfield;
     public ObjectiveManager questManager;
+    public SpriteRenderer watersprite;
+    Color blue = new Color(65f/255.0f, 100f/255.0f, 120f/255.0f);
+    Color brown = new Color(59f/255.0f, 54f/255.0f, 45f/255.0f);
     void Start()
     {
         cropfield = GameObject.Find("CropField").GetComponent<CropScript>();
+        watersprite.color = blue;
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class WaterPumpScript : MonoBehaviour
         {
             cropfield.SetHealing(false);
             questManager.EnableWaterQuest();
+            watersprite.color = brown;
             //pumpAudio.PlayOneShot(powerDownNoise);
         }
     }
@@ -41,6 +46,7 @@ public class WaterPumpScript : MonoBehaviour
         currentHealth = maxHealth;
         cropfield.SetHealing(true);
         questManager.DisableWaterQuest();
+        watersprite.color = blue;
         //pumpAudio.PlayOneShot(powerUpNoise);
     }
 

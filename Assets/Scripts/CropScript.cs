@@ -45,7 +45,6 @@ public class CropScript : MonoBehaviour
             currentGrowth += 1;
             growthInterval = 1;
             cropBarScript.updateCropValue(currentGrowth / maxGrowth);
-            cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
             if (currentGrowth >= maxGrowth)
             {
                 waveManager.EndWave();
@@ -72,10 +71,10 @@ public class CropScript : MonoBehaviour
         {
             currentHealth += 5f;
             HealInterval = 5;
+            cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
         }
-        
         // decrements the wave timer if there is no wave active
-        if(!waveActive)
+        if (!waveActive)
         {
             currentSecondsTilWave -= Time.deltaTime;
             timerText.text = "Wave in: " + Mathf.Round(currentSecondsTilWave).ToString();
@@ -92,17 +91,38 @@ public class CropScript : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collider) 
+    {
+        if (collider.CompareTag("Player"))
+        {
+            collider.gameObject.GetComponent<PlayerScript>().playerInCrops = true;
+        }
+    }
+
+    void OnTriggerEnterExit(Collider2D collider)
+    {
+        if (collider.CompareTag("Player")){
+            collider.gameObject.GetComponent<PlayerScript>().playerInCrops = false;
+        }
+    }
+
     public void Heal()
     {
         if (canHeal)
         {
-            currentHealth += 50f;
+            currentHealth += 100f;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
         }
     }
 
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
+        cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
         if (currentHealth <= 0) 
         {
             Debug.Log("Crop has Died.");

@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     public bool firing; // whether or not the player is firing fertilizer
     public bool isRegenStamina; // whether or not the player should be regaining stamina over time
     public bool playerHasControl = true;
+    public bool playerInCrops = false;
     public float staminaRegenDelay = 0.5f; // Time after attacking or sprinting until stamina regenerates
     public float playerSpeed = 10f; // Player movement speed
     public float swingCooldown = 0.7f;
@@ -44,13 +45,16 @@ public class PlayerScript : MonoBehaviour
     //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
+    public FertilizerBar fertBar;
     public TextMeshProUGUI inventoryText;
     public Vector2 currentMovementDirection;
     public GameObject fertBullet;
+    CropScript cropScript;
     void Start()
     {
         money = 0;
         attack = 3;
+        playerSpeed = 7f;
         currentHealth = maxHealth;
         mask = LayerMask.GetMask("Enemy");
         rb = GetComponent<Rigidbody2D>();
@@ -62,6 +66,7 @@ public class PlayerScript : MonoBehaviour
         scytheActive = true;
         meleeHitbox = GameObject.Find("MeleeHitbox");
         currentStamina = 100f;
+        cropScript = GameObject.Find("CropField").GetComponent<CropScript>();
     }
 
     // Update is called once per frame
@@ -97,19 +102,14 @@ public class PlayerScript : MonoBehaviour
             // if enough stamina, drain stamina and attack
             CombatInput();
         }
-        else if(Input.GetMouseButton(1) && isRepairing == false)
+        else if(Input.GetMouseButtonDown(1) && isRepairing == false)
         {
-            // Fertilizer Spray
-            animator.SetBool("firing", true);
-            // instantiate the particle prefabs
-            if(fireRate <= 0 && currentFert > 5)
+            if (playerInCrops && currentFert >= 100f) 
             {
-                Instantiate(fertBullet, transform.position, transform.rotation);
+                currentFert -= 100f;
+                fertBar.updateFertValue(currentFert / maxFert);
+                cropScript.Heal();
             }
-        }
-        else
-        {
-            animator.SetBool("firing", false);
         }
         if (Input.GetKeyDown(KeyCode.F))
         {

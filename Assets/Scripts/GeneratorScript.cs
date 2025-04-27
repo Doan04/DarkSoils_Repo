@@ -49,11 +49,15 @@ public class GeneratorScript : MonoBehaviour
         currentHealth -= dmg;
         if (currentHealth <= 0)
         {
+            if (isBroken == false)
+            {
+                glassAudio.Play();
+            }
             cropfield.SetGrowth(false);
             SetLights(false);
             generatorAudio.Pause();
             questManager.EnableGenQuest();
-            glassAudio.Play();
+            isBroken = true;
         }
     }
     public void Fix()

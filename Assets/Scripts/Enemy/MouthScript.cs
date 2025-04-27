@@ -3,9 +3,7 @@ using UnityEngine;
 public class MouthScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public GameObject coinPrefab;
     public GameObject player;
-    public float health;
     public float damage;
     private float attackTimer = 3.5f;
     private float stunnedTimer;
@@ -21,23 +19,14 @@ public class MouthScript : MonoBehaviour
     void Update()
     {
         attackTimer -= Time.deltaTime;
-        if(attackTimer < 0)
+        if(attackTimer <= 0 && (player.transform.position - gameObject.transform.position).magnitude < 15)
         {
-            attackTimer = 2f;
+            attackTimer = 3.5f;
             anim.Play("MouthAttack");
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Rigidbody2D projectileRB = bullet.GetComponent<Rigidbody2D>();
             Vector2 direction = player.transform.position - transform.position;
             projectileRB.AddForce(direction.normalized * 5, ForceMode2D.Impulse);
-        }
-    }
-    public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
-    {
-        health -= dmg;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            Instantiate(coinPrefab, transform.position, transform.rotation);
         }
     }
 }

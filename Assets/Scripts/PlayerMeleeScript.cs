@@ -8,6 +8,7 @@ public class PlayerMeleeScript : MonoBehaviour
     public List<Collider2D> TriggerList = new List<Collider2D>();
     public bool canHit = false;
     public bool isScythe = false;
+    public int attackDamage;
     // Update is called once per frame
     private void Update()
     {
@@ -22,7 +23,7 @@ public class PlayerMeleeScript : MonoBehaviour
                     //Adjusting this to damage based off player's attack
                     if (isScythe)
                     {
-                        EnemyScript enemyScriptRef = collider.gameObject.GetComponent<EnemyScript>();
+                        EnemyHealth enemyScriptRef = collider.gameObject.GetComponent<EnemyHealth>();
                         if (enemyScriptRef) 
                         {
                             GameObject player = transform.parent.gameObject;
@@ -34,7 +35,6 @@ public class PlayerMeleeScript : MonoBehaviour
                     {
                         Destroy(collider.gameObject);
                     }
-                    Debug.Log(collider.name);
                 }
                 else if (collider.CompareTag("Heart"))
                 {
