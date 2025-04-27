@@ -131,7 +131,7 @@ public class ShopPlatformScript : MonoBehaviour
 
     IEnumerator changeDialogue(GameObject popup, string text)
     {
-        float timer = 0.05f;
+        float timer = 0.005f;
         for(int i = 0; i < text.Length; i++)
         {
             popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(text.Substring(0, i+1));

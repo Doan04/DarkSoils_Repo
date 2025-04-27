@@ -6,17 +6,25 @@ public class NPCScript : MonoBehaviour
 {
     public int npcID;
     public string[] dialoguePool;
-    public bool isSpeaking;
+    public bool currentlyOnNPCPlatform;
+    public bool talk;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentlyOnNPCPlatform = false;
+        talk = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+         if(currentlyOnNPCPlatform)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                talk = true;
+            }
+        }       
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -36,13 +44,15 @@ public class NPCScript : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Player"))
         {
+            currentlyOnNPCPlatform = true;
             //Assuming that this first child is the gameobject with the popup text
-            if(Input.GetKeyDown(KeyCode.E))
+            if(talk)
             {
                 GameObject popup = gameObject.transform.GetChild(0).gameObject; 
                 StopAllCoroutines();
                 int dialogueChoice = Random.Range(0, dialoguePool.Length);
                 StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
+                talk = false;
             }
         }
     }
@@ -55,12 +65,12 @@ public class NPCScript : MonoBehaviour
             GameObject popup = gameObject.transform.GetChild(0).gameObject;    
             popup.SetActive(false);
             StopAllCoroutines();
+            currentlyOnNPCPlatform = false;
         }
     }
 
     IEnumerator changeDialogue(GameObject popup, string text)
     {
-        isSpeaking = true;
         float timer = 0.005f;
         for(int i = 0; i < text.Length; i++)
         {
@@ -68,7 +78,6 @@ public class NPCScript : MonoBehaviour
             yield return new WaitForSeconds(timer);
             Debug.Log(i);
         }   
-        isSpeaking = false;
     }
 
 }
