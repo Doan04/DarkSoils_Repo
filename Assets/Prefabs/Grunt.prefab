@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1750511265258396598}
   - component: {fileID: 2148348442622082634}
   - component: {fileID: -1265295649324726194}
-  - component: {fileID: 3036071975035307220}
   - component: {fileID: 8210570145988235786}
   - component: {fileID: 400372129726022880}
   m_Layer: 0
@@ -137,29 +136,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3036071975035307220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7403017240175832849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d954d8f0f60d04b47ba4d41db95fe817, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: 1
-  player: {fileID: 0}
-  coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
-  damage: 0
-  movementSpeed: 0
-  attackTimer: 0
-  changeDirectionTimer: 0
-  despawnTimer: 0
-  anim: {fileID: 0}
-  reachedCrop: 0
-  cropField: {fileID: 0}
 --- !u!95 &8210570145988235786
 Animator:
   serializedVersion: 7
