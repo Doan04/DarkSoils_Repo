@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+
 public class ShopPlatformScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -9,9 +11,16 @@ public class ShopPlatformScript : MonoBehaviour
     public int wares;
     public int timesBought;
     public int price;
+    public bool isSpeaking;
+    public bool isSpeaking2;
+    public GameObject popup;
+    public GameObject description;
     void Start()
     {
+        popup = gameObject.transform.GetChild(0).gameObject;    
+        description = gameObject.transform.GetChild(1).gameObject;
         timesBought = 0;
+        isSpeaking = false;
     }
 
     // Update is called once per frame
@@ -19,40 +28,67 @@ public class ShopPlatformScript : MonoBehaviour
     {
         
     }
-
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //The player in this case
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Player"))
         {
             //Assuming that this first child is the gameobject with the popup text
             //And the second child is the gameobject having the gameobject child of
             //the description of item being bought
-            GameObject popup = gameObject.transform.GetChild(0).gameObject;    
             popup.SetActive(true);
-            GameObject description = gameObject.transform.GetChild(1).gameObject;
             description.SetActive(true);
+            if(!isSpeaking)
+            {
+                StartCoroutine(changeDialogue(popup, "Press E to Buy"));
+                if(wares == 0)
+                {
+                    price = 5 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
+                }
+                else if(wares == 1)
+                {
+                    price = 3 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
+                }
+                else if(wares == 2)
+                {
+                    price = 7 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
+                }
+            }
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        //The player in this case
+        GameObject collidedObject = collision.gameObject;
+        if (collidedObject.CompareTag("Player"))
+        {
             //Every time an item is bought increase price by 1
             //Each ware has a custom multiplier
-            if(wares == 0)
-            {
-                price = 5 * (timesBought + 1);
-                description.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText("Damage\n Price: " + price);
-            }
-            else if(wares == 1)
-            {
-                price = 3 * (timesBought + 1);
-                description.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText("Max Health\n Price: " + price);
-            }
-            else if(wares == 2)
-            {
-                price = 7 * (timesBought + 1);
-                description.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText("Health\n Price: " + price);
-            }
             if(Input.GetKeyDown(KeyCode.E) && collidedObject.GetComponent<PlayerScript>().money >= price)
             {
                 timesBought += 1;
+                if(!isSpeaking)
+                {
+                    StartCoroutine(changeDialogue(popup, "Press E to Buy"));
+                    if(wares == 0)
+                    {
+                        price = 5 * (timesBought + 1);
+                        StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
+                    }
+                    else if(wares == 1)
+                    {
+                        price = 3 * (timesBought + 1);
+                        StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
+                    }
+                    else if(wares == 2)
+                    {
+                        price = 7 * (timesBought + 1);
+                        StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
+                    }
+                }                
                 collidedObject.GetComponent<PlayerScript>().money -= price;
                 if(wares == 0)
                 {
@@ -78,10 +114,21 @@ public class ShopPlatformScript : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Player"))
         {
-            GameObject popup = gameObject.transform.GetChild(0).gameObject;    
             popup.SetActive(false);
-            GameObject description = gameObject.transform.GetChild(1).gameObject;
             description.SetActive(false);
         }
+    }
+
+    IEnumerator changeDialogue(GameObject popup, string text)
+    {
+        isSpeaking = true;
+        float timer = 0.005f;
+        for(int i = 0; i < text.Length; i++)
+        {
+            popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(text.Substring(0, i+1));
+            yield return new WaitForSeconds(timer);
+            Debug.Log(i);
+        }   
+        isSpeaking = false;
     }
 }

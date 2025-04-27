@@ -241,8 +241,12 @@ public class PlayerScript : MonoBehaviour
 
     public void DamagePlayer(int damage)
     {
-        currentHealth -= damage;
-        healthBar.updateHealthValue(currentHealth / maxHealth);
+        if(invincibleTimer <= 0)
+        {
+            invincibleTimer = 3;
+            currentHealth -= damage;
+            healthBar.updateHealthValue(currentHealth / maxHealth);
+        }
     }
 
     IEnumerator FixRoutine(GeneratorScript gs, WaterPumpScript wp)
