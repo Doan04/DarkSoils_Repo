@@ -82,6 +82,7 @@ public class FishingScript : MonoBehaviour
                     int type = Random.Range(1, 4);
                     GameObject theFish = Instantiate(fish, transform.position + new Vector3(4, Random.Range(-2.0f, 4.0f), 0), Quaternion.Euler(0, 0, 0));
                     theFish.GetComponent<FishScript>().type = type;
+                    Debug.Log("CAUGHT " + type);
                 }
                 else if(tooEarly)
                 {
@@ -90,11 +91,21 @@ public class FishingScript : MonoBehaviour
                 else if(!fishObtained){
                     StartCoroutine(changeDialogue(popup, "Unable to catch fish..."));
                 }
+                //If fishing again
+                tooEarly = false;
+                timeForFish = Random.Range(1.5f, 2.25f);
+                timer = 0.75f;
+                fishingText = false;
+                textReset -= Time.deltaTime;
+                fishObtained = false;
                 fishingActivated = false;
             }
         }
         else
         {
+            //If exiting the fishing platform
+            //Need both in case activating fishingactivated on same frame
+            //In which case these statements wont activate and itll repeat
             tooEarly = false;
             timeForFish = Random.Range(1.5f, 2.25f);
             timer = 0.75f;

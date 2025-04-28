@@ -79,15 +79,12 @@ public class NPCScript : MonoBehaviour
                     StopAllCoroutines();
                     int dialogueChoice = Random.Range(0, dialoguePool.Length);
                     StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
-                    talk = false;
                 }
                 else if(npcID == 1)
                 {
-                    GameObject popup = gameObject.transform.GetChild(0).gameObject; 
-                    StopAllCoroutines();
                     GetComponent<FishingScript>().fishingActivated = true;
-                    talk = false;
                 }
+                talk = false;
             }
             if(sell)
             {
