@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip swingSound;
     public int money;
+    public int fish;
     public int attack;
     bool scytheActive; // true => scythe // false => hammer
     public bool isRepairing; // disable all combat and movement input while F is held.

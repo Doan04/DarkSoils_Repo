@@ -11,9 +11,6 @@ public class ShopPlatformScript : MonoBehaviour
     public int wares;
     public int timesBought;
     public int price;
-    //Meant for each simultaneous textbox
-    public bool isSpeaking;
-    public bool isSpeaking2;
     public bool currentlyOnShopPlatform;
     public bool purchasing;
     public GameObject popup;
@@ -23,7 +20,6 @@ public class ShopPlatformScript : MonoBehaviour
         popup = gameObject.transform.GetChild(0).gameObject;    
         description = gameObject.transform.GetChild(1).gameObject;
         timesBought = 0;
-        isSpeaking = false;
         currentlyOnShopPlatform = false;
         purchasing = false;
     }

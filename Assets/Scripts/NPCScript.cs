@@ -4,10 +4,12 @@ using System.Collections;
 
 public class NPCScript : MonoBehaviour
 {
+    //0 = Shopkeeper, 1 = Fishing Area
     public int npcID;
     public string[] dialoguePool;
     public bool currentlyOnNPCPlatform;
     public bool talk;
+    public bool sell;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +26,10 @@ public class NPCScript : MonoBehaviour
             {
                 talk = true;
             }
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                sell = true;
+            }
         }       
     }
 
@@ -31,7 +37,15 @@ public class NPCScript : MonoBehaviour
     {
         GameObject collidedObject = collision.gameObject;
         GameObject popup = gameObject.transform.GetChild(0).gameObject; 
-        string text = "Press E to talk";
+        string text = "";
+        if(npcID == 0)
+        {
+            text = "Press E to talk\nPress Q to sell fish";
+        }
+        else if(npcID == 1)
+        {
+            text = "Press E to fish";
+        }
         if (collidedObject.CompareTag("Player"))
         {
             StartCoroutine(changeDialogue(popup, text));
@@ -48,11 +62,34 @@ public class NPCScript : MonoBehaviour
             //Assuming that this first child is the gameobject with the popup text
             if(talk)
             {
-                GameObject popup = gameObject.transform.GetChild(0).gameObject; 
-                StopAllCoroutines();
-                int dialogueChoice = Random.Range(0, dialoguePool.Length);
-                StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
-                talk = false;
+                if(npcID == 0)
+                {
+                    GameObject popup = gameObject.transform.GetChild(0).gameObject; 
+                    StopAllCoroutines();
+                    int dialogueChoice = Random.Range(0, dialoguePool.Length);
+                    StartCoroutine(changeDialogue(popup, dialoguePool[dialogueChoice]));
+                    talk = false;
+                }
+                else if(npcID == 1)
+                {
+                    GameObject popup = gameObject.transform.GetChild(0).gameObject; 
+                    StopAllCoroutines();
+                    GetComponent<FishingScript>().fishingActivated = true;
+                    talk = false;
+                }
+            }
+            if(sell)
+            {
+                if(npcID == 0)
+                {
+                    GameObject popup = gameObject.transform.GetChild(0).gameObject; 
+                    StopAllCoroutines();
+                    int numberOfFish = collision.gameObject.GetComponent<PlayerScript>().fish;
+                    collision.gameObject.GetComponent<PlayerScript>().fish = 0;
+                    collision.gameObject.GetComponent<PlayerScript>().money += 3 * numberOfFish;
+                    StartCoroutine(changeDialogue(popup, (numberOfFish + " fish sold for " +  3 * numberOfFish)));
+                    sell = false;
+                }
             }
         }
     }
@@ -66,6 +103,10 @@ public class NPCScript : MonoBehaviour
             popup.SetActive(false);
             StopAllCoroutines();
             currentlyOnNPCPlatform = false;
+            if(npcID == 1)
+            {
+                GetComponent<FishingScript>().fishingActivated = false;
+            }
         }
     }
 
