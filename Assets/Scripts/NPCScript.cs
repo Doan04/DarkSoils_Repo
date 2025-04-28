@@ -4,8 +4,9 @@ using System.Collections;
 
 public class NPCScript : MonoBehaviour
 {
-    //0 = Shopkeeper, 1 = Fishing Area
+    //-1, anything purely readable, 0 = Shopkeeper, 1 = Fishing Area
     public int npcID;
+    public string readText;
     public string[] dialoguePool;
     public bool currentlyOnNPCPlatform;
     public bool talk;
@@ -38,7 +39,11 @@ public class NPCScript : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
         GameObject popup = gameObject.transform.GetChild(0).gameObject; 
         string text = "";
-        if(npcID == 0)
+        if(npcID == -1)
+        {
+            text = readText;
+        }
+        else if(npcID == 0)
         {
             text = "Press E to talk\nPress Q to sell fish";
         }
@@ -62,7 +67,13 @@ public class NPCScript : MonoBehaviour
             //Assuming that this first child is the gameobject with the popup text
             if(talk)
             {
-                if(npcID == 0)
+                if(npcID == -1)
+                {
+                    GameObject popup = gameObject.transform.GetChild(0).gameObject; 
+                    popup.SetActive(false);
+                    talk = false;
+                }
+                else if(npcID == 0)
                 {
                     GameObject popup = gameObject.transform.GetChild(0).gameObject; 
                     StopAllCoroutines();

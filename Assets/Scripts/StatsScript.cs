@@ -21,6 +21,7 @@ public class StatsScript : MonoBehaviour
         stats += "Fertilizer: " + playerScript.currentFert + "/" + playerScript.maxFert + "\n";
         stats += "Speed: " + playerScript.playerSpeed + "\n";
         stats += "Money: " + playerScript.money + "\n";
+        stats += "Fish: " + playerScript.fish + "\n";
         text.SetText(stats);
     }
 }
