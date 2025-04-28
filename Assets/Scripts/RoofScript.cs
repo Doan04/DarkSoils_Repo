@@ -2,10 +2,11 @@ using UnityEngine;
 using System.Collections;
 public class RoofScript : MonoBehaviour
 {
+    public Rigidbody2D theRigidbody;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,6 +23,11 @@ public class RoofScript : MonoBehaviour
             //If visual already running stop it and play the other one
             StopAllCoroutines();
             StartCoroutine(roofVisual(false));
+        }
+        //Doubling as a role to terminate any enemies who enter the shop
+        if(collidedObject.CompareTag("Enemy"))
+        {
+            Destroy(collidedObject);
         }
     }
 

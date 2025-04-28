@@ -80,7 +80,7 @@ public class FishingScript : MonoBehaviour
                     StartCoroutine(changeDialogue(popup, "Fish Caught!"));
                     //1 = small fish (x1), 2 = medium fish (x2), 3 = large fish (x3)
                     int type = Random.Range(1, 4);
-                    GameObject theFish = Instantiate(fish, transform.position + new Vector3(4, 0, 0), Quaternion.Euler(0, 0, 0));
+                    GameObject theFish = Instantiate(fish, transform.position + new Vector3(4, Random.Range(-3f, 4f), 0), Quaternion.Euler(0, 0, 0));
                     theFish.GetComponent<FishScript>().type = type;
                 }
                 else if(tooEarly)
@@ -95,6 +95,7 @@ public class FishingScript : MonoBehaviour
         }
         else
         {
+            tooEarly = false;
             timeForFish = Random.Range(1.5f, 2.25f);
             timer = 0.75f;
             fishingText = false;

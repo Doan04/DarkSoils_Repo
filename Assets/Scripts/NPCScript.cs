@@ -117,7 +117,6 @@ public class NPCScript : MonoBehaviour
         {
             popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(text.Substring(0, i+1));
             yield return new WaitForSeconds(timer);
-            Debug.Log(i);
         }   
     }
 
