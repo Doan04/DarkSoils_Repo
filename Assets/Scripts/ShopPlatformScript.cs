@@ -15,6 +15,7 @@ public class ShopPlatformScript : MonoBehaviour
     public bool purchasing;
     public GameObject popup;
     public GameObject description;
+    public AudioSource[] audioText;
     void Start()
     {
         popup = gameObject.transform.GetChild(0).gameObject;    
@@ -22,6 +23,7 @@ public class ShopPlatformScript : MonoBehaviour
         timesBought = 0;
         currentlyOnShopPlatform = false;
         purchasing = false;
+        audioText = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class ShopPlatformScript : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 purchasing = true;
+                audioText[1].Play();
             }
         }
     }
@@ -121,6 +124,7 @@ public class ShopPlatformScript : MonoBehaviour
             StopAllCoroutines();
             popup.SetActive(false);
             description.SetActive(false);
+            audioText[0].Stop();
         }
         currentlyOnShopPlatform = false;
     }
@@ -128,10 +132,12 @@ public class ShopPlatformScript : MonoBehaviour
     IEnumerator changeDialogue(GameObject popup, string text)
     {
         float timer = 0.005f;
+        audioText[0].Play();
         for(int i = 0; i < text.Length; i++)
         {
             popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(text.Substring(0, i+1));
             yield return new WaitForSeconds(timer);
         }   
+        audioText[0].Stop();
     }
 }
