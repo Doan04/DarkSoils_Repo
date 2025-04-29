@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip swingSound;
     public int money;
+    public int fish;
     public int attack;
     bool scytheActive; // true => scythe // false => hammer
     public bool isRepairing; // disable all combat and movement input while F is held.
@@ -52,7 +53,7 @@ public class PlayerScript : MonoBehaviour
     // public GameObject LosePanel;
     void Start()
     {
-        money = 0;
+        money = 100000;
         attack = 3;
         playerSpeed = 7f;
         currentHealth = maxHealth;
@@ -241,8 +242,12 @@ public class PlayerScript : MonoBehaviour
 
     public void DamagePlayer(int damage)
     {
-        currentHealth -= damage;
-        healthBar.updateHealthValue(currentHealth / maxHealth);
+        if(invincibleTimer <= 0)
+        {
+            invincibleTimer = 3;
+            currentHealth -= damage;
+            healthBar.updateHealthValue(currentHealth / maxHealth);
+        }
     }
 
     IEnumerator FixRoutine(GeneratorScript gs, WaterPumpScript wp)
