@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5712030245041416427}
   - component: {fileID: 9223295446570855883}
   - component: {fileID: -24763943731676969}
+  - component: {fileID: 2736346774760575978}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Enemy
@@ -171,3 +172,17 @@ MonoBehaviour:
   changeDirectionTimer: 0
   despawnTimer: 0
   anim: {fileID: 0}
+--- !u!114 &2736346774760575978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602668564104369808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe005e3339f266e40859910d5c5465aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}

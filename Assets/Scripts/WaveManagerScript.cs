@@ -38,13 +38,13 @@ public class WaveManagerScript : MonoBehaviour
         if (shankerSpawnInterval <= 0 && waveIsActive) 
         {
             // Spawn an enemy that goes for the players.
-            SpawnEnemy(shanker);
+            //SpawnEnemy(shanker);
             // SpawnEnemy(mouth);
             shankerSpawnInterval = 10f;
         }
         if (RatSpawnInterval <= 0 && waveIsActive) 
         {
-            SpawnEnemy(rat);
+            //SpawnEnemy(rat);
             RatSpawnInterval = 20f;
         }
     }
