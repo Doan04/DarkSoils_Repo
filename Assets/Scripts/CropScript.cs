@@ -11,7 +11,7 @@ public class CropScript : MonoBehaviour
     public float currentGrowth = 0f;
     public float maxGrowth = 5f;
     public float growthInterval = 1f;
-    public float HealInterval = 5f;
+    public float HealInterval = 3f;
     public float secondsToNextWave = 5f;
     public float currentSecondsTilWave;
     public ParticleSystem healingVFX;
@@ -20,8 +20,8 @@ public class CropScript : MonoBehaviour
     public WaveManagerScript waveManager;
     public CropBarScript cropBarScript;
     public TMP_Text timerText;
-    // public GameObject LosePanel;
-    // public GameObject WinPanel;
+     public GameObject LosePanel;
+    public GameObject WinPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -69,10 +69,15 @@ public class CropScript : MonoBehaviour
                 }
             }
         }
+        // while water pump is active, heal 5 health every 5 seconds
         if(canHeal && HealInterval <= 0)
         {
             currentHealth += 5f;
-            HealInterval = 5;
+            if (currentHealth > maxHealth) 
+            {
+                currentHealth = maxHealth;
+            }
+            HealInterval = 3;
             cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
         }
         // decrements the wave timer if there is no wave active
@@ -113,6 +118,7 @@ public class CropScript : MonoBehaviour
         if (canHeal)
         {
             currentHealth += 100f;
+            // TODO: Play audio as feedback
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
@@ -134,7 +140,31 @@ public class CropScript : MonoBehaviour
     public void Lose()
     {
         // enable losePanel;
-        // disable waveManager;
+        LosePanel.SetActive(true);
+        // disable waveManager and machines;
+        waveManager.gameObject.SetActive(false);
+        GameObject.Find("generator").SetActive(false);
+        GameObject.Find("waterpump").SetActive(false);
+        // delete all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+    }
+
+    public void Win()
+    {
+        WinPanel.SetActive(true);
+        waveManager.gameObject.SetActive(false);
+        GameObject.Find("generator").SetActive(false);
+        GameObject.Find("waterpump").SetActive(false);
+        // delete all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     public void SetGrowth(bool val) { canGrow = val; }

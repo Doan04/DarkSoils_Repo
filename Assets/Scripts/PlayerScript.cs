@@ -123,11 +123,9 @@ public class PlayerScript : MonoBehaviour
             if(currentStamina > 15f)
             {
                 currentStamina -= 15f;
-                //print(rb.linearVelocity);
                 rb.AddForce(currentMovementDirection * 15f, ForceMode2D.Impulse);
                 playerHasControl = false;
                 StartCoroutine(returnControlToPlayer());
-                //speedBuffTime = .5f;
             }
         }
     }
@@ -217,7 +215,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Die()
     {
-
+        cropScript.Lose();
     }
     public void sprayBlood(Vector3 enemyPosition)
     {

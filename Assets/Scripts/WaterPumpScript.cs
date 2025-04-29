@@ -1,7 +1,7 @@
 using UnityEngine;
 public class WaterPumpScript : MonoBehaviour
 {
-    public float maxHealth = 300f;
+    public float maxHealth = 200f;
     public float currentHealth = 300f;
     public AudioSource pumpAudio;
     public AudioClip powerDownNoise;
