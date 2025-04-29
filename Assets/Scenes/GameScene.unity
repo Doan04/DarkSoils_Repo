@@ -6814,6 +6814,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284225525}
   m_CullTransparentMesh: 1
+--- !u!1001 &296164015
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2061437088}
+    m_Modifications:
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: readText
+      value: 'Fish 4 Gold\nPoor? Just don''t be '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -521.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -273.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673013688292956446, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_Name
+      value: Directions Signpost
+      objectReference: {fileID: 0}
+    - target: {fileID: 6350872565699442238, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_text
+      value: Garden of Recollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_fontSize
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483465060207319990, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
 --- !u!1 &297187417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8007952844092486010, guid: 7336ed1d2b2a48c43b0325842332bee4, type: 3}
@@ -20014,6 +20095,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001045236}
   m_CullTransparentMesh: 1
+--- !u!4 &1066317874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+  m_PrefabInstance: {fileID: 296164015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1108571515
 GameObject:
   m_ObjectHideFlags: 0
@@ -25882,6 +25968,11 @@ MonoBehaviour:
   purchasing: 0
   popup: {fileID: 0}
   description: {fileID: 0}
+--- !u!4 &1494793683 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+  m_PrefabInstance: {fileID: 1828067956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1516641458
 GameObject:
   m_ObjectHideFlags: 0
@@ -26937,6 +27028,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813320160}
   m_CullTransparentMesh: 1
+--- !u!1001 &1828067956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2061437088}
+    m_Modifications:
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7652136
+      objectReference: {fileID: 0}
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7652136
+      objectReference: {fileID: 0}
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1594145
+      objectReference: {fileID: 0}
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8467
+      objectReference: {fileID: 0}
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9241
+      objectReference: {fileID: 0}
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: readText
+      value: 'Fish 4 Gold\nPoor? Just don''t be '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -521.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -278.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673013688292956446, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_Name
+      value: Controls Signpost
+      objectReference: {fileID: 0}
+    - target: {fileID: 6350872565699442238, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_text
+      value: 'Controls:
+
+
+        WASD to move
+
+        E to interact with objects
+
+        Left
+        shift to dash
+
+        Left Click to attack
+
+        Right click to use fertilizer
+
+        Space
+        to switch weapons
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_fontSize
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_lineSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483465060207319990, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
 --- !u!1001 &1851933886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28640,6 +28858,8 @@ RectTransform:
   - {fileID: 2099831582}
   - {fileID: 1974872513}
   - {fileID: 158336802}
+  - {fileID: 1066317874}
+  - {fileID: 1494793683}
   - {fileID: 1851933887}
   - {fileID: 1199533790}
   m_Father: {fileID: 781839428}
@@ -29013,6 +29233,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061437088}
     m_Modifications:
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: readText
+      value: 'Fish 4 Gold\nPoor? Just don''t be '
+      objectReference: {fileID: 0}
     - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_LocalPosition.x
       value: -490.73
@@ -29055,7 +29279,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1673013688292956446, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_Name
-      value: Signpost
+      value: Fishing Signpost
+      objectReference: {fileID: 0}
+    - target: {fileID: 6350872565699442238, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_text
+      value: 'Fish 4 Gold
+
+        Teach man to fish
+
+        He will be rich'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_fontSize
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379709085587265248, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483465060207319990, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
