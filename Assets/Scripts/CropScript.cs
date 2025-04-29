@@ -20,6 +20,8 @@ public class CropScript : MonoBehaviour
     public WaveManagerScript waveManager;
     public CropBarScript cropBarScript;
     public TMP_Text timerText;
+    // public GameObject LosePanel;
+    // public GameObject WinPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -127,6 +129,12 @@ public class CropScript : MonoBehaviour
         {
             Debug.Log("Crop has Died.");
         }
+    }
+
+    public void Lose()
+    {
+        // enable losePanel;
+        // disable waveManager;
     }
 
     public void SetGrowth(bool val) { canGrow = val; }

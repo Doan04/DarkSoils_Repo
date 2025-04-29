@@ -42,7 +42,6 @@ public class PlayerScript : MonoBehaviour
     public float maxFert = 100f;
     public float repairTime = 3f; // Time spent repairing until player send a fix message to machine 
     public float fireRate = 0.2f;
-    //public MakeCorpse playerCorpseScript;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
     public FertilizerBar fertBar;
@@ -50,6 +49,7 @@ public class PlayerScript : MonoBehaviour
     public Vector2 currentMovementDirection;
     public GameObject fertBullet;
     CropScript cropScript;
+    // public GameObject LosePanel;
     void Start()
     {
         money = 0;
