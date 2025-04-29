@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// within Scripts/
 public class FertProjectileScript : MonoBehaviour
 {
     public int dmg = 4;
