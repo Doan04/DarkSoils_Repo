@@ -6,7 +6,7 @@ public class NPCScript : MonoBehaviour
 {
     //-1, anything purely readable, 0 = Shopkeeper, 1 = Fishing Area
     public int npcID;
-    public string readText;
+    public string initialText;
     public string[] dialoguePool;
     public bool currentlyOnNPCPlatform;
     public bool talk;
@@ -14,6 +14,8 @@ public class NPCScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject popup = gameObject.transform.GetChild(0).gameObject; 
+        initialText = popup.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
         currentlyOnNPCPlatform = false;
         talk = false;
     }
@@ -41,7 +43,7 @@ public class NPCScript : MonoBehaviour
         string text = "";
         if(npcID == -1)
         {
-            text = readText;
+            text = initialText;
         }
         else if(npcID == 0)
         {
@@ -94,8 +96,8 @@ public class NPCScript : MonoBehaviour
                     StopAllCoroutines();
                     int numberOfFish = collision.gameObject.GetComponent<PlayerScript>().fish;
                     collision.gameObject.GetComponent<PlayerScript>().fish = 0;
-                    collision.gameObject.GetComponent<PlayerScript>().money += 3 * numberOfFish;
-                    StartCoroutine(changeDialogue(popup, (numberOfFish + " fish sold for " +  3 * numberOfFish)));
+                    collision.gameObject.GetComponent<PlayerScript>().money += 2 * numberOfFish;
+                    StartCoroutine(changeDialogue(popup, (numberOfFish + " fish sold for " +  2 * numberOfFish)));
                     sell = false;
                 }
             }

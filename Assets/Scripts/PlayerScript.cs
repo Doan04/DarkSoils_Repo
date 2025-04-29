@@ -230,7 +230,7 @@ public class PlayerScript : MonoBehaviour
         //Hit by an enemy, set invincibility state
         if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
         {
-            invincibleTimer = 3;
+            invincibleTimer = 1;
             EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
             if (emscript != null) 
             {
@@ -244,7 +244,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(invincibleTimer <= 0)
         {
-            invincibleTimer = 3;
+            invincibleTimer = 1;
             currentHealth -= damage;
             healthBar.updateHealthValue(currentHealth / maxHealth);
         }
