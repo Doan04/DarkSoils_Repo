@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5852913458076837356}
   - component: {fileID: 8470910986931063153}
   - component: {fileID: 6021124401497422069}
+  - component: {fileID: 118649530684021763}
+  - component: {fileID: 4645325135792725920}
   m_Layer: 0
   m_Name: Heart_Minion
   m_TagString: Enemy
@@ -172,3 +174,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
+--- !u!114 &118649530684021763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765772467435240806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f558d516f69de4d9a7653ca2056596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  damage: 0
+  movementSpeed: 0
+  attackTimer: 0
+  despawnTimer: 300
+  anim: {fileID: 0}
+  inContactWithPlayer: 0
+--- !u!114 &4645325135792725920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765772467435240806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f558d516f69de4d9a7653ca2056596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  damage: 0
+  movementSpeed: 0
+  attackTimer: 0
+  despawnTimer: 0
+  anim: {fileID: 0}
+  inContactWithPlayer: 0

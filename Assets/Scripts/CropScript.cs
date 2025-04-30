@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CropScript : MonoBehaviour
 {
     public int stage;
@@ -20,8 +21,10 @@ public class CropScript : MonoBehaviour
     public WaveManagerScript waveManager;
     public CropBarScript cropBarScript;
     public TMP_Text timerText;
-     public GameObject LosePanel;
+    public GameObject LosePanel;
     public GameObject WinPanel;
+    public AudioSource cropAudio;
+    public AudioClip healSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -124,6 +127,7 @@ public class CropScript : MonoBehaviour
             {
                 currentHealth = maxHealth;
             }
+            cropAudio.PlayOneShot(healSound);
             cropBarScript.updateCropHealthValue(currentHealth / maxHealth);
         }
     }
@@ -140,32 +144,14 @@ public class CropScript : MonoBehaviour
 
     public void Lose()
     {
-        // enable losePanel;
-        LosePanel.SetActive(true);
-        // disable waveManager and machines;
-        waveManager.gameObject.SetActive(false);
-        GameObject.Find("generator").SetActive(false);
-        GameObject.Find("waterpump").SetActive(false);
-        // delete all enemies
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
+        // scene switch to LoseScene;
+        SceneManager.LoadScene("LoseScene");
     }
 
     public void Win()
     {
-        WinPanel.SetActive(true);
-        waveManager.gameObject.SetActive(false);
-        GameObject.Find("generator").SetActive(false);
-        GameObject.Find("waterpump").SetActive(false);
-        // delete all enemies
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
+        // scene switch to WinScene;
+        SceneManager.LoadScene("WinScene");
     }
 
     public void SetGrowth(bool val) { canGrow = val; }

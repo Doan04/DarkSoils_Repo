@@ -14,7 +14,7 @@ public class HeartMinionScript : MonoBehaviour
     {
         movementSpeed = 1f;
         player = GameObject.Find("Player");
-        despawnTimer = 10f;
+        despawnTimer = 20f;
         damage = 5;
         anim = GetComponent<Animator>();
     }
