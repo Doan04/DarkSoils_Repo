@@ -75,11 +75,10 @@ public class HeartBehavior : MonoBehaviour
 
     public void TakeDamage() // Code that gets called when the heart takes Damage
     {
-        health -= 5;
-        heartAudio.PlayOneShot(hitSound);
-
         if(!hit)
         {
+            health -= 5;
+            heartAudio.PlayOneShot(hitSound);
             animator.SetBool("hit", true);
             hit = true;
             hitTimer = 0.3f;   
@@ -89,6 +88,7 @@ public class HeartBehavior : MonoBehaviour
         {
             dead = true;
             Instantiate(bossDrop, transform.position, Quaternion.Euler(0, 0, 0));
+            heartAudio.volume = 0.1f;
             heartAudio.PlayOneShot(deathSound);
             Destroy(gameObject, 7f);
         }

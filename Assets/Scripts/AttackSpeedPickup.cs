@@ -10,7 +10,7 @@ public class AttackSpeedPickup : MonoBehaviour
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Player"))
         {
-            collidedObject.GetComponent<PlayerScript>().swingCooldownTime = collidedObject.GetComponent<PlayerScript>().swingCooldownTime * attackRate;
+            collidedObject.GetComponent<PlayerScript>().swingCooldownTime = (collidedObject.GetComponent<PlayerScript>().swingCooldownTime) * attackRate;
             Destroy(gameObject);
         }
     }
