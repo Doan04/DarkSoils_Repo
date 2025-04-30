@@ -30,7 +30,7 @@ public class NPCScript : MonoBehaviour
         quest = false;
         questIndex = -1;
         questValue = -1;
-        audioText = GetComponents<AudioSource>();
+        audioText = GameObject.Find("AudioManager").GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,8 +56,8 @@ public class NPCScript : MonoBehaviour
 
             }
         }    
-        //Updating quest values live if applicable
-        if(questManager.npcText.enabled == true)
+        //Updating quest values live if shopkeeper
+        if(npcID == 0 && questManager.npcText.enabled == true)
         {
             if(questIndex == 0)
             {

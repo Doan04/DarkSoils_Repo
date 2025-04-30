@@ -23,7 +23,7 @@ public class ShopPlatformScript : MonoBehaviour
         timesBought = 0;
         currentlyOnShopPlatform = false;
         purchasing = false;
-        audioText = GetComponents<AudioSource>();
+        audioText = GameObject.Find("AudioManager").GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,52 +65,64 @@ public class ShopPlatformScript : MonoBehaviour
                 price = 7 * (timesBought + 1);
                 StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
             }
+            else if(wares == 3)
+            {
+                price = 10;
+                StartCoroutine(changeDialogue(description, "Full Restore\n Price: " + price));
+            }
         }
     }
     void OnTriggerStay2D(Collider2D collision)
     {
-        currentlyOnShopPlatform = true;
         //The player in this case
         GameObject collidedObject = collision.gameObject;
         if (collidedObject.CompareTag("Player"))
         {
+            currentlyOnShopPlatform = true;
             //Every time an item is bought increase price by 1
             //Each ware has a custom multiplier
             //Note do not do input on physics functions its buggy
             if(purchasing && collidedObject.GetComponent<PlayerScript>().money >= price)
             {
-                collidedObject.GetComponent<PlayerScript>().money -= price;
-                timesBought += 1;
-                StopAllCoroutines();
-                StartCoroutine(changeDialogue(popup, "Press E to Buy"));
-                if(wares == 0)
+                //Special case for health restore don't buy if at max health
+                if(wares != 3 || collidedObject.GetComponent<PlayerScript>().currentHealth != collidedObject.GetComponent<PlayerScript>().maxHealth)
                 {
-                    price = 5 * (timesBought + 1);
-                    StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
+                    StartCoroutine(changeDialogue(popup, "Press E to Buy"));
+                    collidedObject.GetComponent<PlayerScript>().money -= price;
+                    timesBought += 1;
+                    StopAllCoroutines();
                 }
-                else if(wares == 1)
+                if(wares == 0)
                 {
                     price = 3 * (timesBought + 1);
-                    StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
-                }
-                else if(wares == 2)
-                {
-                    price = 7 * (timesBought + 1);
-                    StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
-                }
-                if(wares == 0)
-                {
-                    collidedObject.GetComponent<PlayerScript>().attack += 2;
+                    StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
+                    collidedObject.GetComponent<PlayerScript>().attack += 1;
+
                 }
                 else if(wares == 1)
                 {
+                    price = 5 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
                     collidedObject.GetComponent<PlayerScript>().currentHealth += 15;
-                    collidedObject.GetComponent<PlayerScript>().maxHealth += 15;
+                    collidedObject.GetComponent<PlayerScript>().maxHealth += 15;                
                 }
                 else if(wares == 2)
                 {
-                    collidedObject.GetComponent<PlayerScript>().playerSpeed += 1;   
-                }         
+                    price = 6 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
+                    collidedObject.GetComponent<PlayerScript>().playerSpeed += 1;       
+                }
+                //Can only buy 25% restore if not at full health
+                else if(wares == 3 && collidedObject.GetComponent<PlayerScript>().currentHealth != collidedObject.GetComponent<PlayerScript>().maxHealth)
+                {
+                    StartCoroutine(changeDialogue(description, "25% Restore\n Price: " + price));
+                    collidedObject.GetComponent<PlayerScript>().currentHealth += 0.25f * collidedObject.GetComponent<PlayerScript>().maxHealth;  
+                    if(collidedObject.GetComponent<PlayerScript>().currentHealth > collidedObject.GetComponent<PlayerScript>().maxHealth)
+                    {
+                        collidedObject.GetComponent<PlayerScript>().currentHealth = collidedObject.GetComponent<PlayerScript>().maxHealth;
+                    }
+                    audioText[2].Play();
+                }      
                 purchasing = false;   
             }
         }

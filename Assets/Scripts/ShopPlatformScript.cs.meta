@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 7c0cdc928d12eb14296aa03633ed108c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - popup: {instanceID: 0}
+  - description: {instanceID: 0}
+  - audioManager: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

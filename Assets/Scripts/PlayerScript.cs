@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     private AudioSource playerAudio;
     public AudioClip swingSound;
+    public AudioClip PlayerHit;
     public int money;
     public int fish;
     public int attack;
@@ -245,6 +246,7 @@ public class PlayerScript : MonoBehaviour
                 SceneManager.LoadScene("LoseScene");
             }
             healthBar.updateHealthValue(currentHealth / maxHealth);
+            playerAudio.PlayOneShot(PlayerHit);
         }
     }
 
