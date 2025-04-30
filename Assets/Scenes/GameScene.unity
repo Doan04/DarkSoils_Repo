@@ -23276,6 +23276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7073383771534762335, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7509345064480799182, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
       propertyPath: Loop
       value: 1
@@ -30702,7 +30706,7 @@ MonoBehaviour:
   generatorAudio: {fileID: 0}
   glassAudio: {fileID: 938612126}
   powerDownNoise: {fileID: 8300000, guid: f5c1df3532d686e41bc5bf3b7f1849d4, type: 3}
-  generatorNoise: {fileID: 8300000, guid: ffe46c83af90cc84ba527be432ac69b0, type: 3}
+  generatorNoise: {fileID: 8300000, guid: 892cd0bd925b20a4598e1a7ec14a0308, type: 3}
   isBroken: 0
   smokeVFX: {fileID: 0}
   damageInterval: 1
