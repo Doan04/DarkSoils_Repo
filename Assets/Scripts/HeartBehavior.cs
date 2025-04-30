@@ -91,7 +91,7 @@ public class HeartBehavior : MonoBehaviour
             Instantiate(bossDrop, transform.position, Quaternion.Euler(0, 0, 0));
             heartAudio.volume = 0.1f;
             heartAudio.PlayOneShot(deathSound);
-            Destroy(gameObject, 7f);
+            Invoke("setHeartInactive", 7f);
         }
 
     }
@@ -116,5 +116,10 @@ public class HeartBehavior : MonoBehaviour
             Rigidbody2D projectileRB = liveProjectile.GetComponent<Rigidbody2D>();
             projectileRB.AddForce(firePoint.right * projectileForce, ForceMode2D.Impulse);
         }
+    }
+
+    void setHeartInactive()
+    {
+        gameObject.SetActive(false);
     }
 }
