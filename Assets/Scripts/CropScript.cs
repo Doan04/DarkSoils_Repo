@@ -28,6 +28,7 @@ public class CropScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        secondsToNextWave = 30;
         cropSprite = GetComponent<SpriteRenderer>();
         cropSprite.sprite = cropStageSprite[stage];
         maxGrowth = 30f;
@@ -35,11 +36,14 @@ public class CropScript : MonoBehaviour
         canHeal = false;
         canGrow = false;
         waveActive = false;
+        timerText.enabled = true;
+        currentSecondsTilWave = secondsToNextWave;
     }
 
     // Update is called once per frame
     void Update()
     {
+        secondsToNextWave = 15;
         // increment the growth and heal timers
         growthInterval -= Time.deltaTime;
         HealInterval -= Time.deltaTime;

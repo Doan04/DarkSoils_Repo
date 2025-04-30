@@ -17,8 +17,7 @@ public class WaveManagerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        waveIsActive = true;
-        audioManager.GetComponent<MainAudio>().PlayWaveMusic();
+        waveIsActive = false;
     }
 
     // Update is called once per frame
