@@ -32,7 +32,7 @@ public class WaveManagerScript : MonoBehaviour
         }
         if (spawnInterval <= 0 && waveIsActive)
         {
-                SpawnEnemy(grunt);
+                //SpawnEnemy(grunt);
                 spawnInterval = 2f;
         }
         if (shankerSpawnInterval <= 0 && waveIsActive) 

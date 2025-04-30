@@ -18,6 +18,7 @@ public class FertilizerScript : MonoBehaviour
                 {
                     collidedObject.GetComponent<PlayerScript>().currentFert = collidedObject.GetComponent<PlayerScript>().maxFert;
                 }
+                collidedObject.GetComponent<PlayerScript>().updateFertBar();
                 Destroy(gameObject);
             }
         }

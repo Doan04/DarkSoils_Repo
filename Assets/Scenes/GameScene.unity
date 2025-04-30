@@ -841,6 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 2371631218092237841, guid: c609a8b3d99109e41a47746e33dd9c31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6730,6 +6734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shanker
       objectReference: {fileID: 0}
+    - target: {fileID: 2371631218092237841, guid: f11987c55336e944ba999b666414422f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6746,6 +6754,10 @@ PrefabInstance:
     - target: {fileID: 765772467435240806, guid: 9e0365a09b1c5624db7b431d3992a99b, type: 3}
       propertyPath: m_Name
       value: Heart_Minion
+      objectReference: {fileID: 0}
+    - target: {fileID: 765772467435240806, guid: 9e0365a09b1c5624db7b431d3992a99b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046528746518379078, guid: 9e0365a09b1c5624db7b431d3992a99b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6991,6 +7003,10 @@ PrefabInstance:
       propertyPath: readText
       value: 'Fish 4 Gold\nPoor? Just don''t be '
       objectReference: {fileID: 0}
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: questManager
+      value: 
+      objectReference: {fileID: 86960046}
     - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_LocalPosition.x
       value: -535.05
@@ -25851,6 +25867,10 @@ PrefabInstance:
       propertyPath: npcID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2322608536267264110, guid: 7336ed1d2b2a48c43b0325842332bee4, type: 3}
+      propertyPath: questManager
+      value: 
+      objectReference: {fileID: 86960046}
     - target: {fileID: 4578167304650460695, guid: 7336ed1d2b2a48c43b0325842332bee4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -26351,7 +26371,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_Resource: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -26448,7 +26468,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_Resource: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -27839,6 +27859,10 @@ PrefabInstance:
       propertyPath: readText
       value: 'Fish 4 Gold\nPoor? Just don''t be '
       objectReference: {fileID: 0}
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: questManager
+      value: 
+      objectReference: {fileID: 86960046}
     - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_LocalPosition.x
       value: -521.88
@@ -28889,11 +28913,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1960148636}
   - component: {fileID: 1960148635}
+  - component: {fileID: 1960148640}
   - component: {fileID: 1960148637}
   - component: {fileID: 1960148638}
   - component: {fileID: 1960148639}
   - component: {fileID: 1960148641}
-  - component: {fileID: 1960148640}
   - component: {fileID: 1960148642}
   m_Layer: 6
   m_Name: Player
@@ -28966,7 +28990,7 @@ Transform:
   m_GameObject: {fileID: 1960148634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.101, y: 0.127, z: 0}
+  m_LocalPosition: {x: 10.34, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29528,7 +29552,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_Resource: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -29625,7 +29649,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_Resource: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -30505,7 +30529,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_Resource: {fileID: 8300000, guid: 6c9eeeb235101474cbc8fb75de521309, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -30602,7 +30626,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_Resource: {fileID: 8300000, guid: aaa36d13e7c5e614fa219ea2a480b2d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -30701,6 +30725,10 @@ PrefabInstance:
       propertyPath: readText
       value: 'Fish 4 Gold\nPoor? Just don''t be '
       objectReference: {fileID: 0}
+    - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: questManager
+      value: 
+      objectReference: {fileID: 86960046}
     - target: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_LocalPosition.x
       value: -490.73

@@ -40,7 +40,6 @@ public class CropScript : MonoBehaviour
         // increment the growth and heal timers
         growthInterval -= Time.deltaTime;
         HealInterval -= Time.deltaTime;
-        
         // grows the crops during an enemy wave and ends the wave once they reach their next stage
         if(canGrow && growthInterval <= 0 && waveActive)
         {
@@ -106,9 +105,11 @@ public class CropScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnterExit(Collider2D collider)
+    void OnTriggerExit2D(Collider2D collider)
     {
+        
         if (collider.CompareTag("Player")){
+            Debug.Log("LKFJSLDKFjs;adklf");
             collider.gameObject.GetComponent<PlayerScript>().playerInCrops = false;
         }
     }

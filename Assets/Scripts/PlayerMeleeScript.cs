@@ -16,6 +16,10 @@ public class PlayerMeleeScript : MonoBehaviour
         {
             for (int i = 0; i < TriggerList.Count; i++)
             {
+                if(TriggerList[i] == null)
+                {
+                    Debug.Log("Missing collider");
+                }
                 Collider2D collider = TriggerList[i];
                 if (collider.CompareTag("Enemy"))
                 {
@@ -40,7 +44,7 @@ public class PlayerMeleeScript : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<HeartBehavior>().TakeDamage();
                 }
-                TriggerList.Remove(collider);
+                //TriggerList.Remove(collider);
             }
         }
     }
