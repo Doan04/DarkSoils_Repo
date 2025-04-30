@@ -13,10 +13,13 @@ public class FishingScript : MonoBehaviour
     public bool textResetBoolean;
     public bool fishObtained;
     public bool tooEarly;
+    public bool foundSound;
     public int temp;
     public GameObject popup;
+    public AudioSource[] audioSources;
     void Start()
     {
+        foundSound = false;
         tooEarly = false;
         fishObtained = false;
         popup = gameObject.transform.GetChild(0).gameObject;
@@ -28,6 +31,7 @@ public class FishingScript : MonoBehaviour
         textResetBoolean = true;
         textReset = 0.5f;
         temp = 0;
+        audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +59,11 @@ public class FishingScript : MonoBehaviour
             }
             else if(timeForFish <= 0 && timer > 0)
             {
+                if(!foundSound)
+                {
+                    foundSound = true;
+                    audioSources[0].Play();
+                }
                 timer -= Time.deltaTime;
                 if((temp / 10) % 2 == 0)
                 {
@@ -68,6 +77,7 @@ public class FishingScript : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     fishObtained = true;
+                    audioSources[1].Play();
                     timeForFish = 0;
                     timer = 0;
                 }
@@ -95,6 +105,7 @@ public class FishingScript : MonoBehaviour
                 tooEarly = false;
                 fishObtained = false;
                 fishingActivated = false;
+                foundSound = false;
                 timeForFish = Random.Range(1.5f, 2.25f);
                 timer = 0.75f;
             }
@@ -108,6 +119,7 @@ public class FishingScript : MonoBehaviour
             fishingText = false;
             textReset -= Time.deltaTime;
             fishObtained = false;
+            foundSound = false;
             timeForFish = Random.Range(1.5f, 2.25f);
             timer = 0.75f;
             if(textReset <= 0)

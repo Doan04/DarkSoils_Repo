@@ -42,7 +42,7 @@ public class HeartMinionScript : MonoBehaviour
     public void Movement()
     {
         //Only face player if within a certain distance otherwise
-        if ((player.transform.position - gameObject.transform.position).magnitude < 2)
+        if ((player.transform.position - gameObject.transform.position).magnitude < 100)
         {
             transform.up = player.transform.position - gameObject.transform.position;
         }

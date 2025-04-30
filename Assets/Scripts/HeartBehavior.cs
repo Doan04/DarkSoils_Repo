@@ -20,6 +20,7 @@ public class HeartBehavior : MonoBehaviour
     public Transform firePoint3;
     public Transform firePoint4;
     public Transform firePoint5;
+    public GameObject minion;
     private bool audioPlaying = false;
     private bool dead = false;
     public Animator animator;
@@ -106,6 +107,8 @@ public class HeartBehavior : MonoBehaviour
     void ShootCircle(Transform firePoint, float rotation)
     {
         firePoint.Rotate(0, 0, rotation);
+        Instantiate(minion, firePoint.position + new Vector3(2, 0, 0), firePoint.rotation);
+        Instantiate(minion, firePoint.position + new Vector3(-2, 0, 0), firePoint.rotation);
         for(int i = 0; i < 15; i++)
         {
             firePoint.Rotate(0, 0, 24);

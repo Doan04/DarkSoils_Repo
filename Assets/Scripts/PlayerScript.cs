@@ -106,13 +106,13 @@ public class PlayerScript : MonoBehaviour
         }
         else if(Input.GetMouseButtonDown(1) && isRepairing == false)
         {
-            if (playerInCrops && currentFert >= 100f) 
+            if (playerInCrops && currentFert >= 45f) 
             {
-                currentFert -= 100f;
+                currentFert -= 45f;
                 fertBar.updateFertValue(currentFert / maxFert);
                 cropScript.Heal();
             }
-        }
+        }   
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Raycast to check if player can initiate repair

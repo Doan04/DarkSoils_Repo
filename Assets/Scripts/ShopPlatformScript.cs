@@ -87,10 +87,10 @@ public class ShopPlatformScript : MonoBehaviour
                 //Special case for health restore don't buy if at max health
                 if(wares != 3 || collidedObject.GetComponent<PlayerScript>().currentHealth != collidedObject.GetComponent<PlayerScript>().maxHealth)
                 {
+                    StopAllCoroutines();
                     StartCoroutine(changeDialogue(popup, "Press E to Buy"));
                     collidedObject.GetComponent<PlayerScript>().money -= price;
                     timesBought += 1;
-                    StopAllCoroutines();
                 }
                 if(wares == 0)
                 {

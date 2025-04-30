@@ -32,9 +32,9 @@ public class CropScript : MonoBehaviour
         cropSprite.sprite = cropStageSprite[stage];
         maxGrowth = 30f;
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManagerScript>();
-        canHeal = true;
-        canGrow = true;
-        waveActive = true;
+        canHeal = false;
+        canGrow = false;
+        waveActive = false;
     }
 
     // Update is called once per frame
@@ -112,7 +112,6 @@ public class CropScript : MonoBehaviour
     {
         
         if (collider.CompareTag("Player")){
-            Debug.Log("LKFJSLDKFjs;adklf");
             collider.gameObject.GetComponent<PlayerScript>().playerInCrops = false;
         }
     }
@@ -139,6 +138,7 @@ public class CropScript : MonoBehaviour
         if (currentHealth <= 0) 
         {
             Debug.Log("Crop has Died.");
+            Lose();
         }
     }
 

@@ -28,6 +28,10 @@ public class RoofScript : MonoBehaviour
             if(shop)
             {
                 StartCoroutine(audioManager.GetComponent<MainAudio>().Shop(true));
+                if(collidedObject.CompareTag("Enemy"))
+                {
+                    Destroy(collidedObject);
+                }
             }
             else if(boss)
             {
@@ -35,10 +39,7 @@ public class RoofScript : MonoBehaviour
             }
         }
         //Doubling as a role to terminate any enemies who enter the shop
-        if(collidedObject.CompareTag("Enemy"))
-        {
-            Destroy(collidedObject);
-        }
+
     }
 
     void OnTriggerExit2D(Collider2D collision)

@@ -59,15 +59,15 @@ public class NPCScript : MonoBehaviour
         //Updating quest values live if shopkeeper
         if(npcID == 0 && questManager.npcText.enabled == true)
         {
-            if(questIndex == 0)
+            if(questIndex % 3 == 0)
             {
                 questManager.EnableNPCQuest("Kill " + questValue + " grunts");
             }
-            else if(questIndex == 1)
+            else if(questIndex % 3 == 1)
             {
                 questManager.EnableNPCQuest("Kill " + questValue + " shooters");
             }
-            else if(questIndex == 2)
+            else if(questIndex % 3 == 2)
             {
                 questManager.EnableNPCQuest("Kill" + questValue + " shankers");
             }  

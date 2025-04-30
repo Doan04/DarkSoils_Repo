@@ -343,6 +343,7 @@ MonoBehaviour:
   firePoint3: {fileID: 6465580595924942755}
   firePoint4: {fileID: 6891041435982526300}
   firePoint5: {fileID: 951834681486705915}
+  minion: {fileID: 765772467435240806, guid: 9e0365a09b1c5624db7b431d3992a99b, type: 3}
   animator: {fileID: 5214580900777443509}
 --- !u!1 &4982913876161093831
 GameObject:
