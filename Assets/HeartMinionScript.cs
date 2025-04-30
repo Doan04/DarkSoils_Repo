@@ -22,6 +22,7 @@ public class HeartMinionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<SpriteRenderer>().color =  Color.red;
         attackTimer -= Time.deltaTime;
         despawnTimer -= Time.deltaTime;
         if (despawnTimer < 0) 
