@@ -248,6 +248,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void updateFertBar()
+    {
+        fertBar.updateFertValue(currentFert / maxFert);
+    }
+
     IEnumerator FixRoutine(GeneratorScript gs, WaterPumpScript wp)
     {
         yield return new WaitForSeconds(3f);
