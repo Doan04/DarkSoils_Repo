@@ -129,7 +129,11 @@ public class NPCScript : MonoBehaviour
                 }
                 else if(npcID == 1)
                 {
-                    GetComponent<FishingScript>().fishingActivated = true;
+                    if(GetComponent<FishingScript>().fishingActivated == false)
+                    {
+                        Debug.Log("FISHING");
+                        GetComponent<FishingScript>().fishingActivated = true;
+                    }
                 }
                 talk = false;
             }

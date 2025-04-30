@@ -93,12 +93,10 @@ public class FishingScript : MonoBehaviour
                 }
                 //If fishing again
                 tooEarly = false;
-                timeForFish = Random.Range(1.5f, 2.25f);
-                timer = 0.75f;
-                fishingText = false;
-                textReset -= Time.deltaTime;
                 fishObtained = false;
                 fishingActivated = false;
+                timeForFish = Random.Range(1.5f, 2.25f);
+                timer = 0.75f;
             }
         }
         else
@@ -107,11 +105,11 @@ public class FishingScript : MonoBehaviour
             //Need both in case activating fishingactivated on same frame
             //In which case these statements wont activate and itll repeat
             tooEarly = false;
-            timeForFish = Random.Range(1.5f, 2.25f);
-            timer = 0.75f;
             fishingText = false;
             textReset -= Time.deltaTime;
             fishObtained = false;
+            timeForFish = Random.Range(1.5f, 2.25f);
+            timer = 0.75f;
             if(textReset <= 0)
             {
                 if(!textResetBoolean)

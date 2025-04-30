@@ -3,10 +3,12 @@ using System.Collections;
 public class RoofScript : MonoBehaviour
 {
     public Rigidbody2D theRigidbody;
+    public GameObject audioManager;
+    public bool shop;
+    public bool boss;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -23,6 +25,14 @@ public class RoofScript : MonoBehaviour
             //If visual already running stop it and play the other one
             StopAllCoroutines();
             StartCoroutine(roofVisual(false));
+            if(shop)
+            {
+                StartCoroutine(audioManager.GetComponent<MainAudio>().Shop(true));
+            }
+            else if(boss)
+            {
+                StartCoroutine(audioManager.GetComponent<MainAudio>().Boss(true));
+            }
         }
         //Doubling as a role to terminate any enemies who enter the shop
         if(collidedObject.CompareTag("Enemy"))
@@ -38,6 +48,14 @@ public class RoofScript : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(roofVisual(true));
+            if(shop)
+            {
+                StartCoroutine(audioManager.GetComponent<MainAudio>().Shop(false));
+            }
+            else if(boss)
+            {
+                StartCoroutine(audioManager.GetComponent<MainAudio>().Boss(false));
+            }        
         }
     }
 
