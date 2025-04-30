@@ -13250,6 +13250,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &362336810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7073383771534762335, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+  m_PrefabInstance: {fileID: 1002783753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &387982953
 GameObject:
   m_ObjectHideFlags: 0
@@ -18743,6 +18748,7 @@ MonoBehaviour:
   rat: {fileID: 95470667}
   coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
   fertilizer: {fileID: 1605600204673537381, guid: 804a219e597c0f541aa54239897b2d3b, type: 3}
+  audioManager: {fileID: 362336810}
   waveIsActive: 0
   spawnInterval: 0.5
   shankerSpawnInterval: 10
@@ -22881,6 +22887,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001045236}
   m_CullTransparentMesh: 1
+--- !u!1001 &1002783753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.4136996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94367015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9186877
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244265752802306718, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073383771534762335, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
+      propertyPath: m_Name
+      value: AudioSystem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60a51f07186db9f479688bd0b3d2134b, type: 3}
 --- !u!4 &1066317874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1554579597822409006, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
@@ -32115,7 +32178,6 @@ Transform:
   - {fileID: 697877827}
   - {fileID: 913423871}
   - {fileID: 1473735049}
-  - {fileID: 980569138}
   - {fileID: 44196983}
   - {fileID: 90842756}
   - {fileID: 2131686716}
@@ -32125,14 +32187,12 @@ Transform:
   - {fileID: 1296234243}
   - {fileID: 1571375333}
   - {fileID: 538576183}
-  - {fileID: 827178291}
   - {fileID: 776637068}
   - {fileID: 359957682}
   - {fileID: 920897712}
   - {fileID: 2111223453}
   - {fileID: 1946804638}
   - {fileID: 2080215995}
-  - {fileID: 189079101}
   - {fileID: 2055614231}
   - {fileID: 1525315472}
   - {fileID: 542895365}
@@ -33587,6 +33647,7 @@ MonoBehaviour:
   meleeHitbox: {fileID: 0}
   damageEffect: {fileID: 6876183953250359825, guid: f5351c7dba6f2814180815f02f932176, type: 3}
   swingSound: {fileID: 8300000, guid: b1316a01313e34148b10c2ebc499def3, type: 3}
+  PlayerHit: {fileID: 8300000, guid: 37404cdcc8d14b342a4ba48811c3f8dc, type: 3}
   money: 0
   fish: 0
   attack: 0
@@ -35728,4 +35789,5 @@ SceneRoots:
   - {fileID: 839916154}
   - {fileID: 1370916526}
   - {fileID: 95470666}
+  - {fileID: 1002783753}
   - {fileID: 1836691879}

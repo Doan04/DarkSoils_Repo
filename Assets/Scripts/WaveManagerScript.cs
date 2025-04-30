@@ -8,6 +8,7 @@ public class WaveManagerScript : MonoBehaviour
     public GameObject rat;
     public GameObject coin;
     public GameObject fertilizer;
+    public GameObject audioManager;
     public bool waveIsActive = false;
     public float spawnInterval = 2f;
     public float shankerSpawnInterval = 10f;
@@ -17,6 +18,7 @@ public class WaveManagerScript : MonoBehaviour
     void Start()
     {
         waveIsActive = true;
+        audioManager.GetComponent<MainAudio>().PlayWaveMusic();
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class WaveManagerScript : MonoBehaviour
     public void StartWave()
     {
         waveIsActive = true;
+        audioManager.GetComponent<MainAudio>().PlayWaveMusic();
     }
     public void EndWave()
     {
