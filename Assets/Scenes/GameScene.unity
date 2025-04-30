@@ -50664,7 +50664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3996824527373146583, guid: d66e2927bc58be44cb8ad9ccaaf95494, type: 3}
       propertyPath: health
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3996824527373146583, guid: d66e2927bc58be44cb8ad9ccaaf95494, type: 3}
       propertyPath: bossDrop
