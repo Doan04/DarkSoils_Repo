@@ -42165,6 +42165,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.9241
       objectReference: {fileID: 0}
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: readText
       value: 'Fish 4 Gold\nPoor? Just don''t be '
@@ -50292,6 +50296,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061437088}
     m_Modifications:
+    - target: {fileID: 274533629461815023, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 283263651817175534, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: readText
       value: 'Fish 4 Gold\nPoor? Just don''t be '

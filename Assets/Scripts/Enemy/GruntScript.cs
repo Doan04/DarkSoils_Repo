@@ -4,6 +4,7 @@ public class GruntScript : MonoBehaviour
 {
     public int enemyType;
     public GameObject player;
+    public PlayerScript playerScript;
     public GameObject coin;
     public float damage;
     public float movementSpeed;
@@ -14,11 +15,14 @@ public class GruntScript : MonoBehaviour
     public Animator anim;
     public bool reachedCrop = false;
     public CropScript cropField;
+    public bool inContactWithPlayer = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         movementSpeed = 1f;
         player = GameObject.Find("Player");
+        playerScript = player.GetComponent<PlayerScript>();
         despawnTimer = 10;
         damage = 5;
         anim = GetComponent<Animator>();
@@ -40,6 +44,16 @@ public class GruntScript : MonoBehaviour
             {
                 cropField.TakeDamage(damage);
                 anim.Play("GruntAttack");
+                attackTimer = 2f;
+            }
+        }
+        if (attackTimer <= 0)
+        {
+            if(inContactWithPlayer)
+            {
+                anim.Play("GruntAttack");
+                player.GetComponent<PlayerScript>().DamagePlayer(5);
+                playerScript.sprayBlood(transform.position);
                 attackTimer = 2f;
             }
         }
@@ -66,6 +80,21 @@ public class GruntScript : MonoBehaviour
         {
             reachedCrop = true;
             Debug.Log("trigger crop");
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            inContactWithPlayer = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            inContactWithPlayer = false;
         }
     }
 }

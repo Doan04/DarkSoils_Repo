@@ -239,7 +239,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(invincibleTimer <= 0)
         {
-            invincibleTimer = 1;
+            invincibleTimer = 0.5f;
             currentHealth -= damage;
             if(currentHealth <= 0)
             {
