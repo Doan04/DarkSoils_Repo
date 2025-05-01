@@ -25,6 +25,7 @@ public class CropScript : MonoBehaviour
     public GameObject WinPanel;
     public AudioSource cropAudio;
     public AudioClip healSound;
+    public ParticleSystem healVFX;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -126,6 +127,9 @@ public class CropScript : MonoBehaviour
         Debug.Log("Heal.");
         if (canHeal)
         {
+            
+            Instantiate(healVFX, new Vector3(transform.position.x, transform.position.y, 5), Quaternion.identity);
+            
             currentHealth += 100f;
             if (currentHealth > maxHealth)
             {

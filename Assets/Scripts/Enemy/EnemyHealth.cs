@@ -29,7 +29,6 @@ public class EnemyHealth : MonoBehaviour
             stunnedTimer = 0.5f;
         }
         stunnedTimer = 0.5f;
-        enemyAudio.PlayOneShot(enemyHurtSound);
         if (health <= 0)
         {
             DeathEvent();
@@ -38,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void DeathEvent()
     {
+        enemyAudio.PlayOneShot(enemyHurtSound);
         Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
         GetComponent<SpriteRenderer>().enabled = false;
         GruntScript gscript = GetComponent<GruntScript>();

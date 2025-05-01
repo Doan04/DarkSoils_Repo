@@ -16853,6 +16853,7 @@ MonoBehaviour:
   WinPanel: {fileID: 1768869436}
   cropAudio: {fileID: 886068674}
   healSound: {fileID: 8300000, guid: 7f9d1d4d0ca66f8438778e6b1a4530f0, type: 3}
+  healVFX: {fileID: 6781837039936656814, guid: bed378eb5890d3a4e8a06a824948f17f, type: 3}
 --- !u!61 &886068672
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class MouthScript : MonoBehaviour
     public float damage;
     private float attackTimer = 3.5f;
     private float stunnedTimer;
+    private float despawnTimer = 5f;
     public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +20,11 @@ public class MouthScript : MonoBehaviour
     void Update()
     {
         attackTimer -= Time.deltaTime;
+        despawnTimer -= Time.deltaTime;
+        if(despawnTimer <= 0)
+        {
+            Destroy(gameObject);
+        }
         if(attackTimer <= 0 && (player.transform.position - gameObject.transform.position).magnitude < 15)
         {
             attackTimer = 3.5f;
