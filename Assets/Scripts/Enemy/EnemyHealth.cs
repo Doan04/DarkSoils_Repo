@@ -32,28 +32,33 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.PlayOneShot(enemyHurtSound);
         if (health <= 0)
         {
-            Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
-            GetComponent<SpriteRenderer>().enabled = false;
-            GruntScript gscript = GetComponent<GruntScript>();
-            MouthScript mouthscript = GetComponent<MouthScript>();
-            HeartMinionScript heartMinionScript = GetComponent<HeartMinionScript>();
-            if (gscript != null) 
-            {
-                gscript.enabled = false;
-                GetComponent<BoxCollider2D>().enabled = false;
-            }
-            else if(mouthscript != null)
-            {
-                mouthscript.enabled = false;
-                GetComponent<CircleCollider2D>().enabled = false;
-            }
-            else if(heartMinionScript != null)
-            {
-                heartMinionScript.enabled = false;
-                GetComponent<BoxCollider2D>().enabled = false;
-            }
-            Invoke("EnemyDie", 0.5f);
+            DeathEvent();
         }
+    }
+
+    public void DeathEvent()
+    {
+        Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
+        GetComponent<SpriteRenderer>().enabled = false;
+        GruntScript gscript = GetComponent<GruntScript>();
+        MouthScript mouthscript = GetComponent<MouthScript>();
+        HeartMinionScript heartMinionScript = GetComponent<HeartMinionScript>();
+        if (gscript != null)
+        {
+            gscript.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+        else if (mouthscript != null)
+        {
+            mouthscript.enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
+        }
+        else if (heartMinionScript != null)
+        {
+            heartMinionScript.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+        Invoke("EnemyDie", 0.5f);
     }
 
     public void EnemyDie()
