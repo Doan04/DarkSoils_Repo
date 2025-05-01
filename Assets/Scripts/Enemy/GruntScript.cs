@@ -23,7 +23,7 @@ public class GruntScript : MonoBehaviour
         movementSpeed = 1f;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerScript>();
-        despawnTimer = 7f;
+        despawnTimer = 12.34f;
         damage = 5;
         anim = GetComponent<Animator>();
         cropField = GameObject.Find("CropField").GetComponent<CropScript>();

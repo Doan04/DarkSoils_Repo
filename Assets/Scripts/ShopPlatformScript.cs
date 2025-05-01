@@ -85,7 +85,7 @@ public class ShopPlatformScript : MonoBehaviour
             else if(wares == 3)
             {
                 price = 10;
-                StartCoroutine(changeDialogue(description, "Full Restore\n Price: " + price));
+                StartCoroutine(changeDialogue(description, "40% Restore\n Price: " + price));
             }
         }
     }
@@ -132,8 +132,8 @@ public class ShopPlatformScript : MonoBehaviour
                 //Can only buy 25% restore if not at full health
                 else if(wares == 3 && collidedObject.GetComponent<PlayerScript>().currentHealth != collidedObject.GetComponent<PlayerScript>().maxHealth)
                 {
-                    StartCoroutine(changeDialogue(description, "25% Restore\n Price: " + price));
-                    collidedObject.GetComponent<PlayerScript>().currentHealth += 0.25f * collidedObject.GetComponent<PlayerScript>().maxHealth;  
+                    StartCoroutine(changeDialogue(description, "40% Restore\n Price: " + price));
+                    collidedObject.GetComponent<PlayerScript>().currentHealth += 0.4f * collidedObject.GetComponent<PlayerScript>().maxHealth;  
                     if(collidedObject.GetComponent<PlayerScript>().currentHealth > collidedObject.GetComponent<PlayerScript>().maxHealth)
                     {
                         collidedObject.GetComponent<PlayerScript>().currentHealth = collidedObject.GetComponent<PlayerScript>().maxHealth;

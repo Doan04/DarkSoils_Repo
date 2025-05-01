@@ -8,6 +8,7 @@ public class WaterPumpScript : MonoBehaviour
     public AudioClip powerUpNoise;
     public bool isBroken;
     public ParticleSystem smokeVFX;
+    public ParticleSystem waterflow;
     public float damageInterval = 1f;
     public CropScript cropfield;
     public ObjectiveManager questManager;
@@ -20,6 +21,7 @@ public class WaterPumpScript : MonoBehaviour
     void Start()
     {
         cropfield = GameObject.Find("CropField").GetComponent<CropScript>();
+        waterflow = GameObject.Find("water particles 1 (1)").GetComponent<ParticleSystem>();
         watersprite.color = blue;
         player = GameObject.Find("Player");
     }
@@ -50,6 +52,7 @@ public class WaterPumpScript : MonoBehaviour
         currentHealth -= dmg;
         if (currentHealth <= 0)
         {
+            waterflow.Stop();
             cropfield.SetHealing(false);
             questManager.EnableWaterQuest();
             watersprite.color = brown;
@@ -61,6 +64,7 @@ public class WaterPumpScript : MonoBehaviour
     }
     public void Fix()
     {
+        waterflow.Play();
         currentHealth = maxHealth;
         cropfield.SetHealing(true);
         questManager.DisableWaterQuest();

@@ -37,7 +37,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            health = 545435;
+            health = 54547676535;
             damage = 20;
             movementSpeed = 0.5f;
         }
