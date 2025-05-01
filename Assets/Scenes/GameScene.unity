@@ -18903,7 +18903,7 @@ MonoBehaviour:
   grunt: {fileID: 7403017240175832849, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
   shanker: {fileID: 2371631218092237841, guid: f11987c55336e944ba999b666414422f, type: 3}
   mouth: {fileID: 1602668564104369808, guid: c33433e205d5ebd4a8b1bf153e50e178, type: 3}
-  rat: {fileID: 0}
+  rat: {fileID: 2371631218092237841, guid: c609a8b3d99109e41a47746e33dd9c31, type: 3}
   coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
   fertilizer: {fileID: 1605600204673537381, guid: 804a219e597c0f541aa54239897b2d3b, type: 3}
   audioManager: {fileID: 362336810}
@@ -48648,6 +48648,7 @@ MonoBehaviour:
   damageEffect: {fileID: 6876183953250359825, guid: f5351c7dba6f2814180815f02f932176, type: 3}
   swingSound: {fileID: 8300000, guid: b1316a01313e34148b10c2ebc499def3, type: 3}
   PlayerHit: {fileID: 8300000, guid: 37404cdcc8d14b342a4ba48811c3f8dc, type: 3}
+  dashSound: {fileID: 8300000, guid: 8ab131dc3b981704697a09aed11b0f58, type: 3}
   money: 0
   fish: 0
   attack: 0

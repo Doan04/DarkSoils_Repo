@@ -72,13 +72,14 @@ public class CropScript : MonoBehaviour
                 else
                 {
                     Debug.Log("Crop fully grown, you win!");
+                    Win();
                 }
             }
         }
         // while water pump is active, heal 5 health every 5 seconds
         if(canHeal && HealInterval <= 0)
         {
-            currentHealth += 5f;
+            currentHealth += 10f;
             if (currentHealth > maxHealth) 
             {
                 currentHealth = maxHealth;
@@ -122,10 +123,10 @@ public class CropScript : MonoBehaviour
 
     public void Heal()
     {
+        Debug.Log("Heal.");
         if (canHeal)
         {
             currentHealth += 100f;
-            // TODO: Play audio as feedback
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
@@ -142,7 +143,7 @@ public class CropScript : MonoBehaviour
         if (currentHealth <= 0) 
         {
             Debug.Log("Crop has Died.");
-            Lose();
+            Lose(); 
         }
     }
 

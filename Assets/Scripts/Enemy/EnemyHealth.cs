@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-
     public float health;
     private float stunnedTimer;
     public GameObject coin;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public AudioSource enemyAudio;
+    public AudioClip enemyHurtSound;
 
     // Update is called once per frame
     void Update()
@@ -30,12 +26,38 @@ public class EnemyHealth : MonoBehaviour
         if(stunnedTimer <= 0)
         {
             health -= dmg;
-            stunnedTimer = 0.3f;
+            stunnedTimer = 0.5f;
         }
+        stunnedTimer = 0.5f;
+        enemyAudio.PlayOneShot(enemyHurtSound);
         if (health <= 0)
         {
             Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GruntScript gscript = GetComponent<GruntScript>();
+            MouthScript mouthscript = GetComponent<MouthScript>();
+            HeartMinionScript heartMinionScript = GetComponent<HeartMinionScript>();
+            if (gscript != null) 
+            {
+                gscript.enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else if(mouthscript != null)
+            {
+                mouthscript.enabled = false;
+                GetComponent<CircleCollider2D>().enabled = false;
+            }
+            else if(heartMinionScript != null)
+            {
+                heartMinionScript.enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
+            Invoke("EnemyDie", 0.5f);
         }
+    }
+
+    public void EnemyDie()
+    {
+        Destroy(gameObject);
     }
 }

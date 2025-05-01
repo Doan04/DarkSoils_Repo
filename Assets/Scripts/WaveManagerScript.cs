@@ -15,6 +15,9 @@ public class WaveManagerScript : MonoBehaviour
     public float fertSpawnInterval = 7.5f;
     public float RatSpawnInterval = 20f;
     public int wave;
+    float shankSpawnTime = 10f;
+    float fertSpawnTime = 7.5f;
+    float RatSpawnTime = 20f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,7 +34,7 @@ public class WaveManagerScript : MonoBehaviour
         if(fertSpawnInterval < 0  && waveIsActive)
         {
             Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
-            fertSpawnInterval = 7.5f;
+            fertSpawnInterval = fertSpawnTime;
         }
         if (spawnInterval <= 0 && waveIsActive)
         {
@@ -42,13 +45,13 @@ public class WaveManagerScript : MonoBehaviour
         {
             // Spawn an enemy that goes for the players.
             SpawnEnemy(shanker);
-            SpawnEnemy(mouth);
-            shankerSpawnInterval = 10f - (0.75f * (wave - 1));
+             SpawnEnemy(mouth);
+            shankerSpawnInterval = shankSpawnTime;
         }
         if (RatSpawnInterval <= 0 && waveIsActive) 
         {
             SpawnEnemy(rat);
-            RatSpawnInterval = 20f;
+            RatSpawnInterval = RatSpawnTime;
         }
     }
 
