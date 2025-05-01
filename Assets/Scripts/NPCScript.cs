@@ -69,7 +69,7 @@ public class NPCScript : MonoBehaviour
             }
             else if(questIndex % 3 == 2)
             {
-                questManager.EnableNPCQuest("Kill" + questValue + " shankers");
+                questManager.EnableNPCQuest("Kill " + questValue + " shankers");
             }  
             //No matter what quest if quest is completed display completed quest
             if(questValue <= 0)

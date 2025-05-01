@@ -69,17 +69,17 @@ public class ShopPlatformScript : MonoBehaviour
             StartCoroutine(changeDialogue(popup, "Press E to Buy"));
             if(wares == 0)
             {
-                price = 5 * (timesBought + 1);
+                price = 4 * (timesBought + 1);
                 StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
             }
             else if(wares == 1)
             {
-                price = 3 * (timesBought + 1);
+                price = 2 * (timesBought + 1);
                 StartCoroutine(changeDialogue(description, "Stamina Regen\n Price: " + price));
             }
             else if(wares == 2)
             {
-                price = 7 * (timesBought + 1);
+                price = 3 * (timesBought + 1);
                 StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
             }
             else if(wares == 3)

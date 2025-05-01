@@ -68,6 +68,7 @@ public class PlayerMeleeScript : MonoBehaviour
     {
         canHit = true;
         isScythe = scytheActive;
+        StopAllCoroutines();
         StartCoroutine(DisableKillBox());
     }
 
