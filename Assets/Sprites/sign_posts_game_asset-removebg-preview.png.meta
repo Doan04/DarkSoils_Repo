@@ -135,6 +135,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -459,7 +472,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sign_posts_game_asset-removebg-preview_0: 8410246691749530705
+      sign_posts_game_asset-removebg-preview_1: -2642592729978792713
+      sign_posts_game_asset-removebg-preview_10: -7974085814163072140
+      sign_posts_game_asset-removebg-preview_11: 3132687292715487152
+      sign_posts_game_asset-removebg-preview_12: -6171809438338536726
+      sign_posts_game_asset-removebg-preview_13: 4181271573413920779
+      sign_posts_game_asset-removebg-preview_2: -5263304187784615449
+      sign_posts_game_asset-removebg-preview_3: 2908094168500653125
+      sign_posts_game_asset-removebg-preview_4: -2235290240409413938
+      sign_posts_game_asset-removebg-preview_5: 8646634192700793784
+      sign_posts_game_asset-removebg-preview_6: -1355528848054799861
+      sign_posts_game_asset-removebg-preview_7: 4277771777236742542
+      sign_posts_game_asset-removebg-preview_8: 857010085882833724
+      sign_posts_game_asset-removebg-preview_9: -4593026328835686471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
