@@ -37,7 +37,16 @@ public class PlayerMeleeScript : MonoBehaviour
                     // if using hammer, one shot
                     if (isScythe == false) 
                     {
-                        Destroy(collider.gameObject);
+                        EnemyHealth enemyScriptRef = collider.gameObject.GetComponent<EnemyHealth>();
+                        ShankerBehavior shankerRef = collider.gameObject.GetComponent<ShankerBehavior>();
+                        if (enemyScriptRef)
+                        {
+                            enemyScriptRef.DeathEvent();
+                        }
+                        else if (shankerRef != null)
+                        {
+                            shankerRef.DeathEvent();
+                        }
                     }
                 }
                 else if (collider.CompareTag("Heart"))

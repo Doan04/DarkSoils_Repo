@@ -3,6 +3,7 @@ using UnityEngine.AI;
 public class ShankerBehavior : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject coin;
     public PlayerScript playerScript;
     public Animator animator;
     public Transform target;
@@ -11,6 +12,8 @@ public class ShankerBehavior : MonoBehaviour
     int attacksAvailable = 3;
     public float updateFrequency = .1f;
     public float attackFrequency = 1f;
+    public AudioSource shankerAudio;
+    public AudioClip shankerHitSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,7 +48,7 @@ public class ShankerBehavior : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            attackFrequency = 0.5f;
+            attackFrequency = 1f;
         }
         var vel = agent.velocity;
         vel.z = 0;
@@ -53,6 +56,25 @@ public class ShankerBehavior : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, vel);
         }
+    }
+
+    public void DeathEvent()
+    {
+        Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
+        GetComponent<SpriteRenderer>().enabled = false;
+        shankerAudio.PlayOneShot(shankerHitSound);
+        ShankerBehavior script = GetComponent<ShankerBehavior>();
+        if (script != null)
+        {
+            script.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+        Invoke("EnemyDie", 0.5f);
+    }
+
+    public void EnemyDie()
+    {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
