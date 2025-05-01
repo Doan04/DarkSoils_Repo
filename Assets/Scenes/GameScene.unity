@@ -18912,6 +18912,7 @@ MonoBehaviour:
   shankerSpawnInterval: 10
   fertSpawnInterval: 15
   RatSpawnInterval: 10
+  wave: 0
 --- !u!4 &475090644
 Transform:
   m_ObjectHideFlags: 0
@@ -47090,7 +47091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483465060207319990, guid: 7d4a33379ec2ca8419b3dbadfb4b1202, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

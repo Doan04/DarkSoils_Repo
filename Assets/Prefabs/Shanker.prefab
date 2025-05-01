@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -8056589742158757872}
   - component: {fileID: 7649616408390110357}
   - component: {fileID: 4115308688419334140}
-  - component: {fileID: -732521102871308172}
   m_Layer: 0
   m_Name: Shanker
   m_TagString: Enemy
@@ -200,17 +199,3 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &-732521102871308172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371631218092237841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe005e3339f266e40859910d5c5465aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 15
-  coin: {fileID: 0}
