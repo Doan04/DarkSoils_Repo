@@ -37,7 +37,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            health = 5;
+            health = 545435;
             damage = 20;
             movementSpeed = 0.5f;
         }
@@ -103,16 +103,17 @@ public class EnemyScript : MonoBehaviour
         transform.position += movementSpeed * transform.up * Time.deltaTime;
     }
 
-    public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
-    {
-        health -= dmg;
-        stunnedTimer = 0.3f;
-        if(health <= 0)
-        {
-            Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
-            Destroy(gameObject);
-        }
-    }
+    // public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
+    // {
+    //     if(false == true)
+    //     health -= dmg;
+    //     stunnedTimer = 0.3f;
+    //     if(health <= 0)
+    //     {
+    //         Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     public void OnCollisionStay2D(Collision2D collision)
     {

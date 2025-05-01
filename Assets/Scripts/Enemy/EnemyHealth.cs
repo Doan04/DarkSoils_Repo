@@ -29,7 +29,6 @@ public class EnemyHealth : MonoBehaviour
             stunnedTimer = 0.5f;
             enemyAudio.PlayOneShot(enemyHurtSound);
         }
-        stunnedTimer = 0.5f;
         if (health <= 0)
         {
             DeathEvent();
