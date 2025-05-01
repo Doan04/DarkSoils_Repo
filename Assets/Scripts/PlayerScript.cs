@@ -45,6 +45,7 @@ public class PlayerScript : MonoBehaviour
     public float maxFert = 100f;
     public float repairTime = 3f; // Time spent repairing until player send a fix message to machine 
     public float fireRate = 0.2f;
+    public float staminaRegen;
     public StaminaBarScript staminaBar;
     public HealthBarScript healthBar;
     public FertilizerBar fertBar;
@@ -52,6 +53,7 @@ public class PlayerScript : MonoBehaviour
     public Vector2 currentMovementDirection;
     public GameObject fertBullet;
     private CropScript cropScript;
+
     // public GameObject LosePanel;
     void Start()
     {
@@ -59,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         attack = 3;
         playerSpeed = 7f;
         currentHealth = maxHealth;
+        staminaRegen = 10f;
         mask = LayerMask.GetMask("Enemy");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -84,7 +87,7 @@ public class PlayerScript : MonoBehaviour
         inventoryText.SetText("Money: " + money + "\nFertilizer: " + currentFert);
         if(currentStamina < maxStamina)
         {
-            currentStamina += 10 * Time.deltaTime;
+            currentStamina += staminaRegen * Time.deltaTime;
         }
         // calculating player and mouse positions
         pos = transform.position;

@@ -75,7 +75,7 @@ public class ShopPlatformScript : MonoBehaviour
             else if(wares == 1)
             {
                 price = 3 * (timesBought + 1);
-                StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
+                StartCoroutine(changeDialogue(description, "Stamina Regen\n Price: " + price));
             }
             else if(wares == 2)
             {
@@ -111,21 +111,21 @@ public class ShopPlatformScript : MonoBehaviour
                 }
                 if(wares == 0)
                 {
-                    price = 3 * (timesBought + 1);
+                    price = 4 * (timesBought + 1);
                     StartCoroutine(changeDialogue(description, "Damage\n Price: " + price));
                     collidedObject.GetComponent<PlayerScript>().attack += 1;
 
                 }
                 else if(wares == 1)
                 {
-                    price = 5 * (timesBought + 1);
-                    StartCoroutine(changeDialogue(description, "Max Health\n Price: " + price));
-                    collidedObject.GetComponent<PlayerScript>().currentHealth += 15;
-                    collidedObject.GetComponent<PlayerScript>().maxHealth += 15;                
+                    price = 2 * (timesBought + 1);
+                    StartCoroutine(changeDialogue(description, "Stamina Regen\n Price: " + price));
+                    collidedObject.GetComponent<PlayerScript>().staminaRegen += 1;
+                    collidedObject.GetComponent<PlayerScript>().staminaRegenDelay -= 0.05f;                
                 }
                 else if(wares == 2)
                 {
-                    price = 6 * (timesBought + 1);
+                    price = 3 * (timesBought + 1);
                     StartCoroutine(changeDialogue(description, "Max Speed\n Price: " + price));
                     collidedObject.GetComponent<PlayerScript>().playerSpeed += 1;       
                 }

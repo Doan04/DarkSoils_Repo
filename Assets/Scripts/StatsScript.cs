@@ -17,6 +17,7 @@ public class StatsScript : MonoBehaviour
     {
         string stats = "Player Stats: \n\n";
         stats += "Health: " + playerScript.currentHealth + "/" + playerScript.maxHealth + "\n";
+        stats += "Stamina (Regen): " + playerScript.currentStamina + "/" + playerScript.maxStamina + " (" + playerScript.staminaRegen + ") \n"; 
         stats += "Attack: " + playerScript.attack + "\n";
         stats += "Fertilizer: " + playerScript.currentFert + "/" + playerScript.maxFert + "\n";
         stats += "Speed: " + playerScript.playerSpeed + "\n";
