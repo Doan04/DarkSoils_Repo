@@ -58,7 +58,7 @@ public class PlayerScript : MonoBehaviour
     // public GameObject LosePanel;
     void Start()
     {
-        money = 100000;
+        money = 20;
         attack = 3;
         playerSpeed = 7f;
         currentHealth = maxHealth;
