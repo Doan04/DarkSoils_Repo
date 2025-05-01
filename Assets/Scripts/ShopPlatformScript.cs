@@ -156,6 +156,7 @@ public class ShopPlatformScript : MonoBehaviour
             audioText[0].Stop();
         }
         currentlyOnShopPlatform = false;
+        purchasing = false;
     }
 
     IEnumerator changeDialogue(GameObject popup, string text)

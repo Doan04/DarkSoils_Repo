@@ -16,12 +16,18 @@ public class PlayerMeleeScript : MonoBehaviour
         {
             for (int i = 0; i < TriggerList.Count; i++)
             {
+                bool temp = true;
                 if(TriggerList[i] == null)
                 {
                     Debug.Log("Missing collider");
+                    temp = false;
                 }
-                Collider2D collider = TriggerList[i];
-                if (collider.CompareTag("Enemy"))
+                Collider2D collider = null;
+                if(temp)
+                {
+                    collider = TriggerList[i];
+                }
+                if (temp && collider.CompareTag("Enemy"))
                 {
                     // if using scythe, damage for 5 or something
                     //Adjusting this to damage based off player's attack
@@ -56,7 +62,7 @@ public class PlayerMeleeScript : MonoBehaviour
                         }
                     }
                 }
-                else if (collider.CompareTag("Heart"))
+                else if (temp && collider.CompareTag("Heart"))
                 {
                     collider.gameObject.GetComponent<HeartBehavior>().TakeDamage();
                 }
