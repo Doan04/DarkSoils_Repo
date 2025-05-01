@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   coin: {fileID: 1219567618510804604, guid: 8ddea54c8e9e5b545a3032e75c93b73e, type: 3}
-  enemyAudio: {fileID: 1150427866505260706, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
+  enemyAudio: {fileID: -4791052825532116883}
   enemyHurtSound: {fileID: 8300000, guid: a6523018f8d47aa458cf0f018a2e3e01, type: 3}
 --- !u!114 &118649530684021763
 MonoBehaviour:
