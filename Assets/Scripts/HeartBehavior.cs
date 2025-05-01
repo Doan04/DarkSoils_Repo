@@ -26,7 +26,7 @@ public class HeartBehavior : MonoBehaviour
     public Animator animator;
     private float hitTimer = 0f;
     private bool hit = false;
-
+    private bool spawnedDrop = false;
     void Start()
     {
         player = GameObject.Find("Player");
@@ -88,7 +88,11 @@ public class HeartBehavior : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
-            Instantiate(bossDrop, transform.position, Quaternion.Euler(0, 0, 0));
+            if(!spawnedDrop)
+            {
+                Instantiate(bossDrop, transform.position, Quaternion.Euler(0, 0, 0));
+                spawnedDrop = true;
+            }
             heartAudio.volume = 0.1f;
             heartAudio.PlayOneShot(deathSound);
             Invoke("setHeartInactive", 7f);

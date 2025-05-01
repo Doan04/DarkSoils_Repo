@@ -36,7 +36,7 @@ public class NPCScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // questValue -= 0.25f * Time.deltaTime;
+        questValue -= 1.5f * Time.deltaTime;
         if(currentlyOnNPCPlatform)
         {
             if(Input.GetKeyDown(KeyCode.E))
@@ -192,20 +192,20 @@ public class NPCScript : MonoBehaviour
                         }
                         if(questIndex != 0)
                         {
-                            string[] stringArray = {"Thanks for the help. Here's 75 gold.", questDialoguePool[questIndex]};
+                            string[] stringArray = {"Thanks for the help. Here's 75 gold.", questDialoguePool[questIndex % 3]};
                             StopAllCoroutines();
                             StartCoroutine(changeDialogueSeries(popup, stringArray));
                         }
                         else
                         {
                             StopAllCoroutines();
-                            StartCoroutine(changeDialogue(popup, questDialoguePool[questIndex]));
+                            StartCoroutine(changeDialogue(popup, questDialoguePool[questIndex % 3]));
                         }
                     }
                     else
                     {
                         StopAllCoroutines();
-                        StartCoroutine(changeDialogue(popup, questDialoguePool[questIndex]));
+                        StartCoroutine(changeDialogue(popup, questDialoguePool[questIndex % 3]));
                     }
                 }
                 quest = false;
