@@ -14,6 +14,7 @@ public class WaveManagerScript : MonoBehaviour
     public float shankerSpawnInterval = 10f;
     public float fertSpawnInterval = 7.5f;
     public float RatSpawnInterval = 20f;
+    public int wave;
     float shankSpawnTime = 10f;
     float fertSpawnTime = 7.5f;
     float RatSpawnTime = 20f;
@@ -21,6 +22,7 @@ public class WaveManagerScript : MonoBehaviour
     void Start()
     {
         waveIsActive = false;
+        wave = 0;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class WaveManagerScript : MonoBehaviour
         if (spawnInterval <= 0 && waveIsActive)
         {
             SpawnEnemy(grunt);
-            spawnInterval = 2f;
+            spawnInterval = 2f - (0.1f * (wave - 1));
         }
         if (shankerSpawnInterval <= 0 && waveIsActive) 
         {
@@ -55,6 +57,7 @@ public class WaveManagerScript : MonoBehaviour
 
     public void StartWave()
     {
+        wave++;
         waveIsActive = true;
         audioManager.GetComponent<MainAudio>().PlayWaveMusic();
     }

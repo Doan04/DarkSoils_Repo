@@ -37,7 +37,7 @@ public class HeartBehavior : MonoBehaviour
         shootTimer -= Time.deltaTime;
         circleShootTimer -= Time.deltaTime;
         hitTimer -= Time.deltaTime;
-        if((player.transform.position - gameObject.transform.position).magnitude <= 10)
+        if((player.transform.position - gameObject.transform.position).magnitude <= 15)
         {
             if(shootTimer <= 0 && !dead)
             {

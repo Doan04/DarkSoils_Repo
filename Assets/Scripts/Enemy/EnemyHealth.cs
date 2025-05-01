@@ -23,7 +23,11 @@ public class EnemyHealth : MonoBehaviour
     }
     public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
     {
-        health -= dmg;
+        if(stunnedTimer <= 0)
+        {
+            health -= dmg;
+            stunnedTimer = 0.5f;
+        }
         stunnedTimer = 0.5f;
         enemyAudio.PlayOneShot(enemyHurtSound);
         if (health <= 0)

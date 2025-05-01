@@ -56,7 +56,7 @@ public class CropScript : MonoBehaviour
             {
                 waveManager.EndWave();
                 waveActive = false;
-                secondsToNextWave = 30;
+                secondsToNextWave = 60;
                 currentSecondsTilWave = secondsToNextWave;
                 currentGrowth = 0;
                 Debug.Log("Growth reached 100%. End any wave");

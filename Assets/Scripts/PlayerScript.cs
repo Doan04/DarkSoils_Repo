@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     public TextMeshProUGUI inventoryText;
     public Vector2 currentMovementDirection;
     public GameObject fertBullet;
-    CropScript cropScript;
+    private CropScript cropScript;
     // public GameObject LosePanel;
     void Start()
     {
@@ -107,7 +107,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if(Input.GetMouseButtonDown(1) && isRepairing == false)
         {
-            if (playerInCrops && currentFert >= 45f) 
+            if (playerInCrops && currentFert >= 45f && cropScript.canHeal) 
             {
                 currentFert -= 45f;
                 fertBar.updateFertValue(currentFert / maxFert);
