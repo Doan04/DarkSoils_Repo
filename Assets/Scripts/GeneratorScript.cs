@@ -16,6 +16,8 @@ public class GeneratorScript : MonoBehaviour
     public float damageInterval = 1f;
     public CropScript cropfield;
     public ObjectiveManager questManager;
+    private bool audioPlaying = false;
+    private GameObject player;
     // references to UI objects and managers that we'll need
     void Start()
     {
@@ -26,10 +28,10 @@ public class GeneratorScript : MonoBehaviour
                 lights.Add(child.gameObject.GetComponent<Light2D>());
             }
         }
-        generatorAudio = GetComponent<AudioSource>();
+        generatorAudio = gameObject.GetComponent<AudioSource>();
         generatorAudio.loop = true;
         generatorAudio.clip = generatorNoise;
-        generatorAudio.Play();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -41,6 +43,17 @@ public class GeneratorScript : MonoBehaviour
             // TODO: Randomize the damage taken per second for both machines
             TakeDamage(5);
             damageInterval = 1f;
+        }
+
+        if((player.transform.position - gameObject.transform.position).magnitude <= 10 && !audioPlaying && !isBroken)
+        {
+            audioPlaying = true;
+            generatorAudio.Play();
+        }
+        else if((player.transform.position - gameObject.transform.position).magnitude > 10 && audioPlaying)
+        {
+            audioPlaying = false;
+            generatorAudio.Stop();
         }
     }
 
