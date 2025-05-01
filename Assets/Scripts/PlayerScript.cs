@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip swingSound;
     public AudioClip PlayerHit;
+    public AudioClip dashSound;
     public int money;
     public int fish;
     public int attack;
@@ -124,6 +125,7 @@ public class PlayerScript : MonoBehaviour
             if(currentStamina > 15f)
             {
                 currentStamina -= 15f;
+                playerAudio.PlayOneShot(dashSound);
                 rb.AddForce(currentMovementDirection * 15f, ForceMode2D.Impulse);
                 playerHasControl = false;
                 StartCoroutine(returnControlToPlayer());
@@ -220,20 +222,6 @@ public class PlayerScript : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(targetDir);
         Instantiate(damageEffect, new Vector3(transform.position.x, transform.position.y, 5), rotation);
     }
-    //public void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    //Hit by an enemy, set invincibility state
-    //    if(collision.gameObject.tag == "Enemy" && invincibleTimer <= 0)
-    //    {
-    //        invincibleTimer = 1;
-    //        EnemyScript emscript = collision.gameObject.GetComponent<EnemyScript>();
-    //        if (emscript != null) 
-    //        {
-    //            DamagePlayer(Mathf.RoundToInt(emscript.damage));
-    //        }
-    //        healthBar.updateHealthValue(currentHealth / maxHealth);
-    //    }
-    //}
 
     public void DamagePlayer(int damage)
     {
