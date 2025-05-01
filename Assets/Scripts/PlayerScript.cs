@@ -53,7 +53,8 @@ public class PlayerScript : MonoBehaviour
     public Vector2 currentMovementDirection;
     public GameObject fertBullet;
     private CropScript cropScript;
-
+    public AudioClip coinNoise;
+    public AudioClip fertNoise;
     // public GameObject LosePanel;
     void Start()
     {
@@ -260,6 +261,17 @@ public class PlayerScript : MonoBehaviour
         isRepairing = false;
         animator.SetBool("repairing", false);
     }
+
+    public void playcoinNoise()
+    {
+        playerAudio.PlayOneShot(coinNoise);
+    }
+
+    public void playfertNoise()
+    {
+        playerAudio.PlayOneShot(fertNoise);
+    }
+
     IEnumerator returnControlToPlayer()
     {
         yield return new WaitForSeconds(0.2f);

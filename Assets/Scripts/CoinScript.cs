@@ -4,7 +4,7 @@ public class CoinScript : MonoBehaviour
 {
     public int coinValue = 1; // amount of money the coin gives the player
     public bool bossCoin = false;
-
+    //
     void Start()
     {
         if(bossCoin)
@@ -20,6 +20,7 @@ public class CoinScript : MonoBehaviour
         if (collidedObject.CompareTag("Player"))
         {
             collidedObject.GetComponent<PlayerScript>().money += coinValue;
+            collidedObject.GetComponent<PlayerScript>().playcoinNoise();
             Destroy(gameObject);
         }
     }

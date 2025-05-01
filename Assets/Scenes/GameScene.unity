@@ -43834,12 +43834,15 @@ MonoBehaviour:
   maxFert: 100
   repairTime: 3
   fireRate: 0.2
+  staminaRegen: 0
   staminaBar: {fileID: 1978796157}
   healthBar: {fileID: 526942083}
   fertBar: {fileID: 454424352}
   inventoryText: {fileID: 445680494}
   currentMovementDirection: {x: 0, y: 0}
   fertBullet: {fileID: 0}
+  coinNoise: {fileID: 8300000, guid: f00351525a9d54944913ec7e3888f239, type: 3}
+  fertNoise: {fileID: 8300000, guid: b6b138907a247fe4193e11ee8d85d8e9, type: 3}
 --- !u!95 &1960148641
 Animator:
   serializedVersion: 7

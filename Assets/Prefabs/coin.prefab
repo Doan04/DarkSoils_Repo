@@ -102,6 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad47ef0f1520384483724fbc8669feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinValue: 1
+  bossCoin: 0
+  audioSource: {fileID: 0}
+  pickupNoise: {fileID: 0}
 --- !u!58 &434590580474536145
 CircleCollider2D:
   m_ObjectHideFlags: 0
