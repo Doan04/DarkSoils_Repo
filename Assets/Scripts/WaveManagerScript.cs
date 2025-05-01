@@ -31,6 +31,7 @@ public class WaveManagerScript : MonoBehaviour
         spawnInterval -= Time.deltaTime;
         shankerSpawnInterval -= Time.deltaTime;
         fertSpawnInterval -= Time.deltaTime;
+        RatSpawnInterval -= Time.deltaTime;
         if(fertSpawnInterval < 0  && waveIsActive)
         {
             Instantiate(fertilizer, new Vector3(Random.Range(-8, 8), Random.Range(-5, 5), 0), Quaternion.Euler(0, 0, 0));
@@ -51,6 +52,7 @@ public class WaveManagerScript : MonoBehaviour
         if (RatSpawnInterval <= 0 && waveIsActive) 
         {
             SpawnEnemy(rat);
+            Debug.Log("Spawn Rat");
             RatSpawnInterval = RatSpawnTime;
         }
     }

@@ -39,13 +39,18 @@ public class PlayerMeleeScript : MonoBehaviour
                     {
                         EnemyHealth enemyScriptRef = collider.gameObject.GetComponent<EnemyHealth>();
                         ShankerBehavior shankerRef = collider.gameObject.GetComponent<ShankerBehavior>();
+                        RatBehavior ratRef = collider.gameObject.GetComponent<RatBehavior>();
                         if (enemyScriptRef)
                         {
                             enemyScriptRef.DeathEvent();
                         }
-                        else if (shankerRef != null)
+                        else if(shankerRef != null)
                         {
                             shankerRef.DeathEvent();
+                        }
+                        else if(ratRef != null)
+                        {
+                            Destroy(collider.gameObject);
                         }
                     }
                 }

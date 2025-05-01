@@ -9,7 +9,8 @@ public class RatBehavior : MonoBehaviour
     public bool inContact = false;
     NavMeshAgent agent;
     public float updateFrequency = .1f;
-    public float attackFrequency = 1.5f;
+    public float attackFrequency = 3f;
+    int attacksAvailable = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,8 +31,13 @@ public class RatBehavior : MonoBehaviour
         if (attackFrequency < 0 && inContact)
         {
             animator.Play("ShankerAttack");
-            attackFrequency = 0.5f;
+            attackFrequency = 3f;
             generatorScript.TakeDamage(20);
+            attacksAvailable--;
+            if(attacksAvailable <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
         var vel = agent.velocity;
         vel.z = 0;
