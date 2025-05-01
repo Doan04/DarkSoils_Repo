@@ -29,6 +29,7 @@ public class FishScript : MonoBehaviour
         if (collidedObject.CompareTag("Player"))
         {
             collidedObject.GetComponent<PlayerScript>().fish += type;
+            collidedObject.GetComponent<PlayerScript>().playcoinNoise();
             Destroy(gameObject);
         }
     }

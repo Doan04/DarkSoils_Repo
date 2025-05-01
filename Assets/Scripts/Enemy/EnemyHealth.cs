@@ -7,7 +7,15 @@ public class EnemyHealth : MonoBehaviour
     public GameObject coin;
     public AudioSource enemyAudio;
     public AudioClip enemyHurtSound;
-
+    public int enemyID;
+    public GameObject shopBoundary;
+    public NPCScript npcScript;
+    public bool diedToPlayer;
+    void Start()
+    {
+        shopBoundary = GameObject.Find("ShopBoundary");
+        npcScript = shopBoundary.GetComponent<NPCScript>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (health <= 0)
         {
+            diedToPlayer = true;
             DeathEvent();
         }
     }
@@ -64,6 +73,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDie()
     {
+        if(diedToPlayer)
+        {
+            npcScript.questUpdate(enemyID);
+            Debug.Log("died to player");
+        }
+        else
+        {
+            Debug.Log("died naturally");
+        }
         Destroy(gameObject);
     }
 }

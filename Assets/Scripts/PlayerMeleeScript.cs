@@ -42,10 +42,12 @@ public class PlayerMeleeScript : MonoBehaviour
                         RatBehavior ratRef = collider.gameObject.GetComponent<RatBehavior>();
                         if (enemyScriptRef)
                         {
+                            enemyScriptRef.diedToPlayer = true;
                             enemyScriptRef.DeathEvent();
                         }
                         else if(shankerRef != null)
                         {
+                            shankerRef.diedToPlayer = true;
                             shankerRef.DeathEvent();
                         }
                         else if(ratRef != null)

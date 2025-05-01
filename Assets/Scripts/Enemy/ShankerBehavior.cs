@@ -14,9 +14,14 @@ public class ShankerBehavior : MonoBehaviour
     public float attackFrequency = 1f;
     public AudioSource shankerAudio;
     public AudioClip shankerHitSound;
+    public GameObject shopBoundary;
+    public NPCScript npcScript;
+    public bool diedToPlayer;
+    public int enemyID;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyID = 2;
         Player = GameObject.Find("Player");
         playerScript = Player.GetComponent<PlayerScript>();
         animator = GetComponent<Animator>();
@@ -24,6 +29,8 @@ public class ShankerBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        shopBoundary = GameObject.Find("ShopBoundary");
+        npcScript = shopBoundary.GetComponent<NPCScript>();
     }
 
     // Update is called once per frame
@@ -74,6 +81,15 @@ public class ShankerBehavior : MonoBehaviour
 
     public void EnemyDie()
     {
+        if(diedToPlayer)
+        {
+            npcScript.questUpdate(enemyID);
+            Debug.Log("died to player");
+        }
+        else
+        {
+            Debug.Log("died naturally");
+        }
         Destroy(gameObject);
     }
 

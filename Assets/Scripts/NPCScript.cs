@@ -36,7 +36,7 @@ public class NPCScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        questValue -= 0.25f * Time.deltaTime;
+        // questValue -= 0.25f * Time.deltaTime;
         if(currentlyOnNPCPlatform)
         {
             if(Input.GetKeyDown(KeyCode.E))
@@ -81,6 +81,14 @@ public class NPCScript : MonoBehaviour
 
     }
 
+    public void questUpdate(int enemyID)
+    {
+        //Are we killing the matching enemy?
+        if(enemyID == (questIndex % 3))
+        {
+            questValue--;
+        }
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject collidedObject = collision.gameObject;
