@@ -33,8 +33,8 @@ public class CropScript : MonoBehaviour
         cropSprite.sprite = cropStageSprite[stage];
         maxGrowth = 30f;
         waveManager = GameObject.Find("WaveManager").GetComponent<WaveManagerScript>();
-        canHeal = false;
-        canGrow = false;
+        canHeal = true;
+        canGrow = true;
         waveActive = false;
         timerText.enabled = true;
         currentSecondsTilWave = secondsToNextWave;
@@ -56,7 +56,7 @@ public class CropScript : MonoBehaviour
             {
                 waveManager.EndWave();
                 waveActive = false;
-                secondsToNextWave = 30;
+                secondsToNextWave = 60;
                 currentSecondsTilWave = secondsToNextWave;
                 currentGrowth = 0;
                 Debug.Log("Growth reached 100%. End any wave");

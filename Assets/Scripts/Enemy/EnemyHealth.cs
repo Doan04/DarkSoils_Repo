@@ -27,8 +27,11 @@ public class EnemyHealth : MonoBehaviour
     }
     public void TakeDamage(int dmg) // Code that gets called when enemy takes Damage
     {
-        health -= dmg;
-        stunnedTimer = 0.3f;
+        if(stunnedTimer <= 0)
+        {
+            health -= dmg;
+            stunnedTimer = 0.3f;
+        }
         if (health <= 0)
         {
             Instantiate(coin, transform.position, Quaternion.Euler(0, 0, 0));
