@@ -12,19 +12,16 @@ GameObject:
   - component: {fileID: 7674957115375264707}
   - component: {fileID: 5712030245041416427}
   - component: {fileID: 9223295446570855883}
+  - component: {fileID: -24763943731676969}
   - component: {fileID: 2736346774760575978}
-<<<<<<< Updated upstream
   - component: {fileID: 765292213700321812}
-=======
-  - component: {fileID: -7447512555856319416}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9046109554216213844
 Transform:
   m_ObjectHideFlags: 0
@@ -153,6 +150,29 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.3
+--- !u!114 &-24763943731676969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602668564104369808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490d809f88fed1842bcb855fdd538589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: 3
+  bulletPrefab: {fileID: 2149184560829227972, guid: ce9da1ada91755b4484e1ce9d4ded1f5, type: 3}
+  player: {fileID: 0}
+  coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
+  health: 0
+  damage: 0
+  movementSpeed: 0
+  attackTimer: 0
+  changeDirectionTimer: 0
+  despawnTimer: 0
+  anim: {fileID: 0}
 --- !u!114 &2736346774760575978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,24 +185,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe005e3339f266e40859910d5c5465aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
+  health: 10
   coin: {fileID: 2473614199247761270, guid: 8ab1f3bf106af1b42a5f84504c504b65, type: 3}
-<<<<<<< Updated upstream
   enemyAudio: {fileID: 1150427866505260706, guid: 6ad90b572fbacdf44a01cec52db8e697, type: 3}
   enemyHurtSound: {fileID: 8300000, guid: a6523018f8d47aa458cf0f018a2e3e01, type: 3}
 --- !u!82 &765292213700321812
 AudioSource:
-=======
---- !u!114 &-7447512555856319416
-MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602668564104369808}
   m_Enabled: 1
-<<<<<<< Updated upstream
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -272,13 +286,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22327af18630ca84a9716827c925a191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2149184560829227972, guid: ce9da1ada91755b4484e1ce9d4ded1f5, type: 3}
-  player: {fileID: 0}
-  damage: 0
-  anim: {fileID: 0}
->>>>>>> Stashed changes
